@@ -1,0 +1,58 @@
+@startuml
+
+package mappers{
+    
+    class UserMapper{}
+
+    class CustomerInfoMapper{}
+
+    class EmployeeInfoMapper{}
+
+    class CustomerRequestMapper{}
+
+    class MaterialListMapper{}
+
+    class MaterialListMapper{}
+
+    class MaterialsMapper{}
+}
+DBEntities -[hidden]> serviceEntities
+package serviceEntities{
+    class User {}
+    User "1." --> "0..1" Employee
+    User "1" ---> "0..1" Customer
+
+    class Employee {}
+
+    class Customer{}
+    Customer -> CustomerRequest
+    class MaterialList{}
+    MaterialList "1." --> "0..*" MaterialListLines
+
+    class MaterialListLines{}
+    MaterialListLines "0..*" --> "1." Materials
+
+    class Materials{}
+
+    class CustomerRequest{}
+    CustomerRequest "1" -> "1" MaterialList
+}
+package commands {
+    class LoginCommand{}
+    class LogoutCommand{}
+    class CRUDCustomerRequestCommand{}
+    class CRUDMaterialsListCommand{}
+    class CRUDMaterialsCommands{}
+    class GenerateOfferCommand{}
+}
+
+package DBEntities{
+    class DBUser{}
+    class DBEmployeeInfo{}
+    class DBCustomerInfo{}
+    class DBCustomerRequest{}
+    class DBMaterialList{}
+    class DBMaterialListLines{}
+    class DBMaterials{}
+}
+@enduml
