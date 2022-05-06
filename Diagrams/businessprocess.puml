@@ -1,0 +1,12 @@
+@startuml
+
+Kunde -> hjemmeside : indsendelse af forespørgsel
+Fog -> hjemmeside : læs forespørgsel
+Fog <-> Kunde : aftal forespørgsel
+Fog -> hjemmeside : CRUD på forespørgsel
+Fog <- hjemmeside : generer stykliste
+Fog <- hjemmeside : visualiser carport
+Fog -> Kunde: send tilbud
+
+
+@enduml
