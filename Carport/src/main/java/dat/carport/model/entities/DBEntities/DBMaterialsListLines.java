@@ -1,5 +1,7 @@
 package dat.carport.model.entities.DBEntities;
 
+import dat.carport.model.entities.ServiceEntities.MaterialListLine;
+
 import java.util.Objects;
 
 public class DBMaterialsListLines {
@@ -16,6 +18,14 @@ public class DBMaterialsListLines {
         this.materialsId = materialsId;
         this.description = description;
         this.quantity = quantity;
+    }
+
+    public DBMaterialsListLines(MaterialListLine mll){
+        this.id = mll.getId();
+        this.materialsListId = mll.getMaterialsListId();
+        this.materialsId = mll.getMaterialsId();
+        this.description = mll.getDescription();
+        this.quantity = mll.getQuantity();
     }
 
     public int getId() {

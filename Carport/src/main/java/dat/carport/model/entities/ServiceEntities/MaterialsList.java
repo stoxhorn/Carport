@@ -1,5 +1,7 @@
 package dat.carport.model.entities.ServiceEntities;
 
+import dat.carport.model.entities.DBEntities.DBMaterialsList;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -19,6 +21,14 @@ public class MaterialsList {
         this.id = id;
         this.customerRequestId = customerRequestId;
         this.lines = new ArrayList<>();
+    }
+
+    public MaterialsList(DBMaterialsList dbml){
+        this.id = dbml.getId();
+        this.customerRequestId = dbml.getCustomerRequestId();
+        // TODO: some function that can call a mapper and fill out this line.
+        this.lines = new ArrayList<>();
+
     }
 
     public void addListLine(MaterialListLine ll){

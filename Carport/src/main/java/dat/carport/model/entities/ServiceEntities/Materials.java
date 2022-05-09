@@ -1,5 +1,7 @@
 package dat.carport.model.entities.ServiceEntities;
 
+import dat.carport.model.entities.DBEntities.DBMaterials;
+
 import java.util.Objects;
 
 public class Materials {
@@ -9,6 +11,11 @@ public class Materials {
     public Materials(int id, String description) {
         this.id = id;
         this.description = description;
+    }
+
+    public Materials(DBMaterials dbm){
+        this.id = dbm.getId();
+        this.description = dbm.getDescription();
     }
 
     public int getId() {

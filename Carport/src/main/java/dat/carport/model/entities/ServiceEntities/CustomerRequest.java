@@ -1,5 +1,7 @@
 package dat.carport.model.entities.ServiceEntities;
 
+import dat.carport.model.entities.DBEntities.DBCustomerRequest;
+
 public class CustomerRequest {
     private int id;
     private String customerUserEmail;
@@ -16,6 +18,20 @@ public class CustomerRequest {
         this.id = id;
         this.customerUserEmail = customerUserEmail;
         this.requestData = requestData;
+    }
+
+    public CustomerRequest(DBCustomerRequest dbcr){
+        this.id = dbcr.getId();
+        this.customerUserEmail = dbcr.getCustomerUserEmail();
+        this.requestData = new CustomerRequestData(
+                                            dbcr.getCarportWidth(),
+                                            dbcr.getCarportLength(),
+                                            dbcr.getRoofType(),
+                                            dbcr.getRoofMaterial(),
+                                            dbcr.getRoofSlope(),
+                                            dbcr.getShedWidth(),
+                                            dbcr.getShedLength()
+                );
     }
 
     public void setMaterialList(MaterialsList mList){
@@ -38,5 +54,13 @@ public class CustomerRequest {
                 ", requestData=" + requestData +
                 ", materialList=" + materialList +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCustomerUserEmail() {
+        return customerUserEmail;
     }
 }
