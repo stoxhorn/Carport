@@ -1,5 +1,7 @@
 package dat.carport.model.entities.DBEntities;
 
+import dat.carport.model.entities.ServiceEntities.MaterialsList;
+
 import java.util.Objects;
 
 public class DBMaterialsList {
@@ -12,6 +14,13 @@ public class DBMaterialsList {
         this.id = id;
         this.customerRequestId = customerRequestId;
     }
+
+    public DBMaterialsList(MaterialsList ml){
+        this.id = ml.getId();
+        this.customerRequestId = ml.getCustomerRequestId();
+    }
+
+
 
     public int getId() {
         return id;

@@ -1,5 +1,7 @@
 package dat.carport.model.entities.ServiceEntities;
 
+import dat.carport.model.entities.DBEntities.DBMaterialsListLines;
+
 import java.util.Objects;
 
 public class MaterialListLine {
@@ -41,6 +43,15 @@ public class MaterialListLine {
         this.quantity = quantity;
     }
 
+    public MaterialListLine(DBMaterialsListLines dbmll){
+        this.id = dbmll.getId();
+        this.description = dbmll.getDescription();
+        // TODO: needs to be able to find Material by ID,
+        //  otherwise it cannot create the object
+        this.materialsId = dbmll.getMaterialsId();
+        this.materialsListId = dbmll.getMaterialsListId();
+        this.quantity = dbmll.getQuantity();
+    }
 
     public int getId() {
         return id;

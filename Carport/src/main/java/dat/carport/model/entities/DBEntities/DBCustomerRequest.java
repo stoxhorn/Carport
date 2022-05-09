@@ -1,5 +1,9 @@
 package dat.carport.model.entities.DBEntities;
 
+import dat.carport.model.entities.ServiceEntities.Customer;
+import dat.carport.model.entities.ServiceEntities.CustomerRequest;
+import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
+
 import java.util.Objects;
 
 public class DBCustomerRequest {
@@ -24,6 +28,19 @@ public class DBCustomerRequest {
         this.roofSlope = roofSlope;
         this.shedWidth = shedWidth;
         this.shedLength = shedLength;
+    }
+
+    public DBCustomerRequest(CustomerRequest cr){
+        this.id = cr.getId();
+        this.customerUserEmail = cr.getCustomerUserEmail();
+        CustomerRequestData data = cr.getRequestData();
+        this.carportWidth = data.getCarportWidth();
+        this.carportLength = data.getCarportLength();
+        this.roofType = data.getRoofType();
+        this.roofMaterial = data.getRoofMaterial();
+        this.roofSlope = data.getRoofSlope();
+        this.shedWidth = data.getShedWidth();
+        this.shedLength = data.getShedLength();
     }
 
     public int getId() {
