@@ -1,7 +1,7 @@
 package dat.carport.control;
 
 import dat.carport.model.config.ApplicationStart;
-import dat.carport.model.entities.User;
+import dat.carport.model.entities.ServiceEntities.User;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.services.UserFacade;
 import dat.carport.model.persistence.ConnectionPool;
