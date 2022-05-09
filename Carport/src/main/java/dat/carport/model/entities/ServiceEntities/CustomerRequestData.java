@@ -10,13 +10,13 @@ import java.util.Objects;
  */
 public class CustomerRequestData {
 
-    String carportWidth;
-    String carportLength;
-    String roofType;
-    String roofMaterial;
-    String roofSlope;
-    String shedWidth;
-    String shedLength;
+    private String carportWidth;
+    private String carportLength;
+    private String roofType;
+    private String roofMaterial;
+    private String roofSlope;
+    private String shedWidth;
+    private String shedLength;
 
     public CustomerRequestData(String carportWidth, String carportLength, String roofType, String roofMaterial, String roofSlope, String shedWidth, String shedLength) {
         this.carportWidth = carportWidth;

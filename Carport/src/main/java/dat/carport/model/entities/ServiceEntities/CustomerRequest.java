@@ -1,10 +1,10 @@
 package dat.carport.model.entities.ServiceEntities;
 
 public class CustomerRequest {
-    int id;
-    String customerUserEmail;
-    CustomerRequestData requestData;
-    MaterialList materialList;
+    private int id;
+    private String customerUserEmail;
+    private CustomerRequestData requestData;
+    private MaterialsList materialList;
 
     public CustomerRequest(int id, String customerUserEmail, String carportWidth, String carportLength, String roofType, String roofMaterial, String roofSlope, String shedWidth, String shedLength) {
         this.id = id;
@@ -18,7 +18,7 @@ public class CustomerRequest {
         this.requestData = requestData;
     }
 
-    public void setMaterialList(MaterialList mList){
+    public void setMaterialList(MaterialsList mList){
         this.materialList = mList;
     }
 
@@ -26,8 +26,17 @@ public class CustomerRequest {
         return this.requestData;
     }
 
-    public MaterialList getMaterialList(){
+    public MaterialsList getMaterialList(){
         return this.materialList;
     }
 
+    @Override
+    public String toString() {
+        return "CustomerRequest{" +
+                "id=" + id +
+                ", customerUserEmail='" + customerUserEmail + '\'' +
+                ", requestData=" + requestData +
+                ", materialList=" + materialList +
+                '}';
+    }
 }

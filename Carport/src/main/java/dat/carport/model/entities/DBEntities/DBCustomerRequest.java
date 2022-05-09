@@ -3,15 +3,15 @@ package dat.carport.model.entities.DBEntities;
 import java.util.Objects;
 
 public class DBCustomerRequest {
-    int id;
-    String customerUserEmail;
-    String carportWidth;
-    String carportLength;
-    String roofType;
-    String roofMaterial;
-    String roofSlope;
-    String shedWidth;
-    String shedLength;
+    private int id;
+    private String customerUserEmail;
+    private String carportWidth;
+    private String carportLength;
+    private String roofType;
+    private String roofMaterial;
+    private String roofSlope;
+    private String shedWidth;
+    private String shedLength;
 
 
     public DBCustomerRequest(int id, String customerUserEmail, String carportWidth, String carportLength, String roofType, String roofMaterial, String roofSlope, String shedWidth, String shedLength) {

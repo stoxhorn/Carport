@@ -3,11 +3,11 @@ package dat.carport.model.entities.DBEntities;
 import java.util.Objects;
 
 public class DBMaterialsListLines {
-    int id;
-    int materialsListId;
-    int materialsId;
-    String description;
-    int quantity;
+    private int id;
+    private int materialsListId;
+    private int materialsId;
+    private String description;
+    private int quantity;
 
 
     public DBMaterialsListLines(int id, int materialsListId, int materialsId, String description, int quantity) {

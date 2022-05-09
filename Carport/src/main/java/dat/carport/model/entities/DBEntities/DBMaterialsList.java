@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class DBMaterialsList {
 
-    int id;
-    int customerRequestId;
+    private int id;
+    private int customerRequestId;
 
 
     public DBMaterialsList(int id, int customerRequestId) {

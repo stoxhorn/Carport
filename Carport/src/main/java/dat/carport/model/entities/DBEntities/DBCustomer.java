@@ -3,13 +3,13 @@ package dat.carport.model.entities.DBEntities;
 import java.util.Objects;
 
 public class DBCustomer {
-    String userEmail;
-    String firstName;
-    String lastName;
-    String address;
-    String zipcode;
-    String city;
-    String phone;
+    private String userEmail;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String zipcode;
+    private String city;
+    private String phone;
 
 
     public DBCustomer(String userEmail, String firstName, String lastName, String address, String zipcode, String city, String phone) {

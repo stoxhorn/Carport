@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class DBMaterials {
 
-    int id;
-    String description;
+    private int id;
+    private String description;
 
 
     public DBMaterials(int id, String description) {

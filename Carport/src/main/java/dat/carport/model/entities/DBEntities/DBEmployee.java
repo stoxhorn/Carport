@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class DBEmployee {
 
-    String userEmail;
-    String firstName;
-    String lastName;
+    private String userEmail;
+    private String firstName;
+    private String lastName;
 
 
     public DBEmployee(String userEmail, String firstName, String lastName) {
