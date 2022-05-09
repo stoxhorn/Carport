@@ -1,6 +1,6 @@
 package dat.carport.model.persistence;
 
-import dat.carport.model.entities.User;
+import dat.carport.model.entities.ServiceEntities.User;
 import dat.carport.model.exceptions.DatabaseException;
 
 import java.sql.*;

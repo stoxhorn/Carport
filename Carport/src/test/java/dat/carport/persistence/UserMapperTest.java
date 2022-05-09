@@ -1,6 +1,6 @@
 package dat.carport.persistence;
 
-import dat.carport.model.entities.User;
+import dat.carport.model.entities.ServiceEntities.User;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
 import dat.carport.model.services.UserFacade;

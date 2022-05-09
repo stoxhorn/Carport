@@ -1,4 +1,4 @@
-package dat.carport.model.entities;
+package dat.carport.model.entities.ServiceEntities;
 
 import java.util.Objects;
 
