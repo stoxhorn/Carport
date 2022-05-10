@@ -1,6 +1,6 @@
 package dat.carport.model.persistence;
 
-import dat.carport.model.entities.ServiceEntities.Materials;
+import dat.carport.model.entities.DBEntities.DBMaterials;
 import dat.carport.model.exceptions.DatabaseException;
 
 import java.sql.Connection;
@@ -18,8 +18,8 @@ public class MaterialsMapper {
         this.connectionPool = connectionPool;
     }
 
-    public List<Materials> getMaterials() throws DatabaseException {
-        List<Materials> materialsList = new ArrayList<>();
+    public List<DBMaterials> getMaterials() throws DatabaseException {
+        List<DBMaterials> materialsList = new ArrayList<>();
 
         String sql = "SELECT * FROM materials";
 
@@ -29,7 +29,8 @@ public class MaterialsMapper {
                 while (rs.next()) {
                     int id = rs.getInt("id");
                     String description = rs.getString("description");
-                    Materials material = new Materials(id, description);
+                    DBMaterials material = new DBMaterials(id, description);
+                    materialsList.add(material);
                 }
             }
         } catch (SQLException ex) {
@@ -38,8 +39,8 @@ public class MaterialsMapper {
         return materialsList;
     }
 
-    public Materials readMaterial(int id) throws DatabaseException {
-        Materials material = null;
+    public DBMaterials readMaterial(int id) throws DatabaseException {
+        DBMaterials material = null;
         String sql = "SELECT description FROM materials " +
                 "WHERE productId = ?";
         try (Connection connection = connectionPool.getConnection()) {
@@ -48,7 +49,7 @@ public class MaterialsMapper {
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()) {
                     String description = rs.getString("description");
-                    material = new Materials(id, description);
+                    material = new DBMaterials(id, description);
                 }
             }
         } catch (SQLException ex) {
@@ -57,7 +58,7 @@ public class MaterialsMapper {
         return material;
     }
 
-    public void createMaterial(Materials material) throws DatabaseException {
+    public void createMaterial(DBMaterials material) throws DatabaseException {
         String sql = "INSERT INTO materials (id, description)" +
                 "VALUES (?,?)";
         try (Connection connection = connectionPool.getConnection()) {
@@ -72,9 +73,9 @@ public class MaterialsMapper {
         }
     }
 
-    public void deleteMaterial(Materials material) throws DatabaseException {
+    public void deleteMaterial(DBMaterials material) throws DatabaseException {
         String sql = "DELETE FROM materials" +
-                "WHERE productId = ?";
+                "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, material.getId());
@@ -83,6 +84,21 @@ public class MaterialsMapper {
         }
         catch (SQLException ex) {
             throw new DatabaseException(ex, "An error occurred while trying to delete material: " + material);
+        }
+    }
+
+    public void updateMaterials(DBMaterials material) throws DatabaseException {
+        String sql = "UPDATE carport.materials " +
+                        "SET description = ? " +
+                        "WHERE id = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, material.getDescription());
+                ps.setInt(2, material.getId());
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "An error occurred while trying to update material: " + material);
         }
     }
 }
