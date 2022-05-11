@@ -23,7 +23,7 @@ public class CustomerInfoMapper {
     public List<DBCustomer> getCustomerInfo() throws DatabaseException {
         List<DBCustomer> customerInfoList = new ArrayList<>();
 
-        String sql = "SELECT * FROM carport.customer";
+        String sql = "SELECT * FROM customer";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -48,8 +48,8 @@ public class CustomerInfoMapper {
 
     public DBCustomer readCustomer(String email) throws DatabaseException {
         DBCustomer customer = null;
-        String sql = "SELECT first_name, last_name, address, zip_code, city, phone FROM carport.costumer " +
-                "WHERE email = ?";
+        String sql = "SELECT first_name, last_name, address, zip_code, city, phone FROM customer " +
+                "WHERE user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, email);
@@ -71,7 +71,7 @@ public class CustomerInfoMapper {
     }
 
     public void createCustomer(DBCustomer customer) throws DatabaseException {
-        String sql = "INSERT INTO carport.customer (user_email, first_name, last_name, address, zip_code, city, phone)" +
+        String sql = "INSERT INTO customer (user_email, first_name, last_name, address, zip_code, city, phone)" +
                 "VALUES (?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -90,7 +90,7 @@ public class CustomerInfoMapper {
     }
 
     public void deleteCustomer(DBCustomer customer) throws DatabaseException {
-        String sql = "DELETE FROM carport.customer" +
+        String sql = "DELETE FROM customer " +
                 "WHERE user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -103,7 +103,7 @@ public class CustomerInfoMapper {
     }
 
     public void updateCustomers(DBCustomer customer) throws DatabaseException {
-        String sql = "UPDATE carport.customer " +
+        String sql = "UPDATE customer " +
                 "SET first_name = ?, last_name = ?, address = ?, zip_code = ?, city = ?, phone = ?  " +
                 "WHERE user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
