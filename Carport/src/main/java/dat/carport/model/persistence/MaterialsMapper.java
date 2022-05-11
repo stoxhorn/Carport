@@ -42,7 +42,7 @@ public class MaterialsMapper {
     public DBMaterials readMaterial(int id) throws DatabaseException {
         DBMaterials material = null;
         String sql = "SELECT description FROM materials " +
-                "WHERE productId = ?";
+                "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, id);
@@ -74,7 +74,7 @@ public class MaterialsMapper {
     }
 
     public void deleteMaterial(DBMaterials material) throws DatabaseException {
-        String sql = "DELETE FROM materials" +
+        String sql = "DELETE FROM materials " +
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -88,7 +88,7 @@ public class MaterialsMapper {
     }
 
     public void updateMaterials(DBMaterials material) throws DatabaseException {
-        String sql = "UPDATE carport.materials " +
+        String sql = "UPDATE materials " +
                         "SET description = ? " +
                         "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {

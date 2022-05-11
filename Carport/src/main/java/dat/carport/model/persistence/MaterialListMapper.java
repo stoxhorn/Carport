@@ -21,7 +21,7 @@ public class MaterialListMapper {
     public List<DBMaterialsList> getMaterialList() throws DatabaseException {
         List<DBMaterialsList> materialsListList = new ArrayList<>();
 
-        String sql = "SELECT * FROM carport.materials_list";
+        String sql = "SELECT * FROM materials_list";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -40,8 +40,8 @@ public class MaterialListMapper {
     }
 
     public DBMaterialsList readMaterialList(int id) throws DatabaseException {
-        DBMaterialsList material = null;
-        String sql = "SELECT customer_request_id FROM carport.materials_list " +
+        DBMaterialsList materialsList = null;
+        String sql = "SELECT customer_request_id FROM materials_list " +
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -49,13 +49,13 @@ public class MaterialListMapper {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     int customerRequestId = rs.getInt("customer_request_id");
-                    material = new DBMaterialsList(id, customerRequestId);
+                    materialsList = new DBMaterialsList(id, customerRequestId);
                 }
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "An error occurred while trying to read material list with id:" + id);
         }
-        return material;
+        return materialsList;
     }
 
     public void createMaterial(DBMaterialsList materialsList) throws DatabaseException {
@@ -73,7 +73,7 @@ public class MaterialListMapper {
     }
 
     public void deleteMaterial(DBMaterialsList materialsList) throws DatabaseException {
-        String sql = "DELETE FROM materials_list" +
+        String sql = "DELETE FROM materials_list " +
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -86,7 +86,7 @@ public class MaterialListMapper {
     }
 
     public void updateMaterials(DBMaterialsList materialsList) throws DatabaseException {
-        String sql = "UPDATE carport.materials_list " +
+        String sql = "UPDATE materials_list " +
                 "SET customer_request_id = ? " +
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {

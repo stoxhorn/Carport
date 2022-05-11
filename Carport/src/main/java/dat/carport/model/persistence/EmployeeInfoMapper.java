@@ -21,7 +21,7 @@ public class EmployeeInfoMapper {
     public List<DBEmployee> getEmployee() throws DatabaseException {
         List<DBEmployee> employeeList = new ArrayList<>();
 
-        String sql = "SELECT FROM carport.employee";
+        String sql = "SELECT * FROM employee";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -42,8 +42,8 @@ public class EmployeeInfoMapper {
 
     public DBEmployee readEmployee(String email) throws DatabaseException {
         DBEmployee employee = null;
-        String sql = "SELECT first_name, last_name FROM carport.employee " +
-                "WHERE email = ?";
+        String sql = "SELECT first_name, last_name FROM employee " +
+                "WHERE user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, email);
@@ -61,7 +61,7 @@ public class EmployeeInfoMapper {
     }
 
     public void createEmployee(DBEmployee employee) throws DatabaseException {
-        String sql = "INSERT INTO carport.employee (user_email, first_name, last_name)" +
+        String sql = "INSERT INTO employee (user_email, first_name, last_name)" +
                 "VALUES (?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -76,7 +76,7 @@ public class EmployeeInfoMapper {
     }
 
     public void deleteEmpoyee(DBEmployee employee) throws DatabaseException {
-        String sql = "DELETE FROM carport.employee" +
+        String sql = "DELETE FROM employee " +
                 "WHERE user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -89,7 +89,7 @@ public class EmployeeInfoMapper {
     }
 
     public void updateEmployee(DBEmployee employee) throws DatabaseException {
-        String sql = "UPDATE carport.employee " +
+        String sql = "UPDATE employee " +
                 "SET first_name = ?, last_name = ? " +
                 "WHERE user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {

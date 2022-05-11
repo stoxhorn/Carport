@@ -21,7 +21,7 @@ public class CustomerRequestMapper {
     public List<DBCustomerRequest> getCustomerRequest() throws DatabaseException {
         List<DBCustomerRequest> customerRequestList = new ArrayList<>();
 
-        String sql = "SELECT FROM carport.customer_request";
+        String sql = "SELECT * FROM customer_request";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -35,8 +35,8 @@ public class CustomerRequestMapper {
                     String roofMaterial = rs.getString("roof_material");
                     String roofSlope = rs.getString("roof_slope");
                     String shedWidth = rs.getString("shed_width");
-                    String shedHeight = rs.getString("shed_height");
-                    DBCustomerRequest customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedHeight);
+                    String shedLength= rs.getString("shed_length");
+                    DBCustomerRequest customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedLength);
                     customerRequestList.add(customerRequest);
                 }
             }
@@ -48,7 +48,7 @@ public class CustomerRequestMapper {
 
     public DBCustomerRequest readCustomerRequest(int id) throws DatabaseException {
         DBCustomerRequest customerRequest = null;
-        String sql = "SELECT customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_height FROM carport.customer_request " +
+        String sql = "SELECT customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_length FROM customer_request " +
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -62,8 +62,8 @@ public class CustomerRequestMapper {
                     String roofMaterial = rs.getString("roof_material");
                     String roofSlope = rs.getString("roof_slope");
                     String shedWidth = rs.getString("shed_width");
-                    String shedHeight = rs.getString("shed_height");
-                    customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedHeight);
+                    String shedLength = rs.getString("shed_length");
+                    customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedLength);
                 }
             }
         } catch (SQLException ex) {
@@ -73,7 +73,7 @@ public class CustomerRequestMapper {
     }
 
     public void createCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
-        String sql = "INSERT INTO carport.customer_request (id, customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_height)" +
+        String sql = "INSERT INTO customer_request (id, customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_length)" +
                 "VALUES (?,?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -94,7 +94,7 @@ public class CustomerRequestMapper {
     }
 
     public void deleteCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
-        String sql = "DELETE FROM carport.customer_request" +
+        String sql = "DELETE FROM customer_request " +
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -107,9 +107,9 @@ public class CustomerRequestMapper {
     }
 
     public void updateCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
-        String sql = "UPDATE carport.customer_request " +
-                "SET customer_user_email = ?, carport_width = ?, carport_length = ?, roof_type = ?, roof_material = ?, roof_slope = ?, shed_width = ?, shed_height = ? " +
-                "WHERE user_email = ?";
+        String sql = "UPDATE customer_request " +
+                "SET customer_user_email = ?, carport_width = ?, carport_length = ?, roof_type = ?, roof_material = ?, roof_slope = ?, shed_width = ?, shed_length = ? " +
+                "WHERE customer_user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, customerRequest.getCustomerUserEmail());
