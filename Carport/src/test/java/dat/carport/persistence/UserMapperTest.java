@@ -18,7 +18,7 @@ class UserMapperTest
 {
     private final static String USER = "root";
     private final static String PASSWORD = "root";
-    private final static String URL = "jdbc:mysql://localhost:3306/startcode_test?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
+    private final static String URL = "jdbc:mysql://localhost:3306/carport_db?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
 
     private static ConnectionPool connectionPool;
 
@@ -35,7 +35,7 @@ class UserMapperTest
                 // Remove all rows from all tables
                 stmt.execute("delete from user");
                 // Indsæt et par brugere
-                stmt.execute("insert into user (username, password, role) " +
+                stmt.execute("insert into user (email, password, role) " +
                         "values ('user','1234','user'),('admin','1234','admin'), ('ben','1234','user')");
             }
         } catch (SQLException throwables) {
