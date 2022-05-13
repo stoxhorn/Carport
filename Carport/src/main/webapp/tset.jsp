@@ -19,8 +19,8 @@
         <form action="fc/CRUDCustomerRequestCommand" method="post">
             <input type="hidden" name="command" value="CRUDCustomerRequestCommand"/>
             <input type="hidden" name="next" value="index"/>
-            <label for="crud">CRUD: </label>
-            <input type="text" id="crud" name="crud"/>
+            <label for="crudRequest">CRUD: </label>
+            <input type="text" id="crudRequest" name="crud"/>
 
             <label for="customerEmail">customerEmail: </label>
             <input type="text" id="customerEmail" name="customerEmail"/>
@@ -33,9 +33,22 @@
             <input type="text" id="shedWidth" name="shedWidth" value="6"/>
             <input type="text" id="shedLength" name="shedLength" value="7"/>
 
-            <input type="submit"  value="Log in"/>
+            <input type="submit"  value="command request"/>
+        </form>
+        <br>
+        <form action="fc/CRUDMaterials" method="post">
+            <input type="hidden" name="command" value="CRUDMaterials"/>
+            <input type="hidden" name="next" value="index"/>
 
+            <label for="crudMats">CRUD: </label>
+            <input type="text" id="crudMats" name="crud"/>
 
+            <label for="matID">materialsId: </label>
+            <input type="text" id="matID" name="materialsId"/>
+
+            <input type="text" id="description" name="description" value="description"/>
+
+            <input type="submit"  value="command Materials"/>
 
         </form>
 

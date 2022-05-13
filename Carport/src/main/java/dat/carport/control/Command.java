@@ -17,6 +17,8 @@ abstract class Command
         commands.put("logout", new Logout());
         commands.put("about", new About());
         commands.put("CRUDCustomerRequestCommand", new CRUDCustomerRequestCommand());
+        commands.put("CRUDMaterials", new CRUDMaterialsCommand());
+
     }
 
     static Command from( HttpServletRequest request ) {
