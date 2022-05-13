@@ -1,6 +1,10 @@
 package dat.carport.model.entities.ServiceEntities;
 
+import dat.carport.model.entities.DBEntities.DBMaterials;
 import dat.carport.model.entities.DBEntities.DBMaterialsListLines;
+import dat.carport.model.exceptions.DatabaseException;
+import dat.carport.model.persistence.ConnectionPool;
+import dat.carport.model.persistence.MaterialsMapper;
 
 import java.util.Objects;
 
@@ -38,7 +42,6 @@ public class MaterialListLine {
         this.id = id;
         this.materialsListId = materialsListId;
         this.materialsId = materialsId;
-        // TODO: it's this line here: this.material = material;
         this.description = description;
         this.quantity = quantity;
     }
@@ -46,11 +49,19 @@ public class MaterialListLine {
     public MaterialListLine(DBMaterialsListLines dbmll){
         this.id = dbmll.getId();
         this.description = dbmll.getDescription();
-        // TODO: needs to be able to find Material by ID,
-        //  otherwise it cannot create the object
         this.materialsId = dbmll.getMaterialsId();
         this.materialsListId = dbmll.getMaterialsListId();
         this.quantity = dbmll.getQuantity();
+    }
+
+    public void fetchMaterial(ConnectionPool cp) throws DatabaseException {
+        MaterialsMapper mMapper = new MaterialsMapper(cp);
+        for(DBMaterials dbm : mMapper.getMaterials()){
+            if(dbm.getId() == this.id){
+                this.material = new Materials(dbm);
+                return;
+            }
+        }
     }
 
     public int getId() {

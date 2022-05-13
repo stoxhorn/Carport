@@ -16,6 +16,10 @@ abstract class Command
         commands.put("login", new Login());
         commands.put("logout", new Logout());
         commands.put("about", new About());
+        commands.put("CRUDCustomerRequest", new CRUDCustomerRequestCommand());
+        commands.put("CRUDMaterials", new CRUDMaterialsCommand());
+        commands.put("CRUDMaterialList", new CRUDMaterialListCommand());
+        commands.put("createCustomer", new CreateCustomerCommand());
     }
 
     static Command from( HttpServletRequest request ) {
@@ -23,6 +27,10 @@ abstract class Command
         if ( commands == null ) {
             initCommands();
         }
+        return commands.getOrDefault(commandName, new UnknownCommand() );   // unknowncommand er default.
+    }
+
+    static Command get(String commandName){
         return commands.getOrDefault(commandName, new UnknownCommand() );   // unknowncommand er default.
     }
 

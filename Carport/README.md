@@ -26,7 +26,7 @@ T.B.D.
    3. Opret dit eget git repository:
       1. > git init
 2. Beslut dig for hvad projektets database skal hedde. Det skal du bruge i næste punkt.
-3. Åbn Workbench og kør en tilpasset (med dit databasenavn i stedet for `startcode`) version af sql-filen `startcode.sql`, som ligger i mappen `resources`. Den opretter en database med en user-tabel og en test-database.
+3. Åbn Workbench og kør en tilpasset (med dit databasenavn i stedet for `startcode`) version af sql-filen ``, som ligger i mappen `resources`. Den opretter en database med en user-tabel og en test-database.
 4. Du skal evt. ændre kodeord til databasen i projektet. Det gøres i filerne: `/persistence/ConnectionPool` i linie 14 og 15. Du skal også ændre i UserMapperTest.
 5. Refactor `startcode` til dit eget projekt alle de steder, hvor det er relevant. Fx her:
    1. I projektroden

@@ -1,5 +1,7 @@
 package dat.carport.model.entities.DBEntities;
 
+import dat.carport.model.entities.ServiceEntities.Customer;
+
 import java.util.Objects;
 
 public class DBCustomer {
@@ -20,6 +22,16 @@ public class DBCustomer {
         this.zipcode = zipcode;
         this.city = city;
         this.phone = phone;
+    }
+
+    public DBCustomer(Customer c){
+        this.userEmail = c.getEmail();
+        this.firstName = c.getFirstName();
+        this.lastName = c.getLastName();
+        this.address = c.getAddress();
+        this.zipcode = c.getZipCode();
+        this.city = c.getCity();
+        this.phone = c.getPhoneNumber();
     }
 
     public String getUserEmail() {
