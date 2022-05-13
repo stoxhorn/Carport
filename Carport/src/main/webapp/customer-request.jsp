@@ -80,50 +80,54 @@
                         <div id="roofTypeHelp" class="form-text">Vælg den ønskede type tag til din carport</div>
                     </div>
 
-                    <div class="form-floating">
-                        <select class="form-select" id="roofMaterial" name="roofMaterial" aria-label="Tag materiale" aria-describedby="roofMaterialHelp">
-                            <option selected="selected" value="0">Vælg tagtype/farve</option>
-                            <option class="forFlatRoof" value="Plasttrapezplader">Plasttrapezplader</option>
-                            <option class="forSlopedRoof" value="Betontagsten - Rød">Betontagsten - Rød</option>
-                            <option class="forSlopedRoof" value="Betontagsten - Teglrød">Betontagsten - Teglrød</option>
-                            <option class="forSlopedRoof" value="Betontagsten - Brun">Betontagsten - Brun</option>
-                            <option class="forSlopedRoof" value="Betontagsten - Sort">Betontagsten - Sort</option>
-                            <option class="forSlopedRoof" value="Eternittag B6 - Grå">Eternittag B6 - Grå</option>
-                            <option class="forSlopedRoof" value="Eternittag B6 - Sort">Eternittag B6 - Sort</option>
-                            <option class="forSlopedRoof" value="Eternittag B6 - Mokka (brun)">Eternittag B6 - Mokka (brun)</option>
-                            <option class="forSlopedRoof" value="Eternittag B6 - Rødbrun">Eternittag B6 - Rødbrun</option>
-                            <option class="forSlopedRoof" value="Eternittag B6 - Teglrød">Eternittag B6 - Teglrød</option>
-                            <option class="forSlopedRoof" value="Eternittag B7 - Grå">Eternittag B7 - Grå</option>
-                            <option class="forSlopedRoof" value="Eternittag B7 - Sort">Eternittag B7 - Sort</option>
-                            <option class="forSlopedRoof" value="Eternittag B7 - Mokka (brun)">Eternittag B7 - Mokka (brun)</option>
-                            <option class="forSlopedRoof" value="Eternittag B7 - Rødbrun">Eternittag B7 - Rødbrun</option>
-                            <option class="forSlopedRoof" value="Eternittag B7 - Teglrød">Eternittag B7 - Teglrød</option>
-                            <option class="forSlopedRoof" value="Eternittag B7 - Rødflammet">Eternittag B7 - Rødflammet</option>
-                        </select>
-                        <label for="roofType">Tag materiale</label>
-                        <div id="roofMaterialHelp" class="form-text">Vælg den ønskede type tag til din carport</div>
+                    <div class="collapse">
+                        <div class="form-floating">
+                            <select class="form-select" id="roofMaterial" name="roofMaterial" aria-label="Tag materiale" aria-describedby="roofMaterialHelp">
+                                <option selected="selected" value="0">Vælg tagtype/farve</option>
+                                <option class="forFlatRoof" value="Plasttrapezplader">Plasttrapezplader</option>
+                                <option class="forSlopedRoof" value="Betontagsten - Rød">Betontagsten - Rød</option>
+                                <option class="forSlopedRoof" value="Betontagsten - Teglrød">Betontagsten - Teglrød</option>
+                                <option class="forSlopedRoof" value="Betontagsten - Brun">Betontagsten - Brun</option>
+                                <option class="forSlopedRoof" value="Betontagsten - Sort">Betontagsten - Sort</option>
+                                <option class="forSlopedRoof" value="Eternittag B6 - Grå">Eternittag B6 - Grå</option>
+                                <option class="forSlopedRoof" value="Eternittag B6 - Sort">Eternittag B6 - Sort</option>
+                                <option class="forSlopedRoof" value="Eternittag B6 - Mokka (brun)">Eternittag B6 - Mokka (brun)</option>
+                                <option class="forSlopedRoof" value="Eternittag B6 - Rødbrun">Eternittag B6 - Rødbrun</option>
+                                <option class="forSlopedRoof" value="Eternittag B6 - Teglrød">Eternittag B6 - Teglrød</option>
+                                <option class="forSlopedRoof" value="Eternittag B7 - Grå">Eternittag B7 - Grå</option>
+                                <option class="forSlopedRoof" value="Eternittag B7 - Sort">Eternittag B7 - Sort</option>
+                                <option class="forSlopedRoof" value="Eternittag B7 - Mokka (brun)">Eternittag B7 - Mokka (brun)</option>
+                                <option class="forSlopedRoof" value="Eternittag B7 - Rødbrun">Eternittag B7 - Rødbrun</option>
+                                <option class="forSlopedRoof" value="Eternittag B7 - Teglrød">Eternittag B7 - Teglrød</option>
+                                <option class="forSlopedRoof" value="Eternittag B7 - Rødflammet">Eternittag B7 - Rødflammet</option>
+                            </select>
+                            <label for="roofType">Tag materiale</label>
+                            <div id="roofMaterialHelp" class="form-text">Vælg den ønskede type tag til din carport</div>
+                        </div>
                     </div>
 
-                    <div class="form-floating d-none">
-                        <select class="form-select" id="roofSlope" name="roofSlope" aria-label="Taghældning">
-                            <option value="15 grader">15 grader</option>
-                            <option value="20 grader">20 grader</option>
-                            <option selected="selected" value="25 grader">25 grader</option>
-                            <option value="30 grader">30 grader</option>
-                            <option value="35 grader">35 grader</option>
-                            <option value="40 grader">40 grader</option>
-                            <option value="45 grader">45 grader</option>
-                        </select>
-                        <label for="roofSlope">Taghældning</label>
+                    <div class="collapse">
+                        <div class="form-floating">
+                            <select class="form-select" id="roofSlope" name="roofSlope" aria-label="Taghældning">
+                                <option value="15 grader">15 grader</option>
+                                <option value="20 grader">20 grader</option>
+                                <option selected="selected" value="25 grader">25 grader</option>
+                                <option value="30 grader">30 grader</option>
+                                <option value="35 grader">35 grader</option>
+                                <option value="40 grader">40 grader</option>
+                                <option value="45 grader">45 grader</option>
+                            </select>
+                            <label for="roofSlope">Taghældning</label>
+                        </div>
                     </div>
 
                     <div class="form-floating">
                         <select class="form-select" id="shedWanted" aria-label="Ønskes skur?" aria-describedby="shedWantedHelp">
-                            <option selected value="1">Ja</option>
-                            <option value="0">Nej</option>
+                            <option value="1">Ja</option>
+                            <option selected value="0">Nej</option>
                         </select>
                         <label for="shedWanted">Ønskes redskabsskur?</label>
-                        <div id="shed-options" class=" flex-column gap-3 collapse show">
+                        <div id="shed-options" class=" flex-column gap-3 collapse">
 
                             <div id="shedWantedHelp" class="form-text">NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet</div>
 
@@ -182,6 +186,8 @@
                         </div>
                     </div>
 
+                    <hr>
+
                     <h2 class="text-center">Oplysninger om dig</h2>
 
                     <div class="form-floating">
@@ -215,67 +221,69 @@
                         <label class="form-label" for="city">By</label>
                     </div>
 
-                    <input class="btn btn-primary" type="submit"/>
+                    <input class="btn btn-primary btn-lg" type="submit"/>
                 </form>
             </div>
         </div>
 
         <script>
-            let shedSelect = document.getElementById('shedWanted');
-            let shedOptions = document.getElementById('shed-options')
-            let shedHelpText = document.getElementById('shedWantedHelp')
-            let roofType = document.getElementById('roofType')
-            let roofSlope =  document.getElementById('roofSlope')
-            let roofMaterials = document.getElementById('roofMaterial').children
+            document.addEventListener("DOMContentLoaded", function() {
+                let shedSelect = document.getElementById('shedWanted');
+                let shedOptions = document.getElementById('shed-options')
+                let shedHelpText = document.getElementById('shedWantedHelp')
+                let roofType = document.getElementById('roofType')
+                let roofSlope = document.getElementById('roofSlope')
+                let roofMaterials = document.getElementById('roofMaterial')
 
-            shedSelect.addEventListener('change', (e) => {
-                new bootstrap.Collapse(shedOptions)
-                shedHelpText.classList.toggle("d-none")
-            })
+                shedSelect.addEventListener('change', (e) => {
+                    new bootstrap.Collapse(shedOptions)
+                    shedHelpText.classList.toggle("d-none")
+                })
 
-            roofType.addEventListener('change', (e) => {
-                let className = null;
+                roofType.addEventListener('change', (e) => {
+                    let collapseRoofMaterials = bootstrap.Collapse.getOrCreateInstance(roofMaterials.closest('.collapse'), { toggle: false})
+                    let collapseRoofSlope = bootstrap.Collapse.getOrCreateInstance(roofSlope.closest('.collapse'), { toggle: false})
+                    let className = null;
 
-                if (e.target.value === "2"){
-                    //hældning
-                    className = 'forSlopedRoof';
-                    if (roofSlope.closest('.form-floating').classList.contains("d-none"))
-                    {
-                        roofSlope.closest('.form-floating').classList.remove("d-none")
-                    }
-                } else if (e.target.value === "1") {
-                    //fladt tag
-                    className = 'forFlatRoof';
-                    Array.from(roofMaterials).filter( (i, e) => {
-                        console.log(i, e)
-                    })
-                    if (!roofSlope.closest('.form-floating').classList.contains("d-none"))
-                    {
-                        roofSlope.closest('.form-floating').classList.add("d-none")
-                    }
-                } else {
-                   if (!roofSlope.closest('.form-floating').classList.contains("d-none"))
-                   {
-                       roofSlope.closest('.form-floating').classList.add("d-none")
-                   }
-               }
+                    if (e.target.value === "2") {
+                        //hældning
+                        className = 'forSlopedRoof';
+                        if (!collapseRoofMaterials._element.classList.contains('show'))
+                            collapseRoofMaterials.show()
 
-                Array.from(roofMaterials).filter( (option) => {
-                    if (className !== null) {
-                        if (!option.classList.contains(className)) {
-                            option.classList.add('d-none')
-                        } else {
-                            option.classList.remove('d-none')
-                        }
+                        if (!collapseRoofSlope._element.classList.contains('show'))
+                            collapseRoofSlope.show()
+                    } else if (e.target.value === "1") {
+                        //fladt tag
+                        className = 'forFlatRoof';
+                        if (!collapseRoofMaterials._element.classList.contains('show'))
+                            collapseRoofMaterials.show()
+
+                        if (collapseRoofSlope._element.classList.contains('show'))
+                            collapseRoofSlope.hide()
                     } else {
-                        option.classList.add('d-none')
+                        if (collapseRoofSlope._element.classList.contains('show'))
+                            collapseRoofSlope.hide()
+
+                        if (collapseRoofMaterials._element.classList.contains('show'))
+                            collapseRoofMaterials.hide()
                     }
-                    console.log(option)
+
+                    Array.from(roofMaterials.children).filter((option) => {
+                        if (className !== null) {
+                            if (!option.classList.contains(className)) {
+                                option.classList.add('d-none')
+                            } else {
+                                option.classList.remove('d-none')
+                            }
+                        } else {
+                            option.classList.add('d-none')
+                        }
+                    })
+
                 })
 
             })
-
-
         </script>
 
     </jsp:body>
