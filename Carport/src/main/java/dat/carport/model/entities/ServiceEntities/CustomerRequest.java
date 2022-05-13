@@ -1,6 +1,10 @@
 package dat.carport.model.entities.ServiceEntities;
 
 import dat.carport.model.entities.DBEntities.DBCustomerRequest;
+import dat.carport.model.entities.DBEntities.DBMaterialsList;
+import dat.carport.model.exceptions.DatabaseException;
+import dat.carport.model.persistence.ConnectionPool;
+import dat.carport.model.persistence.MaterialListMapper;
 
 public class CustomerRequest {
     private int id;
@@ -32,6 +36,23 @@ public class CustomerRequest {
                                             dbcr.getShedWidth(),
                                             dbcr.getShedLength()
                 );
+    }
+
+    public void fetchMaterialList(ConnectionPool cp) throws DatabaseException {
+        MaterialListMapper mlMapper = new MaterialListMapper(cp);
+        // go through all materialslists in the database
+        for(DBMaterialsList dbMl : mlMapper.getMaterialList()){
+            // check if it's customerrequest ID corresponds to this' ID
+            if(dbMl.getCustomerRequestId() == this.id){
+                // create the service entity
+                MaterialsList ml = new MaterialsList(dbMl);
+                // fetch the listlines
+                ml.fetchMaterialsListLines(cp);
+                // save it
+                this.materialList = ml;
+                return;
+            }
+        }
     }
 
     public void setMaterialList(MaterialsList mList){
