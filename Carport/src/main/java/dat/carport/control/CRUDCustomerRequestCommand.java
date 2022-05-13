@@ -19,9 +19,9 @@ public class CRUDCustomerRequestCommand extends Command{
 
     /**
      * There is a lack of optimization when interacting with database, goes through everything
-     * Everything was build around using customerEmail as the ID to search for,
-     * as it cannot be expected to always have the ID
      * crud can be create, read, update, delete. ANything else will not register
+     *
+     *
      * @param request
      * @param response
      * @return
@@ -50,7 +50,8 @@ public class CRUDCustomerRequestCommand extends Command{
             }
             case "read":
                 CustomerRequest cr = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
-                request.setAttribute("readCustomerRequest", cr);
+                request.setAttribute("customerRequest", cr);
+                request.getSession().setAttribute("customerRequest", cr);
                 break;
             case "update": {
                 CustomerRequestData crData = new CustomerRequestData(
