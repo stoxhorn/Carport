@@ -127,3 +127,4 @@ Temporary Items
 *.iml
 Carport/target/*
 Carport/.idea/
+*.xml
