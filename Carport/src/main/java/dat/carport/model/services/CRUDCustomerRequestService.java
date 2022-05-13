@@ -2,12 +2,15 @@ package dat.carport.model.services;
 
 import dat.carport.model.entities.DBEntities.DBCustomer;
 import dat.carport.model.entities.DBEntities.DBCustomerRequest;
+import dat.carport.model.entities.DBEntities.DBMaterialsList;
 import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
+import dat.carport.model.entities.ServiceEntities.MaterialsList;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
 import dat.carport.model.persistence.CustomerInfoMapper;
 import dat.carport.model.persistence.CustomerRequestMapper;
+import dat.carport.model.persistence.MaterialListMapper;
 
 import java.util.ArrayList;
 
@@ -72,10 +75,19 @@ public class CRUDCustomerRequestService {
 
     public static void deleteCustomerRequest(String customerEmail, ConnectionPool cp) throws DatabaseException {
         CustomerRequestMapper crMapper = new CustomerRequestMapper(cp);
+        MaterialListMapper mlMapper = new MaterialListMapper(cp);
 
+        // find the CustomerRequest
         for(DBCustomerRequest dbCr : crMapper.getCustomerRequest()){
             if(dbCr.getCustomerUserEmail().equals(customerEmail)){
+                // delete
                 crMapper.deleteCustomerRequest(dbCr);
+                // Find any MaterialsList and delete those as well
+                for(DBMaterialsList dbMl : mlMapper.getMaterialList()){
+                    if(dbMl.getCustomerRequestId() == dbCr.getId()){
+                        CRUDMaterialListService.deleteMaterialList(dbMl.getId(), cp);
+                    }
+                }
                 break;
             }
         }
