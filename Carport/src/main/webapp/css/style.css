@@ -1,5 +1,18 @@
 /* CSS stylesheet  for application */
 
+root {
+    --color-primary-secondary: #0057A9;
+    --color-primary-main: #003D76;
+    --font-primary-light: rgba(222, 222, 222, 0.91);
+    --font-primary-dark: rgba(37, 37, 37, 0.91);
+    --bg-color: #f8f9fa;
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--font-primary-dark) !important;
+}
+
 table {
     border-collapse: collapse;
     border: 1px solid silver;
@@ -11,5 +24,37 @@ th, td {
     padding:15px;
 }
 
+.wrapper {
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 2rem;
+    aspect-ratio: 1;
+    width: 20vw;
+    height: 20vw;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
 
+a .wrapper:hover {
+    border-color: var(--color-primary-main);
+    -webkit-box-shadow: 0px 5px 15px -2px #000000;
+    box-shadow: 0px 5px 15px -2px #000000;
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
 
+footer {
+    background-color: inherit;
+    z-index: 10;
+}
