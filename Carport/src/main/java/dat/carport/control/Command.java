@@ -16,10 +16,10 @@ abstract class Command
         commands.put("login", new Login());
         commands.put("logout", new Logout());
         commands.put("about", new About());
-        commands.put("CRUDCustomerRequestCommand", new CRUDCustomerRequestCommand());
+        commands.put("CRUDCustomerRequest", new CRUDCustomerRequestCommand());
         commands.put("CRUDMaterials", new CRUDMaterialsCommand());
         commands.put("CRUDMaterialList", new CRUDMaterialListCommand());
-        commands.put("CreateCustomer", new CreateCustomerCommand());
+        commands.put("createCustomer", new CreateCustomerCommand());
     }
 
     static Command from( HttpServletRequest request ) {
