@@ -128,3 +128,8 @@ Temporary Items
 Carport/target/*
 Carport/.idea/
 *.xml
+Carport/.idea/vcs.xml
+Carport/.idea/misc.xml
+Carport/.idea/jarRepositories.xml
+Carport/.idea/encodings.xml
+Carport/.idea/compiler.xml
