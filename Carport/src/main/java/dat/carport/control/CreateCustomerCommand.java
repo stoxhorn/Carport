@@ -32,26 +32,33 @@ public class CreateCustomerCommand extends Command{
         String city = request.getParameter("city");
         String phoneNumber = request.getParameter("phoneNumber");
 
+        // I need to create a user before a customer, because the user email is a constraint
+        User u;
+        try {
+            // then i check if there is a user with his email
+            u = UserFacade.login(customerEmail, "", this.cp);
+        }
+        catch(DatabaseException e){
+            // if not existing, create a new user
+            u = UserFacade.createUser(customerEmail, "", "customer", this.cp);
+
+        }
+        request.getSession().setAttribute("user", u);
+
         // i need to check if the customer exists
         Customer c = new Customer(customerEmail, firstName, lastName, address, zipCode, city, phoneNumber);
         Customer check = CRUDCustomerService.readCustomer(c.getEmail(), this.cp);
 
         // if he does not exist create him
-        if(check != null){
+        if(check == null){
             CustomerInfoMapper ciMapper = new CustomerInfoMapper(this.cp);
             ciMapper.createCustomer(new DBCustomer(c));
         }
 
-        // then i check if there is a user with his email
-        User u = UserFacade.login(customerEmail, "", this.cp);
-        if(u != null){
-            // create new user
-            u = UserFacade.createUser(customerEmail, "", "customer", this.cp);
-        }
-        request.getSession().setAttribute("user", u);
 
         // forward him to CRUDCustomerRequestCommand
-
-        return Command.get("CRUDCustomerRequest").execute(request, response);
+        Command x = Command.get("CRUDCustomerRequest");
+        String next = x.execute(request, response);
+        return next;
     }
 }

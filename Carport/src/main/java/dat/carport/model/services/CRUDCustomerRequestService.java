@@ -37,7 +37,7 @@ public class CRUDCustomerRequestService {
 
         // in order to add a new Customer Request, i need to figure out the next ID.
         // this is done by finding the highest ID, and incrementing by 1
-        int i = -1;
+        int i = 0;
         for(DBCustomerRequest dbCr : crMapper.getCustomerRequest()){
             if(dbCr.getId() > i){
                 i = dbCr.getId() +1;
