@@ -29,17 +29,27 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/index.jsp">Forside</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/customer-request.jsp">Quick-byg</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Forside</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-request.jsp">Quick-byg</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
+                    </li>
+                    <li></li>
+
+
+
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/fc/logout?command=logout">Log out</a>
                     </c:if>
-                </div>
+                </ul>
             </div>
         </div>
     </nav>

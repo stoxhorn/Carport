@@ -14,30 +14,31 @@
 
     <jsp:body>
 
-        <div class="row justify-content-center border bg-light">
-            <div class="col-10 col-lg-8 col-xl-5 col-xxl-5 ">
-                <form class="p-5 d-flex flex-column gap-4" action="fc/createCustomer" method="post">
+        <div class="row justify-content-center border bg-light animate__animated animate__slideInUp">
+            <div class="col-10 col-lg-8 col-xl-6 col-xxl-6 ">
+                <form class="p-5 d-flex flex-column gap-4" action="fc/CRUDCustomerRequestCommand" method="post">
                     <h2 class="text-center">Oplysninger om carport</h2>
-                    <input type="hidden" name="command" value="createCustomer"/>
+                    <input type="hidden" name="crud" value="create"/>
+                    <input type="hidden" name="command" value="CRUDCustomerRequest"/>
                     <input type="hidden" name="next" value="index"/>
                     <input type="hidden" value="create" id="crudRequest" name="crud"/>
 
                     <div class="form-floating">
                         <select class="form-select" id="carportWidth" name="carportWidth" aria-label="Carport bredde" aria-describedby="carportWidthHelp">
                             <option selected="selected" value="0">Vælg bredde</option>
-                            <option value="240 cm">240 cm</option>
-                            <option value="270 cm">270 cm</option>
-                            <option value="300 cm">300 cm</option>
-                            <option value="330 cm">330 cm</option>
-                            <option value="360 cm">360 cm</option>
-                            <option value="390 cm">390 cm</option>
-                            <option value="420 cm">420 cm</option>
-                            <option value="450 cm">450 cm</option>
-                            <option value="480 cm">480 cm</option>
-                            <option value="510 cm">510 cm</option>
-                            <option value="540 cm">540 cm</option>
-                            <option value="570 cm">570 cm</option>
-                            <option value="600 cm">600 cm</option>
+                            <option value="240">240 cm</option>
+                            <option value="270">270 cm</option>
+                            <option value="300">300 cm</option>
+                            <option value="330">330 cm</option>
+                            <option value="360">360 cm</option>
+                            <option value="390">390 cm</option>
+                            <option value="420">420 cm</option>
+                            <option value="450">450 cm</option>
+                            <option value="480">480 cm</option>
+                            <option value="510">510 cm</option>
+                            <option value="540">540 cm</option>
+                            <option value="570">570 cm</option>
+                            <option value="600">600 cm</option>
                         </select>
                         <label for="carportWidth">Carport bredde</label>
                         <div id="carportWidthHelp" class="form-text">Vælg den ønskede bredde til din carport</div>
@@ -46,25 +47,25 @@
                     <div class="form-floating">
                         <select class="form-select" id="carportLength" name="carportLength" aria-label="Carport længde" aria-describedby="carportLengthHelp">
                             <option selected="selected" value="0">Vælg længde</option>
-                            <option value="240 cm">240 cm</option>
-                            <option value="270 cm">270 cm</option>
-                            <option value="300 cm">300 cm</option>
-                            <option value="330 cm">330 cm</option>
-                            <option value="360 cm">360 cm</option>
-                            <option value="390 cm">390 cm</option>
-                            <option value="420 cm">420 cm</option>
-                            <option value="450 cm">450 cm</option>
-                            <option value="480 cm">480 cm</option>
-                            <option value="510 cm">510 cm</option>
-                            <option value="540 cm">540 cm</option>
-                            <option value="570 cm">570 cm</option>
-                            <option value="600 cm">600 cm</option>
-                            <option value="630 cm">630 cm</option>
-                            <option value="660 cm">660 cm</option>
-                            <option value="690 cm">690 cm</option>
-                            <option value="720 cm">720 cm</option>
-                            <option value="750 cm">750 cm</option>
-                            <option value="780 cm">780 cm</option>
+                            <option value="240">240 cm</option>
+                            <option value="270">270 cm</option>
+                            <option value="300">300 cm</option>
+                            <option value="330">330 cm</option>
+                            <option value="360">360 cm</option>
+                            <option value="390">390 cm</option>
+                            <option value="420">420 cm</option>
+                            <option value="450">450 cm</option>
+                            <option value="480">480 cm</option>
+                            <option value="510">510 cm</option>
+                            <option value="540">540 cm</option>
+                            <option value="570">570 cm</option>
+                            <option value="600">600 cm</option>
+                            <option value="630">630 cm</option>
+                            <option value="660">660 cm</option>
+                            <option value="690">690 cm</option>
+                            <option value="720">720 cm</option>
+                            <option value="750">750 cm</option>
+                            <option value="780">780 cm</option>
                         </select>
                         <label for="carportLength">Carport længde</label>
                         <div id="carportLengthHelp" class="form-text">Vælg den ønskede længde til din carport</div>
@@ -108,16 +109,17 @@
 
                     <div class="collapse">
                         <div class="form-floating">
-                            <select class="form-select" id="roofSlope" name="roofSlope" aria-label="Taghældning">
-                                <option value="15 grader">15 grader</option>
-                                <option value="20 grader">20 grader</option>
-                                <option selected="selected" value="25 grader">25 grader</option>
-                                <option value="30 grader">30 grader</option>
-                                <option value="35 grader">35 grader</option>
-                                <option value="40 grader">40 grader</option>
-                                <option value="45 grader">45 grader</option>
+                            <select class="form-select" id="roofSlope" name="roofSlope" aria-label="Taghældning" aria-describedby="roofSlopeHelp">
+                                <option value="15">15 grader</option>
+                                <option value="20">20 grader</option>
+                                <option selected="selected" value="25">25 grader</option>
+                                <option value="30">30 grader</option>
+                                <option value="35">35 grader</option>
+                                <option value="40">40 grader</option>
+                                <option value="45">45 grader</option>
                             </select>
                             <label for="roofSlope">Taghældning</label>
+                            <div id="roofSlopeHelp" class="form-text">Vælg den ønskede hældning på taget til din carport</div>
                         </div>
                     </div>
 
@@ -127,31 +129,31 @@
                             <option selected value="0">Nej</option>
                         </select>
                         <label for="shedWanted">Ønskes redskabsskur?</label>
-                        <div id="shed-options" class=" flex-column gap-3 collapse">
+                        <div id="shed-options" class="flex-column gap-3 collapse">
 
                             <div id="shedWantedHelp" class="form-text">NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet</div>
 
                             <div class="form-floating mt-4 mb-4">
                                 <select class="form-select" id="shedWidth" name="shedWidth" aria-label="Redskabsrum bredde" aria-describedby="shedWidthHelp">
                                     <option selected="selected">Vælg bredde</option>
-                                    <option value="210 cm">210 cm</option>
-                                    <option value="240 cm">240 cm</option>
-                                    <option value="270 cm">270 cm</option>
-                                    <option value="300 cm">300 cm</option>
-                                    <option value="330 cm">330 cm</option>
-                                    <option value="360 cm">360 cm</option>
-                                    <option value="390 cm">390 cm</option>
-                                    <option value="420 cm">420 cm</option>
-                                    <option value="450 cm">450 cm</option>
-                                    <option value="480 cm">480 cm</option>
-                                    <option value="510 cm">510 cm</option>
-                                    <option value="540 cm">540 cm</option>
-                                    <option value="570 cm">570 cm</option>
-                                    <option value="600 cm">600 cm</option>
-                                    <option value="630 cm">630 cm</option>
-                                    <option value="660 cm">660 cm</option>
-                                    <option value="690 cm">690 cm</option>
-                                    <option value="720 cm">720 cm</option>
+                                    <option value="210">210 cm</option>
+                                    <option value="240">240 cm</option>
+                                    <option value="270">270 cm</option>
+                                    <option value="300">300 cm</option>
+                                    <option value="330">330 cm</option>
+                                    <option value="360">360 cm</option>
+                                    <option value="390">390 cm</option>
+                                    <option value="420">420 cm</option>
+                                    <option value="450">450 cm</option>
+                                    <option value="480">480 cm</option>
+                                    <option value="510">510 cm</option>
+                                    <option value="540">540 cm</option>
+                                    <option value="570">570 cm</option>
+                                    <option value="600">600 cm</option>
+                                    <option value="630">630 cm</option>
+                                    <option value="660">660 cm</option>
+                                    <option value="690">690 cm</option>
+                                    <option value="720">720 cm</option>
                                 </select>
                                 <label for="shedWidth">Redskabsrum bredde</label>
                                 <div id="shedWidthHelp" class="form-text">Vælg den ønskede bredde til redskabsskuret</div>
@@ -160,25 +162,25 @@
                             <div class="form-floating">
                                 <select class="form-select" id="shedLength" name="shedLength" aria-label="Redskabsskur længde" aria-describedby="shedLengthHelp">
                                     <option selected="selected">Vælg længde</option>
-                                    <option value="150 cm">150 cm</option>
-                                    <option value="180 cm">180 cm</option>
-                                    <option value="210 cm">210 cm</option>
-                                    <option value="240 cm">240 cm</option>
-                                    <option value="270 cm">270 cm</option>
-                                    <option value="300 cm">300 cm</option>
-                                    <option value="330 cm">330 cm</option>
-                                    <option value="360 cm">360 cm</option>
-                                    <option value="390 cm">390 cm</option>
-                                    <option value="420 cm">420 cm</option>
-                                    <option value="450 cm">450 cm</option>
-                                    <option value="480 cm">480 cm</option>
-                                    <option value="510 cm">510 cm</option>
-                                    <option value="540 cm">540 cm</option>
-                                    <option value="570 cm">570 cm</option>
-                                    <option value="600 cm">600 cm</option>
-                                    <option value="630 cm">630 cm</option>
-                                    <option value="660 cm">660 cm</option>
-                                    <option value="690 cm">690 cm</option>
+                                    <option value="150">150 cm</option>
+                                    <option value="180">180 cm</option>
+                                    <option value="210">210 cm</option>
+                                    <option value="240">240 cm</option>
+                                    <option value="270">270 cm</option>
+                                    <option value="300">300 cm</option>
+                                    <option value="330">330 cm</option>
+                                    <option value="360">360 cm</option>
+                                    <option value="390">390 cm</option>
+                                    <option value="420">420 cm</option>
+                                    <option value="450">450 cm</option>
+                                    <option value="480">480 cm</option>
+                                    <option value="510">510 cm</option>
+                                    <option value="540">540 cm</option>
+                                    <option value="570">570 cm</option>
+                                    <option value="600">600 cm</option>
+                                    <option value="630">630 cm</option>
+                                    <option value="660">660 cm</option>
+                                    <option value="690">690 cm</option>
                                 </select>
                                 <label for="shedLength">Redskabsskur længde</label>
                                 <div id="shedLengthHelp" class="form-text">Vælg den ønskede længde til redskabsskuret</div>
@@ -230,14 +232,13 @@
             document.addEventListener("DOMContentLoaded", function() {
                 let shedSelect = document.getElementById('shedWanted');
                 let shedOptions = document.getElementById('shed-options')
-                let shedHelpText = document.getElementById('shedWantedHelp')
                 let roofType = document.getElementById('roofType')
                 let roofSlope = document.getElementById('roofSlope')
                 let roofMaterials = document.getElementById('roofMaterial')
 
                 shedSelect.addEventListener('change', (e) => {
                     new bootstrap.Collapse(shedOptions)
-                    shedHelpText.classList.toggle("d-none")
+
                 })
 
                 roofType.addEventListener('change', (e) => {

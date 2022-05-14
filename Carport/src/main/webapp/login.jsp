@@ -23,8 +23,8 @@
                   <input type="hidden" name="command" value="login"/>
 
                   <div class="form-floating">
-                      <input class="form-control" type="text" id="username" name="username" placeholder="Brugernavn"/>
-                      <label class="form-label" for="username">Brugernavn</label>
+                      <input class="form-control" type="email" id="email" name="email" placeholder="Email"/>
+                      <label class="form-label" for="email">Email</label>
                   </div>
 
                   <div class="form-floating">
@@ -32,7 +32,7 @@
                       <label class="form-label" for="password">Password</label>
                   </div>
 
-                  <input type="submit" class="btn btn-primary" value="Log in"/>
+                  <input type="submit" class="btn btn-primary btn-lg" value="Log in"/>
               </form>
           </div>
        </div>

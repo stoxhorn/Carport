@@ -30,9 +30,9 @@ public class FrontController extends HttpServlet {
 
             Command action = Command.from( request );
             String view = action.execute( request, response );
-            if (view.equals("index"))
+            if (view != null)
             {
-                response.sendRedirect(request.getServletContext().getContextPath() + "/index.jsp");
+                response.sendRedirect(request.getServletContext().getContextPath() + "/"+view+".jsp");
             } else
             {
                 request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);

@@ -3,10 +3,7 @@ package dat.carport.model.persistence;
 import dat.carport.model.entities.DBEntities.DBCustomerRequest;
 import dat.carport.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,20 +70,23 @@ public class CustomerRequestMapper {
     }
 
     public void createCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
-        String sql = "INSERT INTO customer_request (id, customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_length)" +
-                "VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO customer_request (customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_length)" +
+                "VALUES (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, customerRequest.getId());
-                ps.setString(2, customerRequest.getCustomerUserEmail());
-                ps.setString(3, customerRequest.getCarportWidth());
-                ps.setString(4, customerRequest.getCarportLength());
-                ps.setString(5, customerRequest.getRoofType());
-                ps.setString(6, customerRequest.getRoofMaterial());
-                ps.setString(7, customerRequest.getRoofSlope());
-                ps.setString(8, customerRequest.getShedWidth());
-                ps.setString(9, customerRequest.getShedLength());
-                ps.executeUpdate();
+                ps.setString(1, customerRequest.getCustomerUserEmail());
+                ps.setString(2, customerRequest.getCarportWidth());
+                ps.setString(3, customerRequest.getCarportLength());
+                ps.setString(4, customerRequest.getRoofType());
+                ps.setString(5, customerRequest.getRoofMaterial());
+                ps.setString(6, customerRequest.getRoofSlope());
+                ps.setString(7, customerRequest.getShedWidth());
+                ps.setString(8, customerRequest.getShedLength());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected != 1)
+                {
+                    throw new DatabaseException("The CustomerRequest with email = " + customerRequest.getCustomerUserEmail() + " could not be inserted into the database");
+                }
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "An error occurred while trying to create customer request: " + customerRequest);

@@ -5,7 +5,7 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Admin dashboard
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,8 +13,6 @@
     </jsp:attribute>
 
     <jsp:body>
-
-        <p>Startcode for 2nd semester </p>
 
         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
