@@ -9,7 +9,7 @@ INSERT INTO carport.materials VALUES
 ('8','Spærtræ ubh. length: 600cm, height: 195cm, width: 45cm, enhed: stk, Remme i sider, sadles ned i stolper'),
 ('9','Spærtræ ubh. length: 480cm, height: 195cm, width: 45cm, enhed: stk, Remme i sider, sadles ned i stolper (skur del, deles)'),
 ('10','Spærtræ ubh. length: 600cm, height: 195cm, width: 45cm, enhed: stk, Remme i sider, spær, monteres på rem'),
-('11','Trykimp. stolpe length: 300cm, height: 97cm, width: 97cm, enhed: stk, Remme i sider, stolper nedgraves 90 cm. i jord'),
+('11','Trykimp. stolpe length: 300cm, height: 97cm, width: 97cm, enhed: stk, stolper nedgraves 90 cm. i jord'),
 ('12','Trykimp. brædt length: 210cm, height: 100cm, width: 19cm, enhed: stk, til beklædning af skur 1 på 2'),
 ('13','Trykimp. brædt length: 540cm, height: 100cm, width: 19cm, enhed: stk, vandbrædt på stern i sider'),
 ('14','Trykimp. brædt length: 360cm, height: 100cm, width: 19cm, enhed: stk, vandbrædt på stern i forende'),
