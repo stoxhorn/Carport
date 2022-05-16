@@ -5,7 +5,7 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Johannes Fog Quick-byg tilbud
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,19 +13,37 @@
     </jsp:attribute>
 
     <jsp:body>
+            <div class="row justify-content-center ">
+                <div class="col-md-8 mb-3 animate__animated animate__fadeIn">
+                    <p>
+                        Med et specialudviklet computerprogram kan vi lynhurtigt beregne prisen og udskrive en skitsetegning på en carport
+                        indenfor vores standardprogram, der tilpasses dine specifikke ønsker.
+                        <br>
+                        <br>
+                        Tilbud og skitsetegning fremsendes med post hurtigst muligt.
+                        Ved bestilling medfølger standardbyggevejledning.
+                    </p>
+                </div>
+                <div class="col-md-10 text-center text-uppercase d-flex justify-content-evenly">
+                    <a href="customer-request.jsp">
+                        <div class="wrapper bg-light animate__animated animate__fadeInLeft animate__delay-05s">
+                            <h3>
+                                Design din Carport
+                            </h3>
+                            <img class="img-fluid mt-auto" src="images/home-garage.svg" alt="">
+                        </div>
+                    </a>
+                    <a href="customer-dashboard.jsp">
+                        <div class="wrapper bg-light animate__animated animate__fadeInRight animate__delay-05s">
+                            <h3>
+                                Find din ordre
+                            </h3>
+                            <img class="img-fluid mt-auto" src="images/find-request.svg" alt="">
+                        </div>
+                    </a>
+                </div>
 
-        <p>Startcode for 2nd semester </p>
-
-        <c:if test="${sessionScope.user != null}">
-            <p>You are logged in with the role of "${sessionScope.user.role}".</p>
-        </c:if>
-
-        <c:if test="${sessionScope.user == null}">
-            <p>You are not logged in yet. You can do it here: <a
-                    href="login.jsp">Login</a></p>
-            <p>test:<a
-                    href="tset.jsp">test</a></p>
-        </c:if>
+            </div>
 
     </jsp:body>
 

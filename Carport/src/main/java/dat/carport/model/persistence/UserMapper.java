@@ -19,7 +19,7 @@ public class UserMapper implements IUserMapper
     @Override
     public User login(String email, String password) throws DatabaseException
     {
-        Logger.getLogger("web").log(Level.INFO, "");
+        Logger.getLogger("web").log(Level.INFO, "attempting to login");
 
         User user = null;
 
@@ -38,7 +38,7 @@ public class UserMapper implements IUserMapper
                     user = new User(email, password, role);
                 } else
                 {
-                    throw new DatabaseException("Wrong username or password");
+                    throw new DatabaseException("Wrong email or password");
                 }
             }
         } catch (SQLException ex)

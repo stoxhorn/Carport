@@ -24,12 +24,12 @@ public class Login extends Command
     {
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // adding empty user object to session scope
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        User user = UserFacade.login(username, password, connectionPool);
+        User user = UserFacade.login(email, password, connectionPool);
         session = request.getSession();
         session.setAttribute("user", user); // adding user object to session scope
-        return "index";
+        return "admin-dashboard";
     }
 }

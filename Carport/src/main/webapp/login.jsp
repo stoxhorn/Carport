@@ -15,16 +15,27 @@
 
     <jsp:body>
 
-        <h3>You can log in here</h3>
+       <div class="row justify-content-center align-content-center">
+          <div class="col-6 p-5 border bg-light">
+              <h6>Medarbejdere kan logge på her</h6>
 
-        <form action="fc/login" method="post">
-            <input type="hidden" name="command" value="login"/>
-            <label for="username">Username: </label>
-            <input type="text" id="username" name="username"/>
-            <label for="password">Password: </label>
-            <input type="password" id="password" name="password"/>
-            <input type="submit"  value="Log in"/>
-        </form>
+              <form class="d-flex flex-column gap-3" action="fc/login" method="post">
+                  <input type="hidden" name="command" value="login"/>
+
+                  <div class="form-floating">
+                      <input class="form-control" type="email" id="email" name="email" placeholder="Email"/>
+                      <label class="form-label" for="email">Email</label>
+                  </div>
+
+                  <div class="form-floating">
+                      <input class="form-control" type="password" id="password" name="password" placeholder="Password"/>
+                      <label class="form-label" for="password">Password</label>
+                  </div>
+
+                  <input type="submit" class="btn btn-primary btn-lg" value="Log in"/>
+              </form>
+          </div>
+       </div>
 
     </jsp:body>
 </t:pagetemplate>

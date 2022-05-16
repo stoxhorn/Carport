@@ -6,70 +6,80 @@
 <%@attribute name="footer" fragment="true" %>
 
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><jsp:invoke fragment="header"/></title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/animate.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
+                <img src="${pageContext.request.contextPath}/images/fog-logo1.svg" width="75px" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/fc/about?command=about">About</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/fc">Page 2</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/fc">Page 3</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Forside</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-request.jsp">Quick-byg</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
+                    </li>
+                    <li></li>
+
+
+
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/fc/logout?command=logout">Log out</a>
                     </c:if>
-                </div>
+                </ul>
             </div>
         </div>
     </nav>
 </header>
 
-<div id="body" class="container mt-4" style="min-height: 400px;">
-    <h1><jsp:invoke fragment="header"/></h1>
+<main id="body" class="container mt-4 mb-5">
+    <h1 class="text-center mb-5"><jsp:invoke fragment="header"/></h1>
     <jsp:doBody/>
-</div>
+</main>
 
 <!-- Footer -->
-<div class="container mt-3">
-    <hr/>
-    <div class="row mt-4">
-        <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+<footer class="footer mt-auto py-3 bg-light border-top">
+    <div class="container-fluid text-center">
+        <div class="row mt-4">
+            <div class="col">
+                Nørgaardsvej 30<br/>
+                2800 Lyngby
+            </div>
+            <div class="col">
+                <jsp:invoke fragment="footer"/><br/>
+                <p>&copy; 2022 Cphbusiness</p>
+            </div>
+            <div class="col">
+                Datamatikeruddannelsen<br/>
+                2. semester forår 2022
+            </div>
         </div>
-        <div class="col">
-            <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
-        </div>
-        <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester forår 2022
-        </div>
+
     </div>
-
-</div>
-
-</div>
+</footer>
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
