@@ -16,10 +16,10 @@
 
         <div class="row justify-content-center border bg-light animate__animated animate__slideInUp">
             <div class="col-10 col-lg-8 col-xl-6 col-xxl-6 ">
-                <form class="p-5 d-flex flex-column gap-4" action="fc/CRUDCustomerRequestCommand" method="post">
+                <form class="p-5 d-flex flex-column gap-4" action="fc/createCustomer" method="post">
                     <h2 class="text-center">Oplysninger om carport</h2>
                     <input type="hidden" name="crud" value="create"/>
-                    <input type="hidden" name="command" value="CRUDCustomerRequest"/>
+                    <input type="hidden" name="command" value="createCustomer"/>
                     <input type="hidden" name="next" value="index"/>
                     <input type="hidden" value="create" id="crudRequest" name="crud"/>
 
