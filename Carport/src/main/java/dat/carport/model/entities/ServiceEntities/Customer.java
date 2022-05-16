@@ -1,5 +1,7 @@
 package dat.carport.model.entities.ServiceEntities;
 
+import dat.carport.model.entities.DBEntities.DBCustomer;
+
 import java.util.Objects;
 
 public class Customer {
@@ -8,11 +10,11 @@ public class Customer {
     String firstName;
     String lastName;
     String address;
-    int zipCode;
+    String zipCode;
     String city;
-    int phoneNumber;
+    String phoneNumber;
 
-    public Customer(String email, String firstName, String lastName, String address, int zipCode, String city, int phoneNumber) {
+    public Customer(String email, String firstName, String lastName, String address, String zipCode, String city, String phoneNumber) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,6 +24,16 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+
+    public Customer(DBCustomer dbc){
+        this.email = dbc.getUserEmail();
+        this.firstName = dbc.getFirstName();
+        this.lastName = dbc.getLastName();
+        this.address = dbc.getAddress();
+        this.zipCode = dbc.getZipcode();
+        this.city = dbc.getCity();
+        this.phoneNumber = dbc.getPhone();
+    }
     public String getEmail() {
         return email;
     }
@@ -54,11 +66,11 @@ public class Customer {
         this.address = address;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -70,11 +82,11 @@ public class Customer {
         this.city = city;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

@@ -1,6 +1,10 @@
 package dat.carport.model.entities.ServiceEntities;
 
 import dat.carport.model.entities.DBEntities.DBMaterialsList;
+import dat.carport.model.entities.DBEntities.DBMaterialsListLines;
+import dat.carport.model.exceptions.DatabaseException;
+import dat.carport.model.persistence.ConnectionPool;
+import dat.carport.model.persistence.MaterialListLinesMapper;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -26,9 +30,24 @@ public class MaterialsList {
     public MaterialsList(DBMaterialsList dbml){
         this.id = dbml.getId();
         this.customerRequestId = dbml.getCustomerRequestId();
-        // TODO: some function that can call a mapper and fill out this line.
         this.lines = new ArrayList<>();
 
+    }
+
+    public void fetchMaterialsListLines(ConnectionPool cp) throws DatabaseException {
+        MaterialListLinesMapper mllMapper = new MaterialListLinesMapper(cp);
+
+        for(DBMaterialsListLines dbMll : mllMapper.getMaterialListLines()){
+            // check if the materialslistline belongs to this materialslist
+            if(dbMll.getMaterialsListId() == this.id){
+                // create the service Entity
+                MaterialListLine mll = new MaterialListLine(dbMll);
+                // fetch the Material object from database
+                mll.fetchMaterial(cp);
+                // add this to listlines array
+                this.lines.add(mll);
+            }
+        }
     }
 
     public void addListLine(MaterialListLine ll){

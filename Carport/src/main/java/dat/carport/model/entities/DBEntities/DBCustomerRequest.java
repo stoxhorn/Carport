@@ -43,6 +43,18 @@ public class DBCustomerRequest {
         this.shedLength = data.getShedLength();
     }
 
+    public DBCustomerRequest(int id, String customerUserEmail, CustomerRequestData crData){
+        this.id = id;
+        this.customerUserEmail = customerUserEmail;
+        this.carportWidth = crData.getCarportWidth();
+        this.carportLength = crData.getCarportLength();
+        this.roofType = crData.getRoofType();
+        this.roofMaterial = crData.getRoofMaterial();
+        this.roofSlope = crData.getRoofSlope();
+        this.shedWidth = crData.getShedWidth();
+        this.shedLength = crData.getShedLength();
+    }
+
     public int getId() {
         return id;
     }
