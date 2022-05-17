@@ -1,6 +1,6 @@
 package dat.carport.model.entities.ServiceEntities;
 
-public class OverStern {
+public class VandBræt {
     String name;
     String sideAmount;
     String frontBackAmount;
@@ -12,24 +12,23 @@ public class OverStern {
     String sideDescription;
     String frontBackDescription;
 
-
-    public OverStern(String frontBackAmount, String sideLength, String frontBackLength) {
+    public VandBræt(String frontBackAmount, String sideLength, String frontBackLength) {
         this.name = "Trykimp. bræt. overstern ";
         this.sideAmount = " 4";
         this.frontBackAmount = frontBackAmount;
-        this.height = " 25mm";
-        this.width = " 125mm";
+        this.height = " 19mm";
+        this.width = " 100mm";
         this.sideLength = sideLength;
         this.frontBackLength = frontBackLength;
         this.unit = " Enhed: stk.";
-        this.sideDescription = " oversternbrædder til sider";
-        this.frontBackDescription = " oversternbrædder til for & bag ende";
+        this.sideDescription = " vandbrædt på stern i sider";
+        this.frontBackDescription = " vandbrædt på stern i for & bag ende";
     }
 
     @Override
     public String toString() {
-        return  name + "antal sider:" +  sideAmount + " antal for og bagende:" + frontBackAmount +  height +
+        return  name + "antal sider: " +  sideAmount + "antal for og bagende: " + frontBackAmount +  height +
                 width + "sider: "+  sideLength + "cm, for og bagende: " + frontBackLength + "cm" + unit +
-                " sider:"+ sideDescription + " for og bagende:" + frontBackDescription;
+                "sider: "+ sideDescription + "for og bagende" + frontBackDescription;
     }
 }
