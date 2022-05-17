@@ -14,22 +14,22 @@ public class OverStern {
 
 
     public OverStern(String frontBackAmount, String sideLength, String frontBackLength) {
-        this.name = "Trykimp. bræt. overstern, ";
-        this.sideAmount = " 4,";
+        this.name = "Trykimp. bræt. overstern ";
+        this.sideAmount = " 4";
         this.frontBackAmount = frontBackAmount;
-        this.height = ", Højde: 25mm,";
-        this.width = " Bredde: 125mm,";
+        this.height = " 25mm";
+        this.width = " 125mm";
         this.sideLength = sideLength;
         this.frontBackLength = frontBackLength;
-        this.unit = " Enhed: stk.,";
-        this.sideDescription = " oversternbrædder til sider,";
+        this.unit = " Enhed: stk.";
+        this.sideDescription = " oversternbrædder til sider";
         this.frontBackDescription = " oversternbrædder til for & bag ende";
     }
 
     @Override
     public String toString() {
-        return  name + "Antal sider:" +  sideAmount + " Antal for og bagende:" + frontBackAmount +  height +
-                width + "Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
-                " Sider:"+ sideDescription + " For og bagende:" + frontBackDescription;
+        return  name + "antal sider:" +  sideAmount + " antal for og bagende:" + frontBackAmount +  height +
+                width + "sider: "+  sideLength + "cm, for og bagende: " + frontBackLength + "cm" + unit +
+                " sider:"+ sideDescription + " for og bagende:" + frontBackDescription;
     }
 }

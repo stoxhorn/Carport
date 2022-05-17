@@ -7,9 +7,9 @@ public class VinkelBeslag {
     String description;
 
     public VinkelBeslag(String amount) {
-        this.name = "Vinkelbeslag 35, ";
+        this.name = "Vinkelbeslag 35 ";
         this.amount = amount;
-        this.unit = ", Enhed: stk.,";
+        this.unit = "Enhed: stk.";
         this.description = " til montering af løsholter i skur";
     }
 

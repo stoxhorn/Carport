@@ -14,11 +14,11 @@ public class UnderStern {
 
 
     public UnderStern(String sideLength, String frontBackLength) {
-        this.name = "Trykimp. bræt. understern, ";
+        this.name = "Trykimp. bræt. understern ";
         this.sideAmount = " 4";
         this.frontBackAmount = " 4";
-        this.height = " Højde: 25mm,";
-        this.width = " Bredde: 200mm,";
+        this.height = " 25mm";
+        this.width = " 200mm";
         this.sideLength = sideLength;
         this.frontBackLength = frontBackLength;
         this.unit = " Enhed: stk.";
@@ -28,8 +28,8 @@ public class UnderStern {
 
     @Override
     public String toString() {
-        return  name + "Antal sider:" +  sideAmount + " Antal for og bagende:" + frontBackAmount +  height +
-                width + " Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
-                " Sider:"+ sideDescription + ", For og bagende:" + frontBackDescription;
+        return  name + "antal sider: " +  sideAmount + " antal for og bagende: " + frontBackAmount +  height +
+                width + " sider:"+  sideLength + "cm, for og bagende: " + frontBackLength + "cm" + unit +
+                " sider:"+ sideDescription + " for og bagende:" + frontBackDescription;
     }
 }

@@ -10,17 +10,17 @@ public class SkurBeklædning {
     String description;
 
     public SkurBeklædning(String amount) {
-        this.name = "Tryk imp. bræt, ";
+        this.name = "Tryk imp. bræt ";
         this.amount = amount;
-        this.height = ", Højde: 19mm,";
-        this.width = " Bredde: 100mm,";
-        this.length = " Længde: 210cm,";
-        this.unit = " Enhed: stk.,";
+        this.height = " 19mm";
+        this.width = " 100mm";
+        this.length = " Længde: 210cm";
+        this.unit = " Enhed: stk.";
         this.description = " til beklædning af skur 1 på 2";
     }
 
     @Override
     public String toString() {
-        return name + "Antal: " + amount + height + width + length + unit + description;
+        return name + "antal: " + amount + height + width + length + unit + description;
     }
 }

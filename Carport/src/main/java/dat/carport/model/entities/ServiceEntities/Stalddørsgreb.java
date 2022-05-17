@@ -9,16 +9,16 @@ public class Stalddørsgreb {
     String description;
 
     public Stalddørsgreb() {
-        this.name = "Stalddørsgreb, ";
+        this.name = "Stalddørsgreb ";
         this.amount = " 1,";
-        this.height = " Højde: 50mm,";
-        this.width = " Bredde: 75mm,";
-        this.unit = " Enhed: sæt,";
+        this.height = " 50mm";
+        this.width = " 75mm";
+        this.unit = " Enhed: sæt";
         this.description = " til lås på skur dør";
     }
 
     @Override
     public String toString() {
-        return name + "Antal: " + amount + height + width + unit + description;
+        return name + "antal: " + amount + height + width + unit + description;
     }
 }
