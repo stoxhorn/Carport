@@ -16,4 +16,9 @@ public class TrapezPlader {
         this.unit = " Enhed: stk.";
         this.description = " tagplader monteres på spær";
     }
+
+    @Override
+    public String toString() {
+        return name + "antal: " + amount + width + length + "cm" + unit + description;
+    }
 }

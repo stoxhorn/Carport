@@ -1,7 +1,6 @@
 package dat.carport.model.entities.ServiceEntities;
 
-public class Beslagskruer {
-
+public class Stalddørsgreb {
     String name;
     String amount;
     String height;
@@ -9,13 +8,13 @@ public class Beslagskruer {
     String unit;
     String description;
 
-    public Beslagskruer(String amount) {
-        this.name = "Beslagskruer 4,0 x 50 mm. ";
-        this.amount = amount;
+    public Stalddørsgreb() {
+        this.name = "Stalddørsgreb ";
+        this.amount = " 1,";
         this.height = " 50mm";
-        this.width = " 4mm";
-        this.unit = " Enhed: pakke";
-        this.description = " Til montering af universalbeslag + hulbånd kommer i pakker af 250";
+        this.width = " 75mm";
+        this.unit = " Enhed: sæt";
+        this.description = " til lås på skur dør";
     }
 
     @Override
