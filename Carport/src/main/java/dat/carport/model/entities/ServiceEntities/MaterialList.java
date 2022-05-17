@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class MaterialList {
 
     String raftersAmount = "";
+    double hulbåndFinalLength;
 
     public boolean shedCheck (CustomerRequestData customerRequest) {
         boolean shed = false;
@@ -18,14 +19,8 @@ public class MaterialList {
         return shed;
     }
 
-    public String getPosts (CustomerRequestData customerRequest) {
-        String name = "Trykimp. stolpe ";
-        String amount = "";
-        String height = " 97mm";
-        String width = " 97mm";
-        String length = " 300cm";
-        String unit = " Enhed: stk.";
-        String description = " stolper nedgraves 90 cm. i jord";
+    public String getStolper (CustomerRequestData customerRequest) {
+
         boolean shed = shedCheck(customerRequest);
         int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
         int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
@@ -46,18 +41,13 @@ public class MaterialList {
                 amountInt = amountInt + 2;
             }
         }
-        amount = String.valueOf(amountInt);
-        return name + amount + height + width + length + unit + description;
+         Stolpe s = new Stolpe(String.valueOf(amountInt));
+        return s.toString();
     }
 
-    public String getBase (CustomerRequestData customerRequest) {
-        String name = "Spærtræ ubh. ";
-        String amount = " 2";
-        String height = " 195mm";
-        String width = " 45mm";
+    public String getRem (CustomerRequestData customerRequest) {
         String length = "";
-        String unit = " Enhed: stk.";
-        String description = " Remme i sider, sadles ned i stolper";
+
         boolean shed = shedCheck(customerRequest);
         int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
         if(shed) {
@@ -66,57 +56,134 @@ public class MaterialList {
         } else {
             length = String.valueOf(carportLength);
         }
-        return name + amount + height + width + length + "cm" + unit + description;
+
+        Rem r = new Rem(length);
+
+        return r.toString();
     }
 
-    public String getShedBase (CustomerRequestData customerRequest) {
-        String name = "Spærtræ ubh. ";
-        String amount = " 1";
-        String height = " 195mm";
-        String width = " 45mm";
+    public String getShedRem (CustomerRequestData customerRequest) {
         String length = "";
-        String unit = " Enhed: stk.";
-        String description = " Remme i sider, sadles ned i stolper";
+
         int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
         length = String.valueOf(shedLength * 2);
-        return name + amount + height + width + length + "cm" + unit + description;
+
+        RemSkur remSkur = new RemSkur(length);
+
+        return remSkur.toString();
     }
 
-    public String getRafters (CustomerRequestData customerRequest) {
-        String name = "Spærtræ ubh. ";
-        raftersAmount = "";
-        String height = " 195mm";
-        String width = " 45mm";
-        String length = "";
-        String unit = " Enhed: stk.";
-        String description = " Spær, monteres på rem";
-        String carportWidth = customerRequest.getCarportWidth();
+    public String getSpær (CustomerRequestData customerRequest) {
+
         int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
-        length = carportWidth;
+        String length = customerRequest.getCarportWidth();
         int amountInt = (int) (carportLength / (0.55 + 0.045) + 2);
         raftersAmount = String.valueOf(amountInt);
-        return name + raftersAmount + height + width + length + "cm" + unit + description;
+
+        Spær s = new Spær(customerRequest.getCarportWidth(), raftersAmount, length);
+
+        return s.toString();
     }
 
-    public String getRafterFittings() {
-        String name = "Universal 190 mm højre og venstre ";
-        String unit = " Enhed: stk.";
-        String description = " montering af spær på rem";
-        return name + raftersAmount + unit + description;
+    public String getSpærBeslag() {
+        SpærBeslag spærBeslag = new SpærBeslag(raftersAmount);
+
+        return spærBeslag.toString();
     }
 
-    public String getPerforatedtape() {
-        String name = "Hulbånd 1x20 mm ";
-        String amount = "";
-        String height = " 1mm";
-        String width = " 20mm";
-        String length = "";
-        String unit = " Enhed: Rulle";
-        String description = " Til vindkryds på spær";
+    public String getHulbånd(CustomerRequestData customerRequest) {
+        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
+        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
+        double widthDouble = carportWidth;
+        double lengthDouble = carportLength - 0.595 - shedLength;
+        double hulbåndLength = Math.pow(widthDouble,2) + Math.pow(lengthDouble,2);
+        hulbåndFinalLength = Math.sqrt(hulbåndLength);
+        int amountInt = (int) Math.ceil(hulbåndFinalLength);
+        String amount = String.valueOf(amountInt);
+        String length = String.valueOf(hulbåndFinalLength);
 
+        Hulbånd hulbånd = new Hulbånd(amount, length);
 
-        return "";
+        return hulbånd.toString();
     }
+
+    public String getBeslagskruer() {
+        int raftersAmountInt = Integer.parseInt(raftersAmount);
+        int firstAmountInt = raftersAmountInt * 2 * 9;
+        int secondAmountInt = (int) ((hulbåndFinalLength / 0.595 + 2) * 2);
+        int amountInt = firstAmountInt + secondAmountInt;
+        //Antallet rundes op da skruerne kommer i pakker af 250
+        int roundedAmount = ((amountInt + 249) / 250) * 250;
+        String amount = String.valueOf(roundedAmount);
+
+        Beslagskruer beslagskruer = new Beslagskruer(amount);
+
+        return beslagskruer.toString();
+    }
+
+    public String getUnderStern(CustomerRequestData customerRequest) {
+        String frontBackLength = customerRequest.getCarportWidth();
+        String sideLength = customerRequest.getCarportLength();
+
+        UnderStern underStern = new UnderStern(sideLength, frontBackLength);
+
+        return underStern.toString();
+    }
+
+    public String getOverStern(CustomerRequestData customerRequest) {
+        boolean shed = shedCheck(customerRequest);
+        String frontBackLength = customerRequest.getCarportWidth();
+        String sideLength = customerRequest.getCarportLength();
+        String frontBackAmount;
+        int amountNoShedInt = 4;
+        frontBackAmount = String.valueOf(amountNoShedInt);
+        if(shed) {
+            int amountShedInt = 2;
+            frontBackAmount = String.valueOf(amountShedInt);
+        }
+
+        OverStern overStern = new OverStern(frontBackAmount, sideLength, frontBackLength);
+
+        return overStern.toString();
+
+    }
+
+    public String getTrapezPlader(CustomerRequestData customerRequest) {
+        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
+        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int amountInt = carportWidth;
+        int lengthInt = 6;
+        double lengthDouble = 3.6;
+        if(carportLength > 6) {
+            amountInt = amountInt * 2;
+        }
+        String amount = String.valueOf(amountInt);
+        String length = String.valueOf(lengthInt);
+        String secondLength = String.valueOf(lengthDouble);
+        if(carportLength > 6) {
+            //Hvis taget er over 6 meter bruges ekstra plader som er 3,6 meter lange og overlappes så det passer
+            String finalLength = length + secondLength;
+            TrapezPlader trapezPlader = new TrapezPlader(finalLength, amount);
+            return trapezPlader.toString();
+        } else {
+            TrapezPlader trapezPlader = new TrapezPlader(length, amount);
+            return trapezPlader.toString();
+        }
+    }
+
+    public String getTrapezPladerSkruer(CustomerRequestData customerRequest) {
+        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
+        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int carportArea = carportLength * carportWidth;
+        int amountInt = 12 * carportArea;
+        //Rundes op da de kommer i pakker af 200
+        int roundedAmount = ((amountInt + 199) / 200) * 200;
+        String amount = String.valueOf(roundedAmount);
+
+
+    }
+
 
     public ArrayList<String> getMaterialList (CustomerRequestData customerRequest) {
 
@@ -124,12 +191,18 @@ public class MaterialList {
 
         ArrayList<String> materialList = new ArrayList<>();
 
-        materialList.add(getPosts(customerRequest));
-        materialList.add(getBase(customerRequest));
-        materialList.add(getRafters(customerRequest));
-        materialList.add(getRafterFittings());
+        materialList.add(getStolper(customerRequest));
+        materialList.add(getRem(customerRequest));
+        materialList.add(getSpær(customerRequest));
+        materialList.add(getSpærBeslag());
+        materialList.add(getHulbånd(customerRequest));
+        materialList.add(getBeslagskruer());
+        materialList.add(getUnderStern(customerRequest));
+        materialList.add(getOverStern(customerRequest));
+        materialList.add(getTrapezPlader(customerRequest));
+        materialList.add(getTrapezPladerSkruer(customerRequest));
         if(shed) {
-            materialList.add(getShedBase(customerRequest));
+            materialList.add(getShedRem(customerRequest));
         }
 
         return materialList;
