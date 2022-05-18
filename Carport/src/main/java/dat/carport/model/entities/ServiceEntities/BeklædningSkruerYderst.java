@@ -9,16 +9,16 @@ public class BeklædningSkruerYderst {
     String description;
 
     public BeklædningSkruerYderst(String amount) {
-        this.name = "Skruer ";
+        this.name = "Skruer, ";
         this.amount = amount;
-        this.height = " 4,5mm";
-        this.width = " 70mm";
-        this.unit = " Enhed: pakke";
+        this.height = ", Højde: 4,5mm,";
+        this.width = " Bredde: 70mm,";
+        this.unit = " Enhed: pakke,";
         this.description = " til montering af yderste beklædning kommer i pakker med 400";
     }
 
     @Override
     public String toString() {
-        return name + "antal: " + amount + height + width + unit + description;
+        return name + "Antal: " + amount + height + width + unit + description;
     }
 }

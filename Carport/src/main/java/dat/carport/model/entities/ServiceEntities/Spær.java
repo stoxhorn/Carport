@@ -9,22 +9,20 @@ public class Spær {
     String length;
     String unit;
     String description;
-    String carportWidth;
 
-    public Spær(String carportWidth, String amount, String length){
-        this. name = "Spærtræ ubh. ";
-        this. raftersAmount = amount;
-        this. height = " 195mm";
-        this. width = " 45mm";
-        this. length = length;
-        this. unit = " Enhed: stk.";
-        this. description = " Spær, monteres på rem";
-        this.carportWidth = carportWidth;
+    public Spær(String amount, String length){
+        this.name = "Spærtræ ubh., ";
+        this.raftersAmount = amount;
+        this.height = ", Højde: 195mm";
+        this.width = ", Bredde: 45mm,";
+        this.length = length;
+        this.unit = ", Enhed: stk.,";
+        this.description = " Spær monteres på rem";
     }
 
     @Override
     public String toString(){
-        return name+raftersAmount+height+width+length+unit+description+carportWidth;
+        return name + "antal: " + raftersAmount + height + width + " Længde: " + length + unit + description;
     }
 
 }
