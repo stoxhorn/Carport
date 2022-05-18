@@ -79,7 +79,7 @@ public class MaterialList {
         int amountInt = (int) (carportLength / (0.55 + 0.045) + 2);
         raftersAmount = String.valueOf(amountInt);
 
-        Spær s = new Spær(customerRequest.getCarportWidth(), raftersAmount, length);
+        Spær s = new Spær(raftersAmount, length);
 
         return s.toString();
     }

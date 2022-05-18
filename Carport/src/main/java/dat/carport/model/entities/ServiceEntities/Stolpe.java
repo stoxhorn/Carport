@@ -10,26 +10,18 @@ public class Stolpe {
         String length;
 
     public Stolpe(String amount) {
-        this.name = "Trykimp. stolpe ";
-        this.height = " 97mm";
-        this.width = " 97mm";
-        this.length = " 300cm";
-        this.unit = " Enhed: stk.";
+        this.name = "Trykimp. stolpe, ";
+        this.height = " Højde: 97mm,";
+        this.width = " Bredde: 97mm,";
+        this.length = " Længde: 300cm,";
+        this.unit = " Enhed: stk.,";
         this.description = " stolper nedgraves 90 cm. i jord";
         this.amount = amount;
     }
 
     @Override
         public String toString(){
-          String ret = "";
-
-          ret += name;
-          ret += amount;
-          ret += height;
-          ret += width;
-          ret += unit;
-          ret += description;
-          return ret;
+            return name + "antal: " + amount + height + width + length + unit + description;
         }
 }
 

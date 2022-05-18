@@ -8,9 +8,9 @@ public class SpærBeslag {
     String description;
 
     public SpærBeslag(String amount) {
-        this.name = "Universal 190 mm højre og venstre ";
+        this.name = "Universal 190 mm højre og venstre, ";
         this.amount = amount;
-        this.unit = " Enhed: stk.";
+        this.unit = ", Enhed: stk.,";
         this.description = " montering af spær på rem";
     }
 
