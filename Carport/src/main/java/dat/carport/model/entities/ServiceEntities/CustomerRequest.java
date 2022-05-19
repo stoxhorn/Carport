@@ -2,6 +2,7 @@ package dat.carport.model.entities.ServiceEntities;
 
 import dat.carport.model.entities.DBEntities.DBCustomerRequest;
 import dat.carport.model.entities.DBEntities.DBMaterialsList;
+import dat.carport.model.entities.Enums.Status;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
 import dat.carport.model.persistence.MaterialListMapper;
@@ -9,6 +10,7 @@ import dat.carport.model.persistence.MaterialListMapper;
 public class CustomerRequest {
     private int id;
     private String customerUserEmail;
+    private Status status;
     private CustomerRequestData requestData;
     private MaterialsList materialList;
 
@@ -66,6 +68,22 @@ public class CustomerRequest {
     public MaterialsList getMaterialList(){
         return this.materialList;
     }
+
+    public Status getStatus()
+    {
+        return status;
+    }
+
+    public String getStatusAsString()
+    {
+        return String.valueOf(status);
+    }
+
+    public void setStatus(Status status)
+    {
+        this.status = status;
+    }
+
 
     @Override
     public String toString() {

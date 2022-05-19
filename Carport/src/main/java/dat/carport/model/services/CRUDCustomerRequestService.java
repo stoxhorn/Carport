@@ -3,6 +3,7 @@ package dat.carport.model.services;
 import dat.carport.model.entities.DBEntities.DBCustomer;
 import dat.carport.model.entities.DBEntities.DBCustomerRequest;
 import dat.carport.model.entities.DBEntities.DBMaterialsList;
+import dat.carport.model.entities.Enums.Status;
 import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
 import dat.carport.model.entities.ServiceEntities.MaterialsList;
@@ -48,10 +49,10 @@ public class CRUDCustomerRequestService {
         }
         // the next Id has been found, and i can now create a DBCustomerRequest Object:
         crMapper.createCustomerRequest(
-                new DBCustomerRequest(i, customerEmail, crData));
+                new DBCustomerRequest(i, customerEmail, Status.pending, crData));
     }
 
-    public static void updateCustomerRequest(String customerEmail, CustomerRequestData crData, ConnectionPool cp) throws DatabaseException {
+    public static void updateCustomerRequest(String customerEmail, CustomerRequestData crData, ConnectionPool cp, Status status) throws DatabaseException {
         CustomerRequestMapper crMapper = new CustomerRequestMapper(cp);
 
         // in order to update a customer request, i need to find the ID corresponding to the customer Email
@@ -70,7 +71,7 @@ public class CRUDCustomerRequestService {
         }
         // the next Id has been found, and i can now create a DBCustomerRequest Object:
         crMapper.updateCustomerRequest(
-                new DBCustomerRequest(id, customerEmail, crData));
+                new DBCustomerRequest(id, customerEmail,  status, crData));
     }
 
     public static void deleteCustomerRequest(String customerEmail, ConnectionPool cp) throws DatabaseException {

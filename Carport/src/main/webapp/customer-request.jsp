@@ -20,12 +20,12 @@
                     <h2 class="text-center">Oplysninger om carport</h2>
                     <input type="hidden" name="crud" value="create"/>
                     <input type="hidden" name="command" value="createCustomer"/>
-                    <input type="hidden" name="next" value="index"/>
+                    <input type="hidden" name="next" value="customer-dashboard"/>
                     <input type="hidden" value="create" id="crudRequest" name="crud"/>
 
                     <div class="form-floating">
                         <select class="form-select" id="carportWidth" name="carportWidth" aria-label="Carport bredde" aria-describedby="carportWidthHelp">
-                            <option selected="selected" value="0">Vælg bredde</option>
+                            <option selected value="">Vælg bredde</option>
                             <option value="240">240 cm</option>
                             <option value="270">270 cm</option>
                             <option value="300">300 cm</option>
@@ -46,7 +46,7 @@
 
                     <div class="form-floating">
                         <select class="form-select" id="carportLength" name="carportLength" aria-label="Carport længde" aria-describedby="carportLengthHelp">
-                            <option selected="selected" value="0">Vælg længde</option>
+                            <option selected value="">Vælg længde</option>
                             <option value="240">240 cm</option>
                             <option value="270">270 cm</option>
                             <option value="300">300 cm</option>
@@ -73,9 +73,9 @@
 
                     <div class="form-floating">
                         <select class="form-select" id="roofType" name="roofType" aria-label="Tag" aria-describedby="roofTypeHelp">
-                            <option selected value="0">Vælg tag til carport</option>
+                            <option selected value="">Vælg tag til carport</option>
                             <option value="1">Carport med fladt tag</option>
-                            <option value="2">Carport med rejsning</option>
+                            <option value="2" disabled aria-disabled="true">Carport med rejsning</option>
                         </select>
                         <label for="roofType">Tag</label>
                         <div id="roofTypeHelp" class="form-text">Vælg den ønskede type tag til din carport</div>
@@ -84,7 +84,7 @@
                     <div class="collapse">
                         <div class="form-floating">
                             <select class="form-select" id="roofMaterial" name="roofMaterial" aria-label="Tag materiale" aria-describedby="roofMaterialHelp">
-                                <option selected="selected" value="0">Vælg tagtype/farve</option>
+                                <option selected value="">Vælg tagtype/farve</option>
                                 <option class="forFlatRoof" value="Plasttrapezplader">Plasttrapezplader</option>
                                 <option class="forSlopedRoof" value="Betontagsten - Rød">Betontagsten - Rød</option>
                                 <option class="forSlopedRoof" value="Betontagsten - Teglrød">Betontagsten - Teglrød</option>
@@ -110,9 +110,10 @@
                     <div class="collapse">
                         <div class="form-floating">
                             <select class="form-select" id="roofSlope" name="roofSlope" aria-label="Taghældning" aria-describedby="roofSlopeHelp">
+                                <option selected value="">Vælg hældning på taget</option>
                                 <option value="15">15 grader</option>
                                 <option value="20">20 grader</option>
-                                <option selected="selected" value="25">25 grader</option>
+                                <option value="25">25 grader</option>
                                 <option value="30">30 grader</option>
                                 <option value="35">35 grader</option>
                                 <option value="40">40 grader</option>
@@ -135,7 +136,7 @@
 
                             <div class="form-floating mt-4 mb-4">
                                 <select class="form-select" id="shedWidth" name="shedWidth" aria-label="Redskabsrum bredde" aria-describedby="shedWidthHelp">
-                                    <option selected="selected">Vælg bredde</option>
+                                    <option selected value="">Vælg bredde</option>
                                     <option value="210">210 cm</option>
                                     <option value="240">240 cm</option>
                                     <option value="270">270 cm</option>
@@ -161,7 +162,7 @@
 
                             <div class="form-floating">
                                 <select class="form-select" id="shedLength" name="shedLength" aria-label="Redskabsskur længde" aria-describedby="shedLengthHelp">
-                                    <option selected="selected">Vælg længde</option>
+                                    <option selected value="">Vælg længde</option>
                                     <option value="150">150 cm</option>
                                     <option value="180">180 cm</option>
                                     <option value="210">210 cm</option>
@@ -199,13 +200,18 @@
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="firstname" name="firstname" required placeholder="Fornavn(e)"/>
-                        <label class="form-label" for="firstname">Fornavn(e)</label>
+                        <input class="form-control" type="text" id="firstName" name="firstName" required placeholder="Fornavn(e)"/>
+                        <label class="form-label" for="firstName">Fornavn(e)</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="lastname" name="lastname" required placeholder="Efternavn"/>
-                        <label class="form-label" for="lastname">Efternavn</label>
+                        <input class="form-control" type="text" id="lastName" name="lastName" required placeholder="Efternavn"/>
+                        <label class="form-label" for="lastName">Efternavn</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" required placeholder="Telefon nummer"/>
+                        <label class="form-label" for="phoneNumber">Telefon nummer</label>
                     </div>
 
                     <div class="form-floating">
@@ -214,8 +220,8 @@
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="zip" name="zip" required placeholder="Postnummer"/>
-                        <label class="form-label" for="zip">Postnummer</label>
+                        <input class="form-control" type="text" id="zipCode" name="zipCode" required placeholder="Postnummer"/>
+                        <label class="form-label" for="zipCode">Postnummer</label>
                     </div>
 
                     <div class="form-floating">

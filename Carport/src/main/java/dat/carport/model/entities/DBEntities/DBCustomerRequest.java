@@ -1,6 +1,6 @@
 package dat.carport.model.entities.DBEntities;
 
-import dat.carport.model.entities.ServiceEntities.Customer;
+import dat.carport.model.entities.Enums.Status;
 import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
 
@@ -8,6 +8,7 @@ import java.util.Objects;
 
 public class DBCustomerRequest {
     private int id;
+    private Status status;
     private String customerUserEmail;
     private String carportWidth;
     private String carportLength;
@@ -18,7 +19,7 @@ public class DBCustomerRequest {
     private String shedLength;
 
 
-    public DBCustomerRequest(int id, String customerUserEmail, String carportWidth, String carportLength, String roofType, String roofMaterial, String roofSlope, String shedWidth, String shedLength) {
+    public DBCustomerRequest(int id, String customerUserEmail, String carportWidth, String carportLength, String roofType, String roofMaterial, String roofSlope, String shedWidth, String shedLength, Status status) {
         this.id = id;
         this.customerUserEmail = customerUserEmail;
         this.carportWidth = carportWidth;
@@ -28,6 +29,7 @@ public class DBCustomerRequest {
         this.roofSlope = roofSlope;
         this.shedWidth = shedWidth;
         this.shedLength = shedLength;
+        this.status = status;
     }
 
     public DBCustomerRequest(CustomerRequest cr){
@@ -43,7 +45,7 @@ public class DBCustomerRequest {
         this.shedLength = data.getShedLength();
     }
 
-    public DBCustomerRequest(int id, String customerUserEmail, CustomerRequestData crData){
+    public DBCustomerRequest(int id, String customerUserEmail, Status status,  CustomerRequestData crData){
         this.id = id;
         this.customerUserEmail = customerUserEmail;
         this.carportWidth = crData.getCarportWidth();
@@ -53,6 +55,7 @@ public class DBCustomerRequest {
         this.roofSlope = crData.getRoofSlope();
         this.shedWidth = crData.getShedWidth();
         this.shedLength = crData.getShedLength();
+        this.status = status;
     }
 
     public int getId() {
@@ -89,6 +92,11 @@ public class DBCustomerRequest {
 
     public String getShedLength() {
         return shedLength;
+    }
+
+    public Status getStatus()
+    {
+        return status;
     }
 
     @Override

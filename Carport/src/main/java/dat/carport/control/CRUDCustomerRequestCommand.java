@@ -1,6 +1,7 @@
 package dat.carport.control;
 
 import dat.carport.model.config.ApplicationStart;
+import dat.carport.model.entities.Enums.Status;
 import dat.carport.model.entities.ServiceEntities.Customer;
 import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
@@ -38,9 +39,9 @@ public class CRUDCustomerRequestCommand extends Command{
                         request.getParameter("carportLength"),
                         request.getParameter("roofType"),
                         request.getParameter("roofMaterial"),
-                        request.getParameter("roofSlope"),
-                        request.getParameter("shedWidth"),
-                        request.getParameter("shedLength"));
+                        request.getParameter("roofSlope").isEmpty() ? null : request.getParameter("roofSlope"),
+                        request.getParameter("shedWidth").isEmpty() ? null : request.getParameter("shedWidth"),
+                        request.getParameter("shedLength").isEmpty() ? null : request.getParameter("shedLength"));
                 try {
                     CRUDCustomerRequestService.createCustomerRequest(customerEmail, crData, this.connectionPool);
                 } catch (DatabaseException e) {
@@ -63,7 +64,9 @@ public class CRUDCustomerRequestCommand extends Command{
                         request.getParameter("shedWidth"),
                         request.getParameter("shedLength"));
                 try {
-                    CRUDCustomerRequestService.updateCustomerRequest(customerEmail, crData, this.connectionPool);
+                    Status status = Status.valueOf(request.getParameter("status"));
+
+                    CRUDCustomerRequestService.updateCustomerRequest(customerEmail, crData, this.connectionPool, status);
                 } catch (DatabaseException e) {
                     throw new RuntimeException(e);
                 }

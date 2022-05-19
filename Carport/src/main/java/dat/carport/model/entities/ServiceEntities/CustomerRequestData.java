@@ -1,5 +1,7 @@
 package dat.carport.model.entities.ServiceEntities;
 
+import dat.carport.model.entities.Enums.Status;
+
 import java.util.Objects;
 
 /**
@@ -10,13 +12,13 @@ import java.util.Objects;
  */
 public class CustomerRequestData {
 
-    private String carportWidth;
-    private String carportLength;
-    private String roofType;
-    private String roofMaterial;
-    private String roofSlope;
-    private String shedWidth;
-    private String shedLength;
+    private final String carportWidth;
+    private final String carportLength;
+    private final String roofType;
+    private final String roofMaterial;
+    private final String roofSlope;
+    private final String shedWidth;
+    private final String shedLength;
 
     public CustomerRequestData(String carportWidth, String carportLength, String roofType, String roofMaterial, String roofSlope, String shedWidth, String shedLength) {
         this.carportWidth = carportWidth;
