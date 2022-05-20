@@ -11,9 +11,9 @@ public class MaterialList {
 
     public boolean shedCheck (CustomerRequestData customerRequest) {
         boolean shed = true;
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
-        int shedWidth = Integer.parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
-        if(shedLength == 0 || shedWidth == 0) {
+        String shedLength = customerRequest.getShedLength();
+        String shedWidth = customerRequest.getShedWidth();
+        if(shedLength == null || shedWidth == null) {
             shed = false;
         }
         return shed;
