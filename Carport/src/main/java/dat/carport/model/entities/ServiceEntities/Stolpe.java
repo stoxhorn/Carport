@@ -21,7 +21,7 @@ public class Stolpe {
 
     @Override
         public String toString(){
-            return name + "antal: " + amount + height + width + length + unit + description;
+            return name + "Antal: " + amount + height + width + length + unit + description;
         }
 }
 

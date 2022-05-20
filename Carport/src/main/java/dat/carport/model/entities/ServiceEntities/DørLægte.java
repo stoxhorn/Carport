@@ -10,12 +10,12 @@ public class DørLægte {
     String description;
 
     public DørLægte() {
-        this.name = "Lægte ubh. ";
-        this.amount = " Antal: 1";
-        this.height = " 38mm";
-        this.width = " 73mm";
-        this.length = " 420cm";
-        this.unit = " Enhed: stk.";
+        this.name = "Lægte ubh., ";
+        this.amount = " Antal: 1,";
+        this.height = " Højde: 38mm,";
+        this.width = " Bredde: 73mm,";
+        this.length = " Længde: 420cm,";
+        this.unit = " Enhed: stk.,";
         this.description = " til z på bagside af dør";
     }
 

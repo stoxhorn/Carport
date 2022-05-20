@@ -10,17 +10,17 @@ public class Firkantskiver {
     String description;
 
     public Firkantskiver(String amount) {
-        this.name = "Firkantskiver ";
+        this.name = "Firkantskiver, ";
         this.amount = amount;
-        this.height = " 11mm";
-        this.width = " 40mm";
-        this.length = " 40mm";
-        this.unit = " stk.";
+        this.height = ", Højde: 11mm,";
+        this.width = " Brede: 40mm,";
+        this.length = " Længde: 40mm,";
+        this.unit = " Enhed: stk.,";
         this.description = " til montering af rem på stolper";
     }
 
     @Override
     public String toString() {
-        return name + "antal: " + amount + height + width + length + unit + description;
+        return name + "Antal: " + amount + height + width + length + unit + description;
     }
 }

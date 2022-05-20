@@ -8,15 +8,15 @@ public class THængsel {
     String description;
 
     public THængsel() {
-        this.name = "Skruer ";
+        this.name = "Skruer, ";
         this.amount = " 2,";
-        this.width = " 390mm";
-        this.unit = " Enhed: stk.";
+        this.width = " Bredde: 390mm,";
+        this.unit = " Enhed: stk.,";
         this.description = " til skurdør";
     }
 
     @Override
     public String toString() {
-        return name + "antal: " + amount + width + unit + description;
+        return name + "Antal: " + amount + width + unit + description;
     }
 }

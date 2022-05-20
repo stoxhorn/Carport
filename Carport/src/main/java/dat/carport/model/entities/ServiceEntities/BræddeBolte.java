@@ -9,16 +9,16 @@ public class BræddeBolte {
     String description;
 
     public BræddeBolte(String amount) {
-        this.name = "Bræddebolt ";
+        this.name = "Bræddebolt, ";
         this.amount = amount;
-        this.height = " 10mm";
-        this.width = " 120mm";
-        this.unit = " Enhed: stk.";
+        this.height = ", Højde: 10mm,";
+        this.width = " Bredde: 120mm,";
+        this.unit = " Enhed: stk.,";
         this.description = " til montering af rem på stolper";
     }
 
     @Override
     public String toString() {
-        return name + "antal: " + amount + height + width + unit + description;
+        return name + "Antal: " + amount + height + width + unit + description;
     }
 }
