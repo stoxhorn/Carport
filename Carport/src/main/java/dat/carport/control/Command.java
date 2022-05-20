@@ -20,6 +20,9 @@ abstract class Command
         commands.put("CRUDMaterials", new CRUDMaterialsCommand());
         commands.put("CRUDMaterialList", new CRUDMaterialListCommand());
         commands.put("createCustomer", new CreateCustomerCommand());
+        commands.put("ReadAllMaterials", new ReadAllMaterialsCommand());
+        commands.put("ReadAllRequests", new ReadAllRequestsCommand());
+        commands.put("updateCustomerRequest", new UpdateCustomerRequestCommand());
     }
 
     static Command from( HttpServletRequest request ) {

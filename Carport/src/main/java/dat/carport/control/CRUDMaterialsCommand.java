@@ -34,7 +34,7 @@ public class CRUDMaterialsCommand extends Command{
 
             case "read":
                 String id = request.getParameter("materialsID");
-                Materials m = CRUDMaterialsService.readMaterials(id, this.cp);
+                Materials m = CRUDMaterialsService.readMaterial(id, this.cp);
                 request.setAttribute("Material", m);
                 return request.getParameter("next");
 

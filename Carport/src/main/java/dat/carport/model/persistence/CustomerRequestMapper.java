@@ -15,7 +15,7 @@ public class CustomerRequestMapper {
         this.connectionPool = connectionPool;
     }
 
-    public List<DBCustomerRequest> getCustomerRequest() throws DatabaseException {
+    public List<DBCustomerRequest>  getCustomerRequest() throws DatabaseException {
         List<DBCustomerRequest> customerRequestList = new ArrayList<>();
 
         String sql = "SELECT * FROM customer_request";

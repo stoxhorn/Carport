@@ -78,7 +78,7 @@ public class CRUDCustomerRequestCommand extends Command{
                 return request.getParameter("next");
         }
         return request.getParameter("next");
-        }
+    }
 
 
 }

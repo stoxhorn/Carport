@@ -1,14 +1,11 @@
 package dat.carport.model.services;
 
-import dat.carport.model.entities.DBEntities.DBCustomer;
 import dat.carport.model.entities.DBEntities.DBCustomerRequest;
 import dat.carport.model.entities.DBEntities.DBMaterialsList;
 import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
-import dat.carport.model.entities.ServiceEntities.MaterialsList;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
-import dat.carport.model.persistence.CustomerInfoMapper;
 import dat.carport.model.persistence.CustomerRequestMapper;
 import dat.carport.model.persistence.MaterialListMapper;
 
@@ -91,5 +88,20 @@ public class CRUDCustomerRequestService {
                 break;
             }
         }
+    }
+
+    public static ArrayList<CustomerRequest> getAllRequests(ConnectionPool cp) throws DatabaseException{
+        CustomerRequestMapper crMapper = new CustomerRequestMapper(cp);
+        ArrayList<DBCustomerRequest> dbCrList = new ArrayList<>(crMapper.getCustomerRequest());
+
+        ArrayList<CustomerRequest> crList = new ArrayList<>();
+
+        for(DBCustomerRequest dbcr : dbCrList){
+            CustomerRequest cr = new CustomerRequest(dbcr);
+            cr.fetchMaterialList(cp);
+            crList.add(cr);
+        }
+        return crList;
+
     }
 }

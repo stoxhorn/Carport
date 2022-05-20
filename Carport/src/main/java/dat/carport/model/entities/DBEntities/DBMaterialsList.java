@@ -20,8 +20,6 @@ public class DBMaterialsList {
         this.customerRequestId = ml.getCustomerRequestId();
     }
 
-
-
     public int getId() {
         return id;
     }

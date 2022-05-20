@@ -38,7 +38,6 @@ public class CRUDMaterialListCommand extends Command{
                 MaterialsList ml = (MaterialsList) request.getSession().getAttribute("MaterialList");
                 CRUDMaterialListService.createMaterialList(ml, this.cp);
                 return request.getParameter("next");
-
             case "read":
                 ml = CRUDMaterialListService.readMaterialList(
                         request.getParameter("id"),
@@ -46,7 +45,6 @@ public class CRUDMaterialListCommand extends Command{
                 request.setAttribute("MaterialsList", ml);
                 request.getSession().setAttribute("MaterialsList", ml);
                 return request.getParameter("next");
-
             case "update":
                 ml = (MaterialsList) request.getSession().getAttribute("MaterialList");
                 CRUDMaterialListService.updateMaterialList(ml, this.cp);
