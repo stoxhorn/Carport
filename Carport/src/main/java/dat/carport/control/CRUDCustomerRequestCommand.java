@@ -53,11 +53,15 @@ public class CRUDCustomerRequestCommand extends Command{
                 return request.getParameter("next");
             }
             case "read":
+                 try {
                 CustomerRequest customerRequest = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
                 Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
 
                 session.setAttribute("customer", customer);
                 session.setAttribute("customerRequest", customerRequest);
+                 } catch (DatabaseException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "update": {
                 CustomerRequestData crData = new CustomerRequestData(

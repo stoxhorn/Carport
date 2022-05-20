@@ -28,11 +28,10 @@ public class Login extends Command
         try {
             User user = UserFacade.login(email, password, connectionPool);
             session.setAttribute("user", user); // adding user object to session scope
-            session.removeAttribute("error");
         }
         catch (Exception ex)
         {
-            session.setAttribute("error", "Ukendt kombination af email og kodeord");
+            request.setAttribute("error", "Ukendt kombination af email og kodeord");
             return "login";
         }
         return "admin-dashboard";

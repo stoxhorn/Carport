@@ -31,22 +31,31 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Forside</a>
+                        <a class="nav-link"
+                           href=
+                            <c:choose>
+                                <c:when test="${sessionScope.containsKey('user') && sessionScope.user.role == 'admin' }">
+                                   "${pageContext.request.contextPath}/admin-dashboard.jsp">
+                                </c:when>
+                                <c:otherwise>
+                                    "${pageContext.request.contextPath}/index.jsp">
+                                </c:otherwise>
+                            </c:choose>
+                        Forside
+                        </a>
                     </li>
-                    <c:if test="${sessionScope.user == null }">
+                    <c:if test="${!sessionScope.containsKey('user')}">
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/customer-request.jsp">Quick-byg</a>
                     </li>
-                    </c:if>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
                     </li>
-
-
-                    <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
-                    <c:if test="${sessionScope.user != null }">
+                    <c:if test="${!sessionScope.containsKey('user')}">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Medarbejder</a>
+                    </c:if>
+                    <c:if test="${sessionScope.containsKey('user') || sessionScope.containsKey('customer') }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/fc/logout?command=logout">Log out</a>
                     </c:if>
                 </ul>

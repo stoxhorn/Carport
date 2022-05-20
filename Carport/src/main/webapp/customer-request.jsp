@@ -14,7 +14,7 @@
 
     <jsp:body>
 
-        <div class="row justify-content-center border bg-light animate__animated animate__slideInUp">
+        <div class="row justify-content-center border bg-light animate__animated animate__fadeInUp">
             <div class="col-10 col-lg-8 col-xl-6 col-xxl-6 ">
                 <form class="p-5 d-flex flex-column gap-4" action="fc/createCustomer" method="post">
                     <h2 class="text-center">Oplysninger om carport</h2>
@@ -24,7 +24,7 @@
                     <input type="hidden" value="create" id="crudRequest" name="crud"/>
 
                     <div class="form-floating">
-                        <select class="form-select" id="carportWidth" name="carportWidth" aria-label="Carport bredde" aria-describedby="carportWidthHelp">
+                        <select class="form-select transition" id="carportWidth" name="carportWidth" aria-label="Carport bredde" aria-describedby="carportWidthHelp">
                             <option selected value="">Vælg bredde</option>
                             <option value="240">240 cm</option>
                             <option value="270">270 cm</option>
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="form-floating">
-                        <select class="form-select" id="carportLength" name="carportLength" aria-label="Carport længde" aria-describedby="carportLengthHelp">
+                        <select class="form-select transition" id="carportLength" name="carportLength" aria-label="Carport længde" aria-describedby="carportLengthHelp">
                             <option selected value="">Vælg længde</option>
                             <option value="240">240 cm</option>
                             <option value="270">270 cm</option>
@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="form-floating">
-                        <select class="form-select" id="roofType" name="roofType" aria-label="Tag" aria-describedby="roofTypeHelp">
+                        <select class="form-select transition" id="roofType" name="roofType" aria-label="Tag" aria-describedby="roofTypeHelp">
                             <option selected value="">Vælg tag til carport</option>
                             <option value="1">Carport med fladt tag</option>
                             <option value="2" disabled aria-disabled="true">Carport med rejsning</option>
@@ -83,7 +83,7 @@
 
                     <div class="collapse">
                         <div class="form-floating">
-                            <select class="form-select" id="roofMaterial" name="roofMaterial" aria-label="Tag materiale" aria-describedby="roofMaterialHelp">
+                            <select class="form-select transition" id="roofMaterial" name="roofMaterial" aria-label="Tag materiale" aria-describedby="roofMaterialHelp">
                                 <option selected value="">Vælg tagtype/farve</option>
                                 <option class="forFlatRoof" value="Plasttrapezplader">Plasttrapezplader</option>
                                 <option class="forSlopedRoof" value="Betontagsten - Rød">Betontagsten - Rød</option>
@@ -109,7 +109,7 @@
 
                     <div class="collapse">
                         <div class="form-floating">
-                            <select class="form-select" id="roofSlope" name="roofSlope" aria-label="Taghældning" aria-describedby="roofSlopeHelp">
+                            <select class="form-select transition" id="roofSlope" name="roofSlope" aria-label="Taghældning" aria-describedby="roofSlopeHelp">
                                 <option selected value="">Vælg hældning på taget</option>
                                 <option value="15">15 grader</option>
                                 <option value="20">20 grader</option>
@@ -125,7 +125,7 @@
                     </div>
 
                     <div class="form-floating">
-                        <select class="form-select" id="shedWanted" aria-label="Ønskes skur?" aria-describedby="shedWantedHelp">
+                        <select class="form-select transition" id="shedWanted" aria-label="Ønskes skur?" aria-describedby="shedWantedHelp">
                             <option value="1">Ja</option>
                             <option selected value="0">Nej</option>
                         </select>
@@ -135,7 +135,7 @@
                             <div id="shedWantedHelp" class="form-text">NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet</div>
 
                             <div class="form-floating mt-4 mb-4">
-                                <select class="form-select" id="shedWidth" name="shedWidth" aria-label="Redskabsrum bredde" aria-describedby="shedWidthHelp">
+                                <select class="form-select transition" id="shedWidth" name="shedWidth" aria-label="Redskabsrum bredde" aria-describedby="shedWidthHelp">
                                     <option selected value="">Vælg bredde</option>
                                     <option value="210">210 cm</option>
                                     <option value="240">240 cm</option>
@@ -161,7 +161,7 @@
                             </div>
 
                             <div class="form-floating">
-                                <select class="form-select" id="shedLength" name="shedLength" aria-label="Redskabsskur længde" aria-describedby="shedLengthHelp">
+                                <select class="form-select transition" id="shedLength" name="shedLength" aria-label="Redskabsskur længde" aria-describedby="shedLengthHelp">
                                     <option selected value="">Vælg længde</option>
                                     <option value="150">150 cm</option>
                                     <option value="180">180 cm</option>
