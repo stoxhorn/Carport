@@ -71,6 +71,10 @@ public class CRUDCustomerRequestService {
                 new DBCustomerRequest(id, customerEmail,  status, crData));
     }
 
+    public static void updateCustomerRequest(CustomerRequest cr, ConnectionPool cp) throws DatabaseException {
+        updateCustomerRequest(cr.getCustomerUserEmail(), cr.getRequestData(), cp, cr.getStatus());
+    }
+
     public static void deleteCustomerRequest(String customerEmail, ConnectionPool cp) throws DatabaseException {
         CustomerRequestMapper crMapper = new CustomerRequestMapper(cp);
         MaterialListMapper mlMapper = new MaterialListMapper(cp);
