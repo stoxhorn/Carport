@@ -1,5 +1,7 @@
 package dat.carport.model.entities.DBEntities;
 
+import dat.carport.model.entities.ServiceEntities.Employee;
+
 import java.util.Objects;
 
 public class DBEmployee {
@@ -14,7 +16,13 @@ public class DBEmployee {
         this.userEmail = userEmail;
         this.firstName = firstName;
         this.lastName = lastName;
-        }
+    }
+
+    public DBEmployee(Employee emp){
+        this.userEmail = emp.getEmail();
+        this.firstName = emp.getFirstName();
+        this.lastName = emp.getLastName();
+    }
 
 public String getUserEmail() {
         return userEmail;
