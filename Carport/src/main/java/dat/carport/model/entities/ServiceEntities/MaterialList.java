@@ -1,13 +1,29 @@
 package dat.carport.model.entities.ServiceEntities;
 
-import dat.carport.model.entities.DBEntities.DBCustomerRequest;
-
 import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 public class MaterialList {
 
     String raftersAmount = "";
     double hulbåndFinalLength;
+
+    public int getCarportLength(CustomerRequestData customerRequest) {
+        return parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
+    }
+
+    public int getCarportWidth(CustomerRequestData customerRequest) {
+        return parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+    }
+
+    public int getShedLength(CustomerRequestData customerRequest) {
+        return parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
+    }
+
+    public int getShedWidth(CustomerRequestData customerRequest) {
+        return parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
+    }
 
     public boolean shedCheck (CustomerRequestData customerRequest) {
         boolean shed = true;
@@ -21,8 +37,8 @@ public class MaterialList {
 
     public String getStolper (CustomerRequestData customerRequest) {
         boolean shed = shedCheck(customerRequest);
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
-        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
+        int carportWidth = getCarportWidth(customerRequest);
         int amountInt;
         if(carportWidth * carportLength / 40000 < 8) {
             amountInt = 4;
@@ -30,8 +46,8 @@ public class MaterialList {
             amountInt = 6;
         }
         if(shed) {
-            int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
-            int shedWidth = Integer.parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
+            int shedLength = getShedLength(customerRequest);
+            int shedWidth = getShedWidth(customerRequest);
             amountInt = amountInt + 4;
             if (shedWidth > 310) {
                 amountInt = amountInt + 2;
@@ -48,9 +64,9 @@ public class MaterialList {
         String length = "";
 
         boolean shed = shedCheck(customerRequest);
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
         if(shed) {
-            int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
+            int shedLength = getShedLength(customerRequest);
             length = String.valueOf(carportLength - shedLength);
         } else {
             length = String.valueOf(carportLength);
@@ -64,7 +80,7 @@ public class MaterialList {
     public String getShedRem (CustomerRequestData customerRequest) {
         String length = "";
 
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
+        int shedLength = getShedLength(customerRequest);
         length = String.valueOf(shedLength * 2);
 
         RemSkur remSkur = new RemSkur(length);
@@ -74,7 +90,7 @@ public class MaterialList {
 
     public String getSpær (CustomerRequestData customerRequest) {
 
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
         String length = customerRequest.getCarportWidth();
         int amountInt = (int) (carportLength / (0.55 + 0.045) + 2);
         raftersAmount = String.valueOf(amountInt);
@@ -91,9 +107,9 @@ public class MaterialList {
     }
 
     public String getHulbånd(CustomerRequestData customerRequest) {
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
-        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
+        int carportWidth = getCarportWidth(customerRequest);
+        int shedLength = getShedLength(customerRequest);
         double widthDouble = carportWidth;
         double lengthDouble = carportLength - 0.595 - shedLength;
         double hulbåndLength = Math.pow(widthDouble,2) + Math.pow(lengthDouble,2);
@@ -108,7 +124,7 @@ public class MaterialList {
     }
 
     public String getBeslagskruer() {
-        int raftersAmountInt = Integer.parseInt(raftersAmount);
+        int raftersAmountInt = parseInt(raftersAmount);
         int firstAmountInt = raftersAmountInt * 2 * 9;
         int secondAmountInt = (int) ((hulbåndFinalLength / 0.595 + 2) * 2);
         int amountInt = firstAmountInt + secondAmountInt;
@@ -148,8 +164,8 @@ public class MaterialList {
     }
 
     public String getTrapezPlader(CustomerRequestData customerRequest) {
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
-        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
+        int carportWidth = getCarportWidth(customerRequest);
         int amountInt = carportWidth;
         int lengthInt = 6;
         double lengthDouble = 3.6;
@@ -171,8 +187,8 @@ public class MaterialList {
     }
 
     public String getTrapezPladerSkruer(CustomerRequestData customerRequest) {
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
-        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
+        int carportWidth = getCarportWidth(customerRequest);
         int carportArea = carportLength * carportWidth;
         int amountInt = 12 * carportArea;
         //Rundes op da de kommer i pakker af 200
@@ -214,8 +230,8 @@ public class MaterialList {
     }
 
     public String getLøsholter(CustomerRequestData customerRequest) {
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
-        int shedWidth = Integer.parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
+        int shedLength = getShedLength(customerRequest);
+        int shedWidth = getShedWidth(customerRequest);
         int gavlAmountInt = 6;
         if(shedLength > 270 && shedLength < 540) {
             gavlAmountInt = 12;
@@ -238,8 +254,8 @@ public class MaterialList {
     }
 
     public String getSkurBeklædning(CustomerRequestData customerRequest) {
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
-        int shedWidth = Integer.parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
+        int shedLength = getShedLength(customerRequest);
+        int shedWidth = getShedWidth(customerRequest);
 
         int amountInt = (shedLength * 2 + shedWidth * 2) / 80;
         String amount = String.valueOf(amountInt);
@@ -250,8 +266,8 @@ public class MaterialList {
     }
 
     public String getBræddeBolte(CustomerRequestData customerRequest) {
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
-        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
+        int carportWidth = getCarportWidth(customerRequest);
         int amountInt;
         if(carportWidth * carportLength / 40000 < 8) {
             amountInt = 12;
@@ -266,8 +282,8 @@ public class MaterialList {
     }
 
     public String getFirkantSkiver(CustomerRequestData customerRequest) {
-        int carportLength = Integer.parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
-        int carportWidth = Integer.parseInt(customerRequest.getCarportWidth().replaceAll("[^0-9]", ""));
+        int carportLength = getCarportLength(customerRequest);
+        int carportWidth = getCarportWidth(customerRequest);
         int amountInt;
         if(carportWidth * carportLength / 40000 < 8) {
             amountInt = 8;
@@ -282,8 +298,8 @@ public class MaterialList {
     }
 
     public String getBeklædningSkruerYderst(CustomerRequestData customerRequest) {
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
-        int shedWidth = Integer.parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
+        int shedLength = getShedLength(customerRequest);
+        int shedWidth = getShedWidth(customerRequest);
 
         int amountInt = (shedLength * 2 + shedWidth * 2) / 80;
         amountInt = amountInt * 4;
@@ -297,8 +313,8 @@ public class MaterialList {
     }
 
     public String getBeklædningSkruerInderst(CustomerRequestData customerRequest) {
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
-        int shedWidth = Integer.parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
+        int shedLength = getShedLength(customerRequest);
+        int shedWidth = getShedWidth(customerRequest);
 
         int amountInt = (shedLength * 2 + shedWidth * 2) / 80;
         amountInt = amountInt * 3;
@@ -324,8 +340,8 @@ public class MaterialList {
     }
 
     public String getVinkelBeslag(CustomerRequestData customerRequest) {
-        int shedLength = Integer.parseInt(customerRequest.getShedLength().replaceAll("[^0-9]", ""));
-        int shedWidth = Integer.parseInt(customerRequest.getShedWidth().replaceAll("[^0-9]", ""));
+        int shedLength = getShedLength(customerRequest);
+        int shedWidth = getShedWidth(customerRequest);
         int gavlAmountInt = 12;
         if(shedLength > 270 && shedLength < 540) {
             gavlAmountInt = 24;

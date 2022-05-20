@@ -19,6 +19,6 @@ public class BræddeBolte {
 
     @Override
     public String toString() {
-        return name + "antal: " + amount + height + width + unit + description;
+        return name + "Antal: " + amount + height + width + unit + description;
     }
 }

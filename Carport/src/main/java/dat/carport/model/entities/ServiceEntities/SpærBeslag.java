@@ -16,6 +16,6 @@ public class SpærBeslag {
 
     @Override
     public String toString() {
-        return name + "antal: " + amount + unit + description;
+        return name + "Antal: " + amount + unit + description;
     }
 }

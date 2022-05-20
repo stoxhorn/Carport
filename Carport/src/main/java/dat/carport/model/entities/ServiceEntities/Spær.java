@@ -22,7 +22,7 @@ public class Spær {
 
     @Override
     public String toString(){
-        return name + "antal: " + raftersAmount + height + width + " Længde: " + length + unit + description;
+        return name + "Antal: " + raftersAmount + height + width + " Længde: " + length + "cm" + unit + description;
     }
 
 }
