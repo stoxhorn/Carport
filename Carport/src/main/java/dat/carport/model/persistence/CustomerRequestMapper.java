@@ -19,7 +19,7 @@ public class CustomerRequestMapper {
     public List<DBCustomerRequest> getCustomerRequest() throws DatabaseException {
         List<DBCustomerRequest> customerRequestList = new ArrayList<>();
 
-        String sql = "SELECT * FROM customer_request WHERE deleted_at = NULL";
+        String sql = "SELECT * FROM customer_request WHERE deleted_at IS NULL";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

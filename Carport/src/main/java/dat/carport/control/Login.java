@@ -23,13 +23,18 @@ public class Login extends Command
     String execute(HttpServletRequest request, HttpServletResponse response) throws DatabaseException
     {
         HttpSession session = request.getSession();
-        session.setAttribute("user", null); // adding empty user object to session scope
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
-        User user = UserFacade.login(email, password, connectionPool);
-        session = request.getSession();
-        session.setAttribute("user", user); // adding user object to session scope
+        try {
+            User user = UserFacade.login(email, password, connectionPool);
+            session.setAttribute("user", user); // adding user object to session scope
+            session.removeAttribute("error");
+        }
+        catch (Exception ex)
+        {
+            session.setAttribute("error", "Ukendt kombination af email og kodeord");
+            return "login";
+        }
         return "admin-dashboard";
     }
 }

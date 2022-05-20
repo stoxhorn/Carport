@@ -9,9 +9,11 @@ import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
 import dat.carport.model.persistence.CustomerRequestMapper;
 import dat.carport.model.services.CRUDCustomerRequestService;
+import dat.carport.model.services.CRUDCustomerService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class CRUDCustomerRequestCommand extends Command{
     ConnectionPool connectionPool;
@@ -32,6 +34,7 @@ public class CRUDCustomerRequestCommand extends Command{
     String execute(HttpServletRequest request, HttpServletResponse response) throws DatabaseException {
         String crudType = request.getParameter("crud");
         String customerEmail = request.getParameter("customerEmail");
+        HttpSession session = request.getSession();
         switch (crudType) {
             case "create": {
                 CustomerRequestData crData = new CustomerRequestData(
@@ -50,9 +53,11 @@ public class CRUDCustomerRequestCommand extends Command{
                 return request.getParameter("next");
             }
             case "read":
-                CustomerRequest cr = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
-                request.setAttribute("customerRequest", cr);
-                request.getSession().setAttribute("customerRequest", cr);
+                CustomerRequest customerRequest = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
+                Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
+
+                session.setAttribute("customer", customer);
+                session.setAttribute("customerRequest", customerRequest);
                 break;
             case "update": {
                 CustomerRequestData crData = new CustomerRequestData(
