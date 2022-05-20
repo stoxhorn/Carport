@@ -1,6 +1,7 @@
 package dat.carport.model.persistence;
 
 import dat.carport.model.entities.DBEntities.DBCustomerRequest;
+import dat.carport.model.entities.Enums.Status;
 import dat.carport.model.exceptions.DatabaseException;
 
 import java.sql.*;
@@ -18,7 +19,7 @@ public class CustomerRequestMapper {
     public List<DBCustomerRequest>  getCustomerRequest() throws DatabaseException {
         List<DBCustomerRequest> customerRequestList = new ArrayList<>();
 
-        String sql = "SELECT * FROM customer_request";
+        String sql = "SELECT * FROM customer_request WHERE deleted_at IS NULL";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -33,7 +34,9 @@ public class CustomerRequestMapper {
                     String roofSlope = rs.getString("roof_slope");
                     String shedWidth = rs.getString("shed_width");
                     String shedLength= rs.getString("shed_length");
-                    DBCustomerRequest customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedLength);
+                    Status status = Status.valueOf(rs.getString("status"));
+                    DBCustomerRequest customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedLength, status);
+
                     customerRequestList.add(customerRequest);
                 }
             }
@@ -46,7 +49,7 @@ public class CustomerRequestMapper {
     public DBCustomerRequest readCustomerRequest(int id) throws DatabaseException {
         DBCustomerRequest customerRequest = null;
         String sql = "SELECT customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_length FROM customer_request " +
-                "WHERE id = ?";
+                "WHERE id = ? AND deleted_at = NULL";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, id);
@@ -60,28 +63,30 @@ public class CustomerRequestMapper {
                     String roofSlope = rs.getString("roof_slope");
                     String shedWidth = rs.getString("shed_width");
                     String shedLength = rs.getString("shed_length");
-                    customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedLength);
+                    Status status = Status.valueOf(rs.getString("status"));
+                    customerRequest = new DBCustomerRequest(id, customerUserEmail, carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedLength, status);
                 }
             }
         } catch (SQLException ex) {
-            throw new DatabaseException(ex, "An error occurred while trying to read employee with id:" + id);
+            throw new DatabaseException(ex, "An error occurred while trying to read customer with id:" + id);
         }
         return customerRequest;
     }
 
     public void createCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
-        String sql = "INSERT INTO customer_request (customer_user_email, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_length)" +
-                "VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO customer_request (customer_user_email, status, carport_width, carport_length, roof_type, roof_material, roof_slope, shed_width, shed_length, created_at, updated_at)" +
+                "VALUES (?,?,?,?,?,?,?,?,?, NOW(), NOW())";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, customerRequest.getCustomerUserEmail());
-                ps.setString(2, customerRequest.getCarportWidth());
-                ps.setString(3, customerRequest.getCarportLength());
-                ps.setString(4, customerRequest.getRoofType());
-                ps.setString(5, customerRequest.getRoofMaterial());
-                ps.setString(6, customerRequest.getRoofSlope());
-                ps.setString(7, customerRequest.getShedWidth());
-                ps.setString(8, customerRequest.getShedLength());
+                ps.setString(2, String.valueOf(Status.pending));
+                ps.setString(3, customerRequest.getCarportWidth());
+                ps.setString(4, customerRequest.getCarportLength());
+                ps.setString(5, customerRequest.getRoofType());
+                ps.setString(6, customerRequest.getRoofMaterial());
+                ps.setString(7, customerRequest.getRoofSlope());
+                ps.setString(8, customerRequest.getShedWidth());
+                ps.setString(9, customerRequest.getShedLength());
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected != 1)
                 {
@@ -94,8 +99,8 @@ public class CustomerRequestMapper {
     }
 
     public void deleteCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
-        String sql = "DELETE FROM customer_request " +
-                "WHERE id = ?";
+        String sql = "INSERT INTO customer_request (deleted_at) " +
+                "VALUES (NOW()) WHERE id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, customerRequest.getId());
@@ -108,8 +113,8 @@ public class CustomerRequestMapper {
 
     public void updateCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
         String sql = "UPDATE customer_request " +
-                "SET customer_user_email = ?, carport_width = ?, carport_length = ?, roof_type = ?, roof_material = ?, roof_slope = ?, shed_width = ?, shed_length = ? " +
-                "WHERE customer_user_email = ?";
+                "SET customer_user_email = ?, carport_width = ?, carport_length = ?, roof_type = ?, roof_material = ?, roof_slope = ?, shed_width = ?, shed_length = ?, updated_at = NOW()" +
+                " customer_user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, customerRequest.getCustomerUserEmail());

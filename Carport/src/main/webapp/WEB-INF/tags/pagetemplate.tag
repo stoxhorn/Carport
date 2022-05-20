@@ -33,14 +33,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Forside</a>
                     </li>
+                    <c:if test="${sessionScope.user == null }">
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/customer-request.jsp">Quick-byg</a>
                     </li>
+                    </c:if>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
                     </li>
-                    <li></li>
-
 
 
                     <c:if test="${sessionScope.user == null }">

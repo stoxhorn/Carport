@@ -25,6 +25,7 @@
                     </p>
                 </div>
                 <div class="col-md-10 text-center text-uppercase d-flex justify-content-evenly">
+                    <c:if test="${sessionScope.user == null }">
                     <a href="customer-request.jsp">
                         <div class="wrapper bg-light animate__animated animate__fadeInLeft animate__delay-05s">
                             <h3>
@@ -33,6 +34,7 @@
                             <img class="img-fluid mt-auto" src="images/home-garage.svg" alt="">
                         </div>
                     </a>
+                    </c:if>
                     <a href="customer-dashboard.jsp">
                         <div class="wrapper bg-light animate__animated animate__fadeInRight animate__delay-05s">
                             <h3>

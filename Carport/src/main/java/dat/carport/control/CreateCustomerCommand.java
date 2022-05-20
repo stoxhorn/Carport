@@ -43,7 +43,7 @@ public class CreateCustomerCommand extends Command{
             u = UserFacade.createUser(customerEmail, "", "customer", this.cp);
 
         }
-        request.getSession().setAttribute("user", u);
+        request.setAttribute("user", u);
 
         // i need to check if the customer exists
         Customer c = new Customer(customerEmail, firstName, lastName, address, zipCode, city, phoneNumber);
@@ -55,6 +55,7 @@ public class CreateCustomerCommand extends Command{
             ciMapper.createCustomer(new DBCustomer(c));
         }
 
+        request.setAttribute("customer", c);
 
         // forward him to CRUDCustomerRequestCommand
         Command x = Command.get("CRUDCustomerRequest");

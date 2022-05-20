@@ -19,17 +19,27 @@
           <div class="col-6 p-5 border bg-light">
               <h6>Medarbejdere kan logge på her</h6>
 
-              <form class="d-flex flex-column gap-3" action="fc/login" method="post">
+              <form class="d-flex flex-column gap-3 needs-validation" action="fc/login" method="post">
                   <input type="hidden" name="command" value="login"/>
 
                   <div class="form-floating">
-                      <input class="form-control" type="email" id="email" name="email" placeholder="Email"/>
+                      <input class="form-control <c:if test="${sessionScope.containsKey('error')}">is-invalid</c:if>" type="email" id="email" name="email" placeholder="Email"/>
                       <label class="form-label" for="email">Email</label>
+                      <c:if test="${sessionScope.containsKey('error')}">
+                          <div class="invalid-feedback">
+                              ${sessionScope.error}
+                          </div>
+                      </c:if>
                   </div>
 
                   <div class="form-floating">
-                      <input class="form-control" type="password" id="password" name="password" placeholder="Password"/>
-                      <label class="form-label" for="password">Password</label>
+                      <input class="form-control <c:if test="${sessionScope.containsKey('error')}">is-invalid</c:if>" type="password" id="password" name="password" placeholder="Kodeord"/>
+                      <label class="form-label" for="password">Kodeord</label>
+                      <c:if test="${sessionScope.containsKey('error') }">
+                          <div class="invalid-feedback">
+                              ${sessionScope.error}
+                          </div>
+                      </c:if>
                   </div>
 
                   <input type="submit" class="btn btn-primary btn-lg" value="Log in"/>
