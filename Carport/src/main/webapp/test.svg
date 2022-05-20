@@ -1,0 +1,18 @@
+<svg
+        width="255" height="210"
+        xmlns="http://www.w3.org/2000/svg">
+
+    <rect x="0" y="0" height="600" width="600"
+          style="stroke:#000000; fill: #ffffff"/>
+
+
+    <rect x="5" y="0" height="600" width="5"
+          style="stroke:#000000; fill: #ffffff"/>
+
+
+    <g fill="none" stroke="black" stroke-width="2">
+        <path stroke-dasharray="2,2"  d="M1 10 l255 0" />
+        <path stroke-dasharray="2,2"  d="M1 200 l255 0" />
+    </g>
+
+</svg>
