@@ -22,7 +22,8 @@ abstract class Command
         commands.put("createCustomer", new CreateCustomerCommand());
         commands.put("ReadAllMaterials", new ReadAllMaterialsCommand());
         commands.put("ReadAllRequests", new ReadAllRequestsCommand());
-        commands.put("updateCustomerRequestStatus", new SetCustomerRequestStatusCommand());
+        commands.put("GetSVG", new GetSVGCommand());
+
     }
 
     static Command from( HttpServletRequest request ) {
