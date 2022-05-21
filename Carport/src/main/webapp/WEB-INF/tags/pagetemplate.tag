@@ -16,6 +16,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
 <header>
@@ -52,7 +53,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
                     </li>
                     </c:if>
-                    <c:if test="${!sessionScope.containsKey('user')}">
+                    <c:if test="${!sessionScope.containsKey('user') && !sessionScope.containsKey('customer')}">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Medarbejder</a>
                     </c:if>
                     <c:if test="${sessionScope.containsKey('user') || sessionScope.containsKey('customer') }">

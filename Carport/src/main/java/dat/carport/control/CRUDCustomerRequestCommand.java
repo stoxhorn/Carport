@@ -54,13 +54,17 @@ public class CRUDCustomerRequestCommand extends Command{
             }
             case "read":
                  try {
-                CustomerRequest customerRequest = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
-                Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
+                    CustomerRequest customerRequest = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
+                    if (customerRequest != null) {
+                        Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
 
-                session.setAttribute("customer", customer);
-                session.setAttribute("customerRequest", customerRequest);
+                        session.setAttribute("customer", customer);
+                        session.setAttribute("customerRequest", customerRequest);
+                    } else {
+                        request.setAttribute("error", "Der er ingen ordre tilknyttet denne mail");
+                    }
                  } catch (DatabaseException e) {
-                    throw new RuntimeException(e);
+                     throw new RuntimeException(e);
                 }
                 break;
             case "update": {

@@ -5,7 +5,14 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Design din Carport
+        <c:choose>
+            <c:when test="${sessionScope.containsKey('customer')}">
+                Opdater din ordre
+            </c:when>
+            <c:otherwise>
+                Design din Carport
+            </c:otherwise>
+        </c:choose>
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -25,20 +32,12 @@
 
                     <div class="form-floating">
                         <select class="form-select transition" id="carportWidth" name="carportWidth" aria-label="Carport bredde" aria-describedby="carportWidthHelp">
-                            <option selected value="">Vælg bredde</option>
-                            <option value="240">240 cm</option>
-                            <option value="270">270 cm</option>
-                            <option value="300">300 cm</option>
-                            <option value="330">330 cm</option>
-                            <option value="360">360 cm</option>
-                            <option value="390">390 cm</option>
-                            <option value="420">420 cm</option>
-                            <option value="450">450 cm</option>
-                            <option value="480">480 cm</option>
-                            <option value="510">510 cm</option>
-                            <option value="540">540 cm</option>
-                            <option value="570">570 cm</option>
-                            <option value="600">600 cm</option>
+                            <option value="">Vælg bredde</option>
+                            <c:forEach var="i" begin="240" end="600" step="30">
+                                <option  <c:if test="${sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.requestData.carportWidth == i}">selected</c:if> value="${i}">
+                                        ${i} cm
+                                </option>
+                            </c:forEach>
                         </select>
                         <label for="carportWidth">Carport bredde</label>
                         <div id="carportWidthHelp" class="form-text">Vælg den ønskede bredde til din carport</div>
@@ -46,26 +45,12 @@
 
                     <div class="form-floating">
                         <select class="form-select transition" id="carportLength" name="carportLength" aria-label="Carport længde" aria-describedby="carportLengthHelp">
-                            <option selected value="">Vælg længde</option>
-                            <option value="240">240 cm</option>
-                            <option value="270">270 cm</option>
-                            <option value="300">300 cm</option>
-                            <option value="330">330 cm</option>
-                            <option value="360">360 cm</option>
-                            <option value="390">390 cm</option>
-                            <option value="420">420 cm</option>
-                            <option value="450">450 cm</option>
-                            <option value="480">480 cm</option>
-                            <option value="510">510 cm</option>
-                            <option value="540">540 cm</option>
-                            <option value="570">570 cm</option>
-                            <option value="600">600 cm</option>
-                            <option value="630">630 cm</option>
-                            <option value="660">660 cm</option>
-                            <option value="690">690 cm</option>
-                            <option value="720">720 cm</option>
-                            <option value="750">750 cm</option>
-                            <option value="780">780 cm</option>
+                            <option value="">Vælg længde</option>
+                            <c:forEach var="i" begin="240" end="780" step="30">
+                                <option  <c:if test="${sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.requestData.carportLength == i}">selected</c:if> value="${i}">
+                                        ${i} cm
+                                </option>
+                            </c:forEach>
                         </select>
                         <label for="carportLength">Carport længde</label>
                         <div id="carportLengthHelp" class="form-text">Vælg den ønskede længde til din carport</div>
@@ -73,19 +58,19 @@
 
                     <div class="form-floating">
                         <select class="form-select transition" id="roofType" name="roofType" aria-label="Tag" aria-describedby="roofTypeHelp">
-                            <option selected value="">Vælg tag til carport</option>
-                            <option value="1">Carport med fladt tag</option>
-                            <option value="2" disabled aria-disabled="true">Carport med rejsning</option>
+                            <option value="">Vælg tag til carport</option>
+                            <option <c:if test="${sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.requestData.roofType == 1}">selected</c:if> value="1">Carport med fladt tag</option>
+                            <option <c:if test="${sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.requestData.roofType == 2}">selected</c:if> value="2" disabled aria-disabled="true">Carport med rejsning</option>
                         </select>
                         <label for="roofType">Tag</label>
                         <div id="roofTypeHelp" class="form-text">Vælg den ønskede type tag til din carport</div>
                     </div>
 
-                    <div class="collapse">
+                    <div class="collapse <c:if test="${sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.requestData.roofType == 1}">show</c:if>">
                         <div class="form-floating">
                             <select class="form-select transition" id="roofMaterial" name="roofMaterial" aria-label="Tag materiale" aria-describedby="roofMaterialHelp">
                                 <option selected value="">Vælg tagtype/farve</option>
-                                <option class="forFlatRoof" value="Plasttrapezplader">Plasttrapezplader</option>
+                                <option class="forFlatRoof" <c:if test="${sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.requestData.roofMaterial.equals('Plasttrapezplader')}">selected</c:if> value="Plasttrapezplader">Plasttrapezplader</option>
                                 <option class="forSlopedRoof" value="Betontagsten - Rød">Betontagsten - Rød</option>
                                 <option class="forSlopedRoof" value="Betontagsten - Teglrød">Betontagsten - Teglrød</option>
                                 <option class="forSlopedRoof" value="Betontagsten - Brun">Betontagsten - Brun</option>
@@ -194,38 +179,38 @@
                     <h2 class="text-center">Oplysninger om dig</h2>
 
                     <div class="form-floating">
-                        <input class="form-control" type="email" id="customerEmail" name="customerEmail" aria-describedby="emailHelp" placeholder="Email" required/>
+                        <input class="form-control" type="email" id="customerEmail" name="customerEmail" aria-describedby="emailHelp" required placeholder="Email" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.email}"</c:if> />
                         <label class="form-label" for="customerEmail">Email </label>
                         <div id="emailHelp" class="form-text">Du skal bruge denne email til at finde din ordre</div>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="firstName" name="firstName" required placeholder="Fornavn(e)"/>
+                        <input class="form-control" type="text" id="firstName" name="firstName" required placeholder="Fornavn(e)" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.firstName}"</c:if> />
                         <label class="form-label" for="firstName">Fornavn(e)</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="lastName" name="lastName" required placeholder="Efternavn"/>
+                        <input class="form-control" type="text" id="lastName" name="lastName" required placeholder="Efternavn" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.lastName}"</c:if> />
                         <label class="form-label" for="lastName">Efternavn</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" required placeholder="Telefon nummer"/>
+                        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" required placeholder="Telefon nummer" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.phoneNumber}"</c:if> />
                         <label class="form-label" for="phoneNumber">Telefon nummer</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="address" name="address" required placeholder="Adresse"/>
+                        <input class="form-control" type="text" id="address" name="address" required placeholder="Adresse" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.address}"</c:if> />
                         <label class="form-label" for="address">Adresse</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="zipCode" name="zipCode" required placeholder="Postnummer"/>
+                        <input class="form-control" type="text" id="zipCode" name="zipCode" required placeholder="Postnummer" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.zipCode}"</c:if> />
                         <label class="form-label" for="zipCode">Postnummer</label>
                     </div>
 
                     <div class="form-floating">
-                        <input class="form-control" type="text" id="city" name="city" required placeholder="By"/>
+                        <input class="form-control" type="text" id="city" name="city" required placeholder="By" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.city}"</c:if> />
                         <label class="form-label" for="city">By</label>
                     </div>
 

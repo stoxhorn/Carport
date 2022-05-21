@@ -27,7 +27,7 @@ public class CRUDCustomerRequestService {
                 return cr;
             }
         }
-        throw new DatabaseException("there is no CustomerRequest connected to this email");
+        return null;
     }
 
     public static void createCustomerRequest(String customerEmail, CustomerRequestData crData, ConnectionPool connectionPool) throws DatabaseException {

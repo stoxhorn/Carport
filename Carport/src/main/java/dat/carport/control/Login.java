@@ -1,14 +1,17 @@
 package dat.carport.control;
 
 import dat.carport.model.config.ApplicationStart;
+import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.User;
 import dat.carport.model.exceptions.DatabaseException;
+import dat.carport.model.services.CRUDCustomerRequestService;
 import dat.carport.model.services.UserFacade;
 import dat.carport.model.persistence.ConnectionPool;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 public class Login extends Command
 {
@@ -28,6 +31,9 @@ public class Login extends Command
         try {
             User user = UserFacade.login(email, password, connectionPool);
             session.setAttribute("user", user); // adding user object to session scope
+
+            ArrayList<CustomerRequest> crList = CRUDCustomerRequestService.getAllRequests(connectionPool);
+            session.setAttribute("CustomerRequestList", crList);
         }
         catch (Exception ex)
         {

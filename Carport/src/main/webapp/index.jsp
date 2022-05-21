@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-10 text-center text-uppercase d-flex justify-content-evenly">
                     <c:if test="${!sessionScope.containsKey('user')}">
-                    <a href="customer-request.jsp">
+                    <a href="${pageContext.request.contextPath}/customer-request.jsp">
                         <div class="transition wrapper bg-light animate__animated animate__fadeInLeft animate__delay-05s">
                             <h3 class="fs-4 transition">
                                 Design din Carport
@@ -40,7 +40,7 @@
                         </div>
                     </a>
                     </c:if>
-                    <a href="customer-dashboard.jsp">
+                    <a href="${pageContext.request.contextPath}/customer-dashboard.jsp">
                         <div class="transition wrapper bg-light animate__animated animate__fadeIn<c:if test="${!sessionScope.containsKey('user')}">Right</c:if> animate__delay-05s">
                             <h3 class="fs-4 transition">
                                 Find din ordre

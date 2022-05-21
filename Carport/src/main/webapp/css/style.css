@@ -19,7 +19,9 @@ a {
 table {
     border-collapse: collapse;
     border: 1px solid silver;
-    padding:15px;
+}
+
+table tbody {
 }
 
 th, td {
