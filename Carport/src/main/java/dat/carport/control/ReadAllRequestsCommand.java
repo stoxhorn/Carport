@@ -14,7 +14,7 @@ public class ReadAllRequestsCommand extends Command{
 
     ConnectionPool cp;
 
-    public ReadAllRequestsCommand(){ApplicationStart.getConnectionPool();}
+    public ReadAllRequestsCommand(){this.cp = ApplicationStart.getConnectionPool();}
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws DatabaseException {

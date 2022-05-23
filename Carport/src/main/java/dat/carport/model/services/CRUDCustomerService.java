@@ -19,5 +19,10 @@ public class CRUDCustomerService {
         return null;
     }
 
+    public static void updateCustomer(Customer customer, ConnectionPool cp) throws DatabaseException {
+        CustomerInfoMapper ciMapper = new CustomerInfoMapper(cp);
+        DBCustomer dbCustomer = new DBCustomer(customer);
+        ciMapper.updateCustomer(dbCustomer);
+    }
 
 }

@@ -16,7 +16,7 @@ public class SetCustomerRequestStatusCommand extends Command{
 
     ConnectionPool cp;
 
-    public SetCustomerRequestStatusCommand(){ApplicationStart.getConnectionPool();}
+    public SetCustomerRequestStatusCommand(){this.cp = ApplicationStart.getConnectionPool();}
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws DatabaseException {
@@ -26,16 +26,16 @@ public class SetCustomerRequestStatusCommand extends Command{
         Status status = Status.valueOf(request.getParameter("status"));
 
         if(!u.getRole().equals("admin")){
-            // if user is not admin, sent him back to index
-            return request.getParameter("index");
+            // if user is not admin, sent him back to admin dashboard
+            return request.getParameter("admin-dashboard");
         }
 
-        String customerEmail = request.getParameter("CustomerEmail");
+        String customerEmail = request.getParameter("customerEmail");
 
-        CustomerRequest cr = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.cp);
+        CustomerRequest cr = CRUDCustomerRequestService.readCustomerRequest(customerEmail, cp);
         cr.setStatus(status);
 
-        CRUDCustomerRequestService.updateCustomerRequest(cr, this.cp);
+        CRUDCustomerRequestService.updateCustomerRequest(cr, cp);
 
 
         return request.getParameter("next");

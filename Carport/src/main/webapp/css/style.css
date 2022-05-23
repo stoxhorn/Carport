@@ -1,11 +1,14 @@
 /* CSS stylesheet  for application */
-
-root {
+:root {
     --color-primary-secondary: #0057A9;
     --color-primary-main: #003D76;
     --font-primary-light: rgba(222, 222, 222, 0.91);
     --font-primary-dark: rgba(37, 37, 37, 0.91);
     --bg-color: #f8f9fa;
+}
+
+html, body{
+    overflow-x: hidden;
 }
 
 a {
@@ -16,7 +19,9 @@ a {
 table {
     border-collapse: collapse;
     border: 1px solid silver;
-    padding:15px;
+}
+
+table tbody {
 }
 
 th, td {
@@ -24,25 +29,33 @@ th, td {
     padding:15px;
 }
 
+li {
+    list-style: none;
+}
+
 .wrapper {
     z-index: 1;
     overflow: hidden;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 0;
     aspect-ratio: 1;
-    width: 20vw;
-    height: 20vw;
+    width: 22vw;
+    height: 22vw;
     border: 2px solid black;
     display: flex;
     flex-direction: column;
     place-items: center;
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    -ms-transition: all .3s;
-    -o-transition: all .3s;
-    transition: all .3s;
 }
 
+a:hover h3 {
+    color:var(--color-primary-secondary);
+}
+a:hover svg path {
+    fill: var(--color-primary-secondary);
+}
+a:hover svg {
+    filter: drop-shadow(2px 3px 1px rgb(0 0 0 / 0.4));
+}
 a .wrapper:hover {
     border-color: var(--color-primary-main);
     -webkit-box-shadow: 0px 5px 15px -2px #000000;
@@ -52,6 +65,29 @@ a .wrapper:hover {
     -ms-transform: translateY(-5px);
     -o-transform: translateY(-5px);
     transform: translateY(-5px);
+}
+
+.transition {
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.form-floating input,
+.form-floating label {
+    z-index: 1;
+}
+
+.form-floating:hover input:not(:disabled),
+.form-floating:hover input,
+.form-floating:focus-within input,
+.form-floating input:focus,
+.form-floating:hover select
+{
+    border-color: var(--color-primary-secondary);
+    box-shadow: none !important;
 }
 
 footer {

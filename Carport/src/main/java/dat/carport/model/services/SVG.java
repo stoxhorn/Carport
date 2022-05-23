@@ -19,6 +19,8 @@ public class SVG
 
     private final String rectTemplate = "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill: #ffffff\" />";
 
+    private final String lineTemplate = "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\"  style=\"stroke:#000000; fill: #ffffff\" />";
+
     public SVG(int x, int y, String viewBox, int width, int height)
     {
         this.x = x;
@@ -36,7 +38,7 @@ public class SVG
 
     public void addLine(int x1, int y1, int x2, int y2 )
     {
-
+        svg.append(String.format(lineTemplate, x1, x2, y1, y2));
     }
 
     public void addSvg(SVG innerSVG)

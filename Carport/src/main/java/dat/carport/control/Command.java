@@ -22,7 +22,7 @@ abstract class Command
         commands.put("createCustomer", new CreateCustomerCommand());
         commands.put("ReadAllMaterials", new ReadAllMaterialsCommand());
         commands.put("ReadAllRequests", new ReadAllRequestsCommand());
-        commands.put("updateCustomerRequest", new SetCustomerRequestStatusCommand());
+        commands.put("updateCustomerRequestStatus", new SetCustomerRequestStatusCommand());
     }
 
     static Command from( HttpServletRequest request ) {

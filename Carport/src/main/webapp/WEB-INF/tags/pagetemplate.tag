@@ -16,14 +16,23 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="container">
+        <div class="container d-flex">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
                 <img src="${pageContext.request.contextPath}/images/fog-logo1.svg" width="75px" class="img-fluid"/>
             </a>
+            <c:choose>
+                <c:when test="${sessionScope.containsKey('customer')}">
+                    <p class="m-0">Du er logget ind som "${sessionScope.customer.email}"</p>
+                </c:when>
+                <c:when test="${sessionScope.containsKey('user')}">
+                    <p class="m-0">Du er logget ind som "${sessionScope.user.username}"</p>
+                </c:when>
+            </c:choose>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,22 +40,31 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Forside</a>
+                        <a class="nav-link"
+                           href=
+                            <c:choose>
+                                <c:when test="${sessionScope.containsKey('user') && sessionScope.user.role == 'admin' }">
+                                   "${pageContext.request.contextPath}/admin-dashboard.jsp">
+                                </c:when>
+                                <c:otherwise>
+                                    "${pageContext.request.contextPath}/index.jsp">
+                                </c:otherwise>
+                            </c:choose>
+                        Forside
+                        </a>
                     </li>
-                    <c:if test="${sessionScope.user == null }">
+                    <c:if test="${!sessionScope.containsKey('user')}">
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/customer-request.jsp">Quick-byg</a>
                     </li>
-                    </c:if>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">${sessionScope.containsKey('customer') ? "Oversigt" : "Find ordre" }</a>
                     </li>
-
-
-                    <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
-                    <c:if test="${sessionScope.user != null }">
+                    <c:if test="${!sessionScope.containsKey('user') && !sessionScope.containsKey('customer')}">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Medarbejder</a>
+                    </c:if>
+                    <c:if test="${sessionScope.containsKey('user') || sessionScope.containsKey('customer') }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/fc/logout?command=logout">Log out</a>
                     </c:if>
                 </ul>
