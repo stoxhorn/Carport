@@ -21,10 +21,18 @@
 <body class="d-flex flex-column h-100">
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="container">
+        <div class="container d-flex">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
                 <img src="${pageContext.request.contextPath}/images/fog-logo1.svg" width="75px" class="img-fluid"/>
             </a>
+            <c:choose>
+                <c:when test="${sessionScope.containsKey('customer')}">
+                    <p class="m-0">Du er logget ind som "${sessionScope.customer.email}"</p>
+                </c:when>
+                <c:when test="${sessionScope.containsKey('user')}">
+                    <p class="m-0">Du er logget ind som "${sessionScope.user.username}"</p>
+                </c:when>
+            </c:choose>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -50,7 +58,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/customer-request.jsp">Quick-byg</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">Find ordre</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/customer-dashboard.jsp">${sessionScope.containsKey('customer') ? "Oversigt" : "Find ordre" }</a>
                     </li>
                     </c:if>
                     <c:if test="${!sessionScope.containsKey('user') && !sessionScope.containsKey('customer')}">

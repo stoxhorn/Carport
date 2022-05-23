@@ -80,6 +80,7 @@ a .wrapper:hover {
     z-index: 1;
 }
 
+.form-floating:hover input:not(:disabled),
 .form-floating:hover input,
 .form-floating:focus-within input,
 .form-floating input:focus,

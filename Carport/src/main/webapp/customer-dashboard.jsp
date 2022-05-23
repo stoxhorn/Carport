@@ -7,7 +7,7 @@
     <jsp:attribute name="header">
        <c:choose>
             <c:when test="${sessionScope.containsKey('customer')}">
-                Her er din oversigt ${sessionScope.customer.firstName}
+                Oversigt
             </c:when>
             <c:when test="${!sessionScope.containsKey('customer')}">
                 Find din ordre

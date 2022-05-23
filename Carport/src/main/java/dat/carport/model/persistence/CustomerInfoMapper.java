@@ -102,7 +102,7 @@ public class CustomerInfoMapper {
         }
     }
 
-    public void updateCustomers(DBCustomer customer) throws DatabaseException {
+    public void updateCustomer(DBCustomer customer) throws DatabaseException {
         String sql = "UPDATE customer " +
                 "SET first_name = ?, last_name = ?, address = ?, zip_code = ?, city = ?, phone = ?  " +
                 "WHERE user_email = ?";

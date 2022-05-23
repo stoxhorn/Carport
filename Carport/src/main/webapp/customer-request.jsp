@@ -23,12 +23,12 @@
 
         <div class="row justify-content-center border bg-light animate__animated animate__fadeInUp">
             <div class="col-10 col-lg-8 col-xl-6 col-xxl-6 ">
-                <form class="p-5 d-flex flex-column gap-4" action="fc/createCustomer" method="post">
+                <form class="p-5 d-flex flex-column gap-4" action="${sessionScope.containsKey('customer') ? 'fc/CRUDCustomerRequest' : 'fc/createCustomer'}" method="post">
                     <h2 class="text-center">Oplysninger om carport</h2>
-                    <input type="hidden" name="crud" value="create"/>
-                    <input type="hidden" name="command" value="createCustomer"/>
+                    <input type="hidden" name="crud" value="${sessionScope.containsKey('customer') ? 'update' : 'create'}"/>
+                    <input type="hidden" name="command" value="${sessionScope.containsKey('customer') ? 'CRUDCustomerRequest' : 'createCustomer'}"/>
                     <input type="hidden" name="next" value="customer-dashboard"/>
-                    <input type="hidden" value="create" id="crudRequest" name="crud"/>
+                    <input type="hidden" value="${sessionScope.containsKey('customer') ? 'update' : 'create'}" id="crudRequest" name="crud"/>
 
                     <div class="form-floating">
                         <select class="form-select transition" id="carportWidth" name="carportWidth" aria-label="Carport bredde" aria-describedby="carportWidthHelp">
@@ -95,7 +95,7 @@
                     <div class="collapse">
                         <div class="form-floating">
                             <select class="form-select transition" id="roofSlope" name="roofSlope" aria-label="Taghældning" aria-describedby="roofSlopeHelp">
-                                <option selected value="">Vælg hældning på taget</option>
+                                <option value="">Vælg hældning på taget</option>
                                 <option value="15">15 grader</option>
                                 <option value="20">20 grader</option>
                                 <option value="25">25 grader</option>
@@ -121,7 +121,7 @@
 
                             <div class="form-floating mt-4 mb-4">
                                 <select class="form-select transition" id="shedWidth" name="shedWidth" aria-label="Redskabsrum bredde" aria-describedby="shedWidthHelp">
-                                    <option selected value="">Vælg bredde</option>
+                                    <option value="">Vælg bredde</option>
                                     <option value="210">210 cm</option>
                                     <option value="240">240 cm</option>
                                     <option value="270">270 cm</option>
@@ -147,7 +147,7 @@
 
                             <div class="form-floating">
                                 <select class="form-select transition" id="shedLength" name="shedLength" aria-label="Redskabsskur længde" aria-describedby="shedLengthHelp">
-                                    <option selected value="">Vælg længde</option>
+                                    <option value="">Vælg længde</option>
                                     <option value="150">150 cm</option>
                                     <option value="180">180 cm</option>
                                     <option value="210">210 cm</option>
@@ -179,7 +179,7 @@
                     <h2 class="text-center">Oplysninger om dig</h2>
 
                     <div class="form-floating">
-                        <input class="form-control" type="email" id="customerEmail" name="customerEmail" aria-describedby="emailHelp" required placeholder="Email" <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.email}"</c:if> />
+                        <input class="form-control" type="email" id="customerEmail" name="customerEmail" aria-describedby="emailHelp" ${!sessionScope.containsKey('customer') ? "required" : "disabled" } <c:if test="${sessionScope.containsKey('customer')}">value="${sessionScope.customer.email}"</c:if> placeholder="Email" />
                         <label class="form-label" for="customerEmail">Email </label>
                         <div id="emailHelp" class="form-text">Du skal bruge denne email til at finde din ordre</div>
                     </div>
