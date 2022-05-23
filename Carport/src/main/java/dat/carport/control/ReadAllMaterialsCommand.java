@@ -16,7 +16,7 @@ public class ReadAllMaterialsCommand extends Command{
 
     ConnectionPool cp;
 
-    public ReadAllMaterialsCommand(){ApplicationStart.getConnectionPool();}
+    public ReadAllMaterialsCommand(){this.cp = ApplicationStart.getConnectionPool();}
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws DatabaseException {

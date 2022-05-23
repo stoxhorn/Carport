@@ -29,6 +29,10 @@ th, td {
     padding:15px;
 }
 
+li {
+    list-style: none;
+}
+
 .wrapper {
     z-index: 1;
     overflow: hidden;

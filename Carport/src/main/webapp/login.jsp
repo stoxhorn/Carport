@@ -23,7 +23,7 @@
                   <input type="hidden" name="command" value="login"/>
 
                   <div class="form-floating">
-                      <input class="form-control <c:if test="${requestScope.containsKey('error')}">is-invalid</c:if>" type="email" id="email" name="email" placeholder="Email"/>
+                      <input class="form-control <c:if test="${requestScope.containsKey('error')}">is-invalid animate__animated animate__shakeX</c:if>" type="email" id="email" name="email" placeholder="Email"/>
                       <label class="form-label" for="email">Email</label>
                       <c:if test="${requestScope.containsKey('error')}">
                           <div class="invalid-feedback animate__animated animate__fadeIn">
@@ -33,7 +33,7 @@
                   </div>
 
                   <div class="form-floating">
-                      <input class="form-control <c:if test="${requestScope.containsKey('error')}">is-invalid</c:if>" type="password" id="password" name="password" placeholder="Kodeord"/>
+                      <input class="form-control <c:if test="${requestScope.containsKey('error')}">is-invalid animate__animated animate__shakeX</c:if>" type="password" id="password" name="password" placeholder="Kodeord"/>
                       <label class="form-label" for="password">Kodeord</label>
                       <c:if test="${requestScope.containsKey('error') }">
                           <div class="invalid-feedback animate__animated animate__fadeIn">

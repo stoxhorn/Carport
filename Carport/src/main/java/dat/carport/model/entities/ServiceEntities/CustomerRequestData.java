@@ -72,13 +72,16 @@ public class CustomerRequestData {
     }
 
     @Override
-    public String toString() {
-        return  "<li>carportWidth: " + carportWidth + "</li>" +
-                "<li>carportLength: " + carportLength + "</li>" +
-                "<li>roofType: " + roofType + "</li>" +
-                "<li>roofMaterial: " + roofMaterial + "</li>" +
-                "<li>roofSlope: " + roofSlope + "</li>" +
-                "<li>shedWidth: " + shedWidth + "</li>" +
-                "<li>shedLength: " + shedLength + "</li>";
+    public String toString()
+    {
+        return "CustomerRequestData{" +
+                "carportWidth='" + carportWidth + '\'' +
+                ", carportLength='" + carportLength + '\'' +
+                ", roofType='" + roofType + '\'' +
+                ", roofMaterial='" + roofMaterial + '\'' +
+                ", roofSlope='" + roofSlope + '\'' +
+                ", shedWidth='" + shedWidth + '\'' +
+                ", shedLength='" + shedLength + '\'' +
+                '}';
     }
 }
