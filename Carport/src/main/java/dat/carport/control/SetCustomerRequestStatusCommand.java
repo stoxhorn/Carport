@@ -23,7 +23,6 @@ public class SetCustomerRequestStatusCommand extends Command{
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
 
-        Status status = Status.valueOf(request.getParameter("status"));
 
         if(!u.getRole().equals("admin")){
             // if user is not admin, sent him back to admin dashboard
@@ -33,7 +32,12 @@ public class SetCustomerRequestStatusCommand extends Command{
         String customerEmail = request.getParameter("customerEmail");
 
         CustomerRequest cr = CRUDCustomerRequestService.readCustomerRequest(customerEmail, cp);
-        cr.setStatus(status);
+
+        if(cr.getStatus().equals(Status.pending)){
+            cr.setStatus(Status.completed);
+        }else if(cr.getStatus().equals(Status.completed)){
+            cr.setStatus(Status.pending);
+        }
 
         CRUDCustomerRequestService.updateCustomerRequest(cr, cp);
 
