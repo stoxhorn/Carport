@@ -1,18 +1,1 @@
-<svg
-        width="255" height="210"
-        xmlns="http://www.w3.org/2000/svg">
-
-    <rect x="0" y="0" height="600" width="600"
-          style="stroke:#000000; fill: #ffffff"/>
-
-
-    <rect x="5" y="0" height="600" width="5"
-          style="stroke:#000000; fill: #ffffff"/>
-
-
-    <g fill="none" stroke="black" stroke-width="2">
-        <path stroke-dasharray="2,2"  d="M1 10 l255 0" />
-        <path stroke-dasharray="2,2"  d="M1 200 l255 0" />
-    </g>
-
-</svg>
+<svg height="100%" width="100%" viewBox="0 0 100 100" x="0"   y="0"    preserveAspectRatio="xMinYMin"><rect x="10" y="0" height="100.000000" width="0.500000" style="stroke:#000000; fill: #ffffff" /></svg>

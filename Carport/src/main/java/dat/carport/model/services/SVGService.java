@@ -5,6 +5,11 @@ import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 public class SVGService {
 
     public static String getCarpotSVGString(CustomerRequest cr){
-        return "not implemented";
+        BuildCarportSVG bSVG = new BuildCarportSVG();
+        bSVG.addAllBjælker();
+        bSVG.addTværBrædder();
+        bSVG.addAllStolper();
+
+        return bSVG.svg.toString();
     }
 }
