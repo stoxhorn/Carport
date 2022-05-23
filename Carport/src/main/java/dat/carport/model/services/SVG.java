@@ -19,6 +19,7 @@ public class SVG
 
     private final String rectTemplate = "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill: #ffffff\" />";
 
+
     public SVG(int x, int y, String viewBox, int width, int height)
     {
         this.x = x;

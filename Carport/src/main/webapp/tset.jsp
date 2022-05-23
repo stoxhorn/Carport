@@ -79,6 +79,13 @@
 
             <input type="submit"  value="command request"/>
         </form>
+
+        <form action="fc/GetSVG" method="post">
+            <input type="hidden" name="command" value="GetSVG"/>
+            <input type="hidden" name="next" value="index"/>
+            <input type="text" id="customerEmail3" name="customerEmail"/>
+            <input type="submit"  value="command SVG"/>
+        </form>
     </jsp:body>
 
 </t:pagetemplate>
