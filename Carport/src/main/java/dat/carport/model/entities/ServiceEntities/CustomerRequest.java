@@ -20,10 +20,11 @@ public class CustomerRequest {
         this.requestData = new CustomerRequestData(carportWidth, carportLength, roofType, roofMaterial, roofSlope, shedWidth, shedLength);
     }
 
-    public CustomerRequest(int id, String customerUserEmail, CustomerRequestData requestData){
-        this.id = id;
+    public CustomerRequest(String customerUserEmail, Status status, CustomerRequestData requestData){
         this.customerUserEmail = customerUserEmail;
+        this.status = status;
         this.requestData = requestData;
+
     }
 
     public CustomerRequest(DBCustomerRequest dbcr){

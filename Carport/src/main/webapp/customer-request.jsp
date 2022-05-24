@@ -15,9 +15,6 @@
         </c:choose>
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-        Welcome to the frontpage
-    </jsp:attribute>
 
     <jsp:body>
 
@@ -29,6 +26,7 @@
                     <input type="hidden" name="command" value="${sessionScope.containsKey('customer') ? 'CRUDCustomerRequest' : 'createCustomer'}"/>
                     <input type="hidden" name="next" value="customer-dashboard"/>
                     <input type="hidden" value="${sessionScope.containsKey('customer') ? 'update' : 'create'}" id="crudRequest" name="crud"/>
+                    <input type="hidden" name="status" value="${sessionScope.containsKey('customerRequest') ? sessionScope.customerRequest.status : 'pending'}"/>
 
                     <div class="form-floating">
                         <select class="form-select transition" id="carportWidth" name="carportWidth" aria-label="Carport bredde" aria-describedby="carportWidthHelp">

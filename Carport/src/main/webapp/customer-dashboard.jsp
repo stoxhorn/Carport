@@ -15,14 +15,11 @@
         </c:choose>
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-        Welcome to the frontpage
-    </jsp:attribute>
 
     <jsp:body>
 
         <c:choose>
-            <c:when test="${sessionScope.containsKey('customer')}">
+            <c:when test="${sessionScope.containsKey('customer') && sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.status == 'pending'}">
                 <div class="row border">
                     <div class="col-6 offset-3 p-3 text-center">
                         <p class="fs-5  ">Vi er stadig i gang med at behandle din ordre</p>
@@ -34,7 +31,13 @@
                     </div>
                 </div>
             </c:when>
-            <c:when test="${!sessionScope.containsKey('customer')}">
+            <c:when test="${sessionScope.containsKey('customer') && sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.status == 'completed'}">
+                ${sessionScope.customerRequest}
+                <c:forEach items="${sessionScope.materialList}" var="line" varStatus="i">
+                    <p>${line}</p>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
                     <div class="row border p-5 bg-light animate__animated animate__flipInX">
                         <form class="d-flex justify-content-center align-content-center p-3" action="fc/CRUDCustomerRequest" method="post">
                             <div class="col-4 d-flex flex-column gap-3">
@@ -57,7 +60,7 @@
                             </div>
                         </form>
                     </div>
-            </c:when>
+            </c:otherwise>
         </c:choose>
 
     </jsp:body>
