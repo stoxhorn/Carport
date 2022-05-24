@@ -8,9 +8,6 @@
          Johannes Fog Quick-byg tilbud
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-        Welcome to the frontpage
-    </jsp:attribute>
 
     <jsp:body>
             <div class="row justify-content-center ">
