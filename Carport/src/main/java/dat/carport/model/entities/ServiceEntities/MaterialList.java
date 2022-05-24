@@ -602,115 +602,82 @@ public class MaterialList {
         boolean eternitRoof = roofTypeCheck(cr);
 
         double total = 0;
-        double stolperDouble;
-        double remDouble;
-        double overSternDouble;
-        double underSternDouble;
-        double vandBrætDouble;
-        double vandBrætSkruerDouble;
-        double bræddeBolteDouble;
-        double firkantSkiverDouble;
-        double spærDouble;
-        double spærBeslagDouble;
-        double hulbåndDouble;
-        double beslagskruerDouble;
-        double trapezPladerDouble;
-        double trapezPladerSkruerDouble;
-        double remSkurDouble;
-        double dørLægteDouble;
-        double løsHolterDouble;
-        double skurBeklædningDouble;
-        double beklædningSkruerYderstDouble;
-        double beklædningSkruerInderstDouble;
-        double stalddørsgrebDouble;
-        double tHængselDouble;
-        double vinkelBeslagDouble;
-        double slopeSpærDouble;
-        double tagLægterDouble;
-        double vindSkederDouble;
-        double slopeSternDouble;
-        double eternitPladerDouble;
-        double eternitSkruerDouble;
-        double eternitRygningerDouble;
-        double betonTagstenDouble;
-        double betonTagRygningerDouble;
-        double tagstenskrogeDouble;
 
         String stolper = getStolper(cr);
-        stolperDouble = getPrice(stolper);
+        double stolperDouble = getPrice(stolper);
 
         String rem = getRem(cr);
-        remDouble = getPrice(rem);
+        double remDouble = getPrice(rem);
 
         String overStern = getOverStern(cr);
-        overSternDouble = getPrice(overStern);
+        double overSternDouble = getPrice(overStern);
 
         String underStern = getUnderStern(cr);
-        underSternDouble = getPrice(underStern);
+        double underSternDouble = getPrice(underStern);
 
         String vandBræt = getVandBræt(cr);
-        vandBrætDouble = getPrice(vandBræt);
+        double vandBrætDouble = getPrice(vandBræt);
 
         String vandBrætSkruer = getVandBrætSkruer();
-        vandBrætSkruerDouble = getPrice(vandBrætSkruer);
+        double vandBrætSkruerDouble = getPrice(vandBrætSkruer);
 
         String bræddeBolte = getBræddeBolte(cr);
-        bræddeBolteDouble = getPrice(bræddeBolte);
+        double bræddeBolteDouble = getPrice(bræddeBolte);
 
         String firkantskiver = getFirkantSkiver(cr);
-        firkantSkiverDouble = getPrice(firkantskiver);
+        double firkantSkiverDouble = getPrice(firkantskiver);
 
         total = total + stolperDouble + remDouble + underSternDouble + overSternDouble + vandBrætDouble
                 + vandBrætSkruerDouble + bræddeBolteDouble + firkantSkiverDouble;
         if(!slope) {
             String spær = getSpær(cr);
-            spærDouble = getPrice(spær);
+            double spærDouble = getPrice(spær);
 
             String spærBeslag = getSpærBeslag();
-            spærBeslagDouble = getPrice(spærBeslag);
+            double spærBeslagDouble = getPrice(spærBeslag);
 
             String hulbånd = getHulbånd(cr);
-            hulbåndDouble = getPrice(hulbånd);
+            double hulbåndDouble = getPrice(hulbånd);
 
             String beslagSkruer = getBeslagskruer();
-            beslagskruerDouble = getPrice(beslagSkruer);
+            double beslagskruerDouble = getPrice(beslagSkruer);
 
             String trapezPlader = getTrapezPlader(cr);
-            trapezPladerDouble = getPrice(trapezPlader);
+            double trapezPladerDouble = getPrice(trapezPlader);
 
             String trapezPladerSkruer = getTrapezPladerSkruer(cr);
-            trapezPladerSkruerDouble = getPrice(trapezPladerSkruer);
+            double trapezPladerSkruerDouble = getPrice(trapezPladerSkruer);
 
             total = total + spærDouble + spærBeslagDouble + hulbåndDouble + beslagskruerDouble +
                     trapezPladerDouble + trapezPladerSkruerDouble;
         }
         if(shed) {
             String remSkur = getRemSkur(cr);
-            remSkurDouble = getPrice(remSkur);
+            double remSkurDouble = getPrice(remSkur);
 
             String dørLægte = getDørLægte();
-            dørLægteDouble = getPrice(dørLægte);
+            double dørLægteDouble = getPrice(dørLægte);
 
             String løsholter = getLøsholter(cr);
-            løsHolterDouble = getPrice(løsholter);
+            double løsHolterDouble = getPrice(løsholter);
 
             String skurBeklædning = getSkurBeklædning(cr);
-            skurBeklædningDouble = getPrice(skurBeklædning);
+            double skurBeklædningDouble = getPrice(skurBeklædning);
 
             String beklædningSkruerYderst = getBeklædningSkruerYderst(cr);
-            beklædningSkruerYderstDouble = getPrice(beklædningSkruerYderst);
+            double beklædningSkruerYderstDouble = getPrice(beklædningSkruerYderst);
 
             String beklædningSkruerInderst = getBeklædningSkruerInderst(cr);
-            beklædningSkruerInderstDouble = getPrice(beklædningSkruerInderst);
+            double beklædningSkruerInderstDouble = getPrice(beklædningSkruerInderst);
 
             String stalddørsgreb = getStalddørsgreb();
-            stalddørsgrebDouble = getPrice(stalddørsgreb);
+            double stalddørsgrebDouble = getPrice(stalddørsgreb);
 
             String tHængsel = getTHængsel();
-            tHængselDouble = getPrice(tHængsel);
+            double tHængselDouble = getPrice(tHængsel);
 
             String vinkelBeslag = getVinkelBeslag(cr);
-            vinkelBeslagDouble = getPrice(vinkelBeslag);
+            double vinkelBeslagDouble = getPrice(vinkelBeslag);
 
             total = total + remSkurDouble + dørLægteDouble + løsHolterDouble + skurBeklædningDouble
                     + beklædningSkruerYderstDouble + beklædningSkruerInderstDouble + stalddørsgrebDouble
@@ -718,38 +685,38 @@ public class MaterialList {
         }
         if(slope) {
             String slopeSpær = getSlopeSpær(cr);
-            slopeSpærDouble = getPrice(slopeSpær);
+            double slopeSpærDouble = getPrice(slopeSpær);
 
             String tagLægter = getTagLægter(cr);
-            tagLægterDouble = getPrice(tagLægter);
+            double tagLægterDouble = getPrice(tagLægter);
 
             String vindskeder = getVindskeder(cr);
-            vindSkederDouble = getPrice(vindskeder);
+            double vindSkederDouble = getPrice(vindskeder);
 
             String slopeStern = getSlopeStern(cr);
-            slopeSternDouble = getPrice(slopeStern);
+            double slopeSternDouble = getPrice(slopeStern);
 
             total = total + slopeSpærDouble + tagLægterDouble + vindSkederDouble + slopeSternDouble;
             if (eternitRoof) {
                 String eternitPlader = getEternitPlader(cr);
-                eternitPladerDouble = getPrice(eternitPlader);
+                double eternitPladerDouble = getPrice(eternitPlader);
 
                 String eternitSkruer = getEternitSkruer(cr);
-                eternitSkruerDouble = getPrice(eternitSkruer);
+                double eternitSkruerDouble = getPrice(eternitSkruer);
 
                 String eternitRygninger = getEternitRygninger(cr);
-                eternitRygningerDouble = getPrice(eternitRygninger);
+                double eternitRygningerDouble = getPrice(eternitRygninger);
 
                 total = total + eternitPladerDouble + eternitSkruerDouble + eternitRygningerDouble;
             } else {
                 String betonTagsten = getBetonTagsten(cr);
-                betonTagstenDouble = getPrice(betonTagsten);
+                double betonTagstenDouble = getPrice(betonTagsten);
 
                 String betonTagRygninger = getBetontagRygninger(cr);
-                betonTagRygningerDouble = getPrice(betonTagRygninger);
+                double betonTagRygningerDouble = getPrice(betonTagRygninger);
 
                 String tagstenskroge = getTagstenskroge(cr);
-                tagstenskrogeDouble = getPrice(tagstenskroge);
+                double tagstenskrogeDouble = getPrice(tagstenskroge);
 
                 total = total + betonTagstenDouble + betonTagRygningerDouble + tagstenskrogeDouble;
             }
