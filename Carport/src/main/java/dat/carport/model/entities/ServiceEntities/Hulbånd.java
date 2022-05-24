@@ -19,11 +19,10 @@ public class Hulbånd {
         this.length = length;
         this.unit = ", Enhed: Rulle,";
         this.description = " Til vindkryds på spær";
-        this.price = price;
     }
 
     @Override
     public String toString() {
-        return  name + "Antal: " + amount + height + width + " Længde: " + length + "cm" + unit + description + " Pris: " + price + "kr.";
+        return  name + "Antal: " + amount + height + width + " Længde: " + length + "m" + unit + description + " Pris: " + price + "kr.";
     }
 }

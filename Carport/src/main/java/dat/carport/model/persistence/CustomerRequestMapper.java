@@ -113,7 +113,7 @@ public class CustomerRequestMapper {
 
     public void updateCustomerRequest(DBCustomerRequest customerRequest) throws DatabaseException {
         String sql = "UPDATE customer_request " +
-                "SET carport_width = ?, carport_length = ?, roof_type = ?, roof_material = ?, roof_slope = ?, shed_width = ?, shed_length = ?, updated_at = NOW() " +
+                "SET   carport_width = ?, carport_length = ?, roof_type = ?, roof_material = ?, roof_slope = ?, shed_width = ?, shed_length = ?, status = ?, updated_at = NOW() " +
                 "where customer_user_email = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -124,7 +124,8 @@ public class CustomerRequestMapper {
                 ps.setString(5, customerRequest.getRoofSlope());
                 ps.setString(6, customerRequest.getShedWidth());
                 ps.setString(7, customerRequest.getShedLength());
-                ps.setString(8, customerRequest.getCustomerUserEmail());
+                ps.setString(8, String.valueOf(customerRequest.getStatus()));
+                ps.setString(9, customerRequest.getCustomerUserEmail());
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {

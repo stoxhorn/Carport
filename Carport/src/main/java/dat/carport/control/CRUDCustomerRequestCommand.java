@@ -5,6 +5,7 @@ import dat.carport.model.entities.Enums.Status;
 import dat.carport.model.entities.ServiceEntities.Customer;
 import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
+import dat.carport.model.entities.ServiceEntities.MaterialList;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
 import dat.carport.model.services.CRUDCustomerRequestService;
@@ -13,6 +14,7 @@ import dat.carport.model.services.CRUDCustomerService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 public class CRUDCustomerRequestCommand extends Command{
     ConnectionPool connectionPool;
@@ -36,8 +38,11 @@ public class CRUDCustomerRequestCommand extends Command{
         String customerEmail = null;
         if (!request.getParameterMap().containsKey("customerEmail"))
         {
-            Customer customer = (Customer) session.getAttribute("customer");
-            customerEmail = customer.getEmail();
+            if (session.getAttribute("customer") != null)
+            {
+                Customer customer = (Customer) session.getAttribute("customer");
+                customerEmail = customer.getEmail();
+            }
         } else
         {
             customerEmail = request.getParameter("customerEmail");
@@ -65,8 +70,11 @@ public class CRUDCustomerRequestCommand extends Command{
                     if (customerRequest != null) {
                         Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
 
+                        MaterialList materialList = new MaterialList(customerRequest.getRequestData());
+
                         session.setAttribute("customer", customer);
                         session.setAttribute("customerRequest", customerRequest);
+                        session.setAttribute("materialList", materialList.materialList);
                     } else {
                         request.setAttribute("error", "Der er ingen ordre tilknyttet denne mail");
                     }
@@ -83,25 +91,28 @@ public class CRUDCustomerRequestCommand extends Command{
                         request.getParameter("roofSlope").isEmpty() ? null : request.getParameter("roofSlope"),
                         request.getParameter("shedWidth").isEmpty() ? null : request.getParameter("shedWidth"),
                         request.getParameter("shedLength").isEmpty() ? null : request.getParameter("shedLength"));
-
-                Customer c = new Customer(
-                        customerEmail,
-                        request.getParameter("firstName"),
-                        request.getParameter("lastName"),
-                        request.getParameter("phoneNumber"),
-                        request.getParameter("address"),
-                        request.getParameter("zipCode"),
-                        request.getParameter("city"));
+                Status status = Status.valueOf(request.getParameter("status"));
                 try {
-                    CustomerRequest cr = (CustomerRequest) session.getAttribute("customerRequest");
-                    Status status = cr.getStatus();
-
                     CRUDCustomerRequestService.updateCustomerRequest(customerEmail, crData, this.connectionPool, status);
-                    CRUDCustomerService.updateCustomer(c, this.connectionPool);
 
-                    session.setAttribute("customerRequest", cr);
-                    session.setAttribute("customer", c);
+                    ArrayList<CustomerRequest> crList = CRUDCustomerRequestService.getAllRequests(connectionPool);
+                    session.setAttribute("CustomerRequestList", crList);
 
+                    if (session.getAttribute("customer") != null){
+                        CustomerRequest cr = new CustomerRequest(customerEmail, status, crData);
+                        Customer c = new Customer(
+                                customerEmail,
+                                request.getParameter("firstName"),
+                                request.getParameter("lastName"),
+                                request.getParameter("phoneNumber"),
+                                request.getParameter("address"),
+                                request.getParameter("zipCode"),
+                                request.getParameter("city"));
+
+                        CRUDCustomerService.updateCustomer(c, this.connectionPool);
+                        session.setAttribute("customerRequest", cr);
+                        session.setAttribute("customer", c);
+                    }
                 } catch (DatabaseException e) {
                     throw new RuntimeException(e);
                 }

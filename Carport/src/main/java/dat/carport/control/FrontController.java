@@ -30,18 +30,18 @@ public class FrontController extends HttpServlet {
 
             Command action = Command.from( request );
             String view = action.execute( request, response );
-            if (view != null)
+            if (request.getAttribute("error") != null)
             {
-                request.getRequestDispatcher("/" + view + ".jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/" + view + ".jsp").forward(request, response);
             } else
             {
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/"+view+".jsp");
             }
         } catch ( UnsupportedEncodingException | DatabaseException e )
         {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage());
             request.setAttribute("errormessage", e.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+            request.getRequestDispatcher(request.getContextPath() + "/error.jsp").forward(request, response);
         }
     }
 
