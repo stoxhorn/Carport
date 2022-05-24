@@ -7,7 +7,6 @@ import dat.carport.model.entities.ServiceEntities.CustomerRequest;
 import dat.carport.model.entities.ServiceEntities.CustomerRequestData;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
-import dat.carport.model.persistence.CustomerRequestMapper;
 import dat.carport.model.services.CRUDCustomerRequestService;
 import dat.carport.model.services.CRUDCustomerService;
 
@@ -32,9 +31,17 @@ public class CRUDCustomerRequestCommand extends Command{
      */
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws DatabaseException {
-        String crudType = request.getParameter("crud");
-        String customerEmail = request.getParameter("customerEmail");
         HttpSession session = request.getSession();
+        String crudType = request.getParameter("crud");
+        String customerEmail = null;
+        if (!request.getParameterMap().containsKey("customerEmail"))
+        {
+            Customer customer = (Customer) session.getAttribute("customer");
+            customerEmail = customer.getEmail();
+        } else
+        {
+            customerEmail = request.getParameter("customerEmail");
+        }
         switch (crudType) {
             case "create": {
                 CustomerRequestData crData = new CustomerRequestData(
@@ -53,11 +60,19 @@ public class CRUDCustomerRequestCommand extends Command{
                 return request.getParameter("next");
             }
             case "read":
-                CustomerRequest customerRequest = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
-                Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
+                 try {
+                    CustomerRequest customerRequest = CRUDCustomerRequestService.readCustomerRequest(customerEmail, this.connectionPool);
+                    if (customerRequest != null) {
+                        Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
 
-                session.setAttribute("customer", customer);
-                session.setAttribute("customerRequest", customerRequest);
+                        session.setAttribute("customer", customer);
+                        session.setAttribute("customerRequest", customerRequest);
+                    } else {
+                        request.setAttribute("error", "Der er ingen ordre tilknyttet denne mail");
+                    }
+                 } catch (DatabaseException e) {
+                     throw new RuntimeException(e);
+                }
                 break;
             case "update": {
                 CustomerRequestData crData = new CustomerRequestData(
@@ -65,13 +80,28 @@ public class CRUDCustomerRequestCommand extends Command{
                         request.getParameter("carportLength"),
                         request.getParameter("roofType"),
                         request.getParameter("roofMaterial"),
-                        request.getParameter("roofSlope"),
-                        request.getParameter("shedWidth"),
-                        request.getParameter("shedLength"));
+                        request.getParameter("roofSlope").isEmpty() ? null : request.getParameter("roofSlope"),
+                        request.getParameter("shedWidth").isEmpty() ? null : request.getParameter("shedWidth"),
+                        request.getParameter("shedLength").isEmpty() ? null : request.getParameter("shedLength"));
+
+                Customer c = new Customer(
+                        customerEmail,
+                        request.getParameter("firstName"),
+                        request.getParameter("lastName"),
+                        request.getParameter("phoneNumber"),
+                        request.getParameter("address"),
+                        request.getParameter("zipCode"),
+                        request.getParameter("city"));
                 try {
-                    Status status = Status.valueOf(request.getParameter("status"));
+                    CustomerRequest cr = (CustomerRequest) session.getAttribute("customerRequest");
+                    Status status = cr.getStatus();
 
                     CRUDCustomerRequestService.updateCustomerRequest(customerEmail, crData, this.connectionPool, status);
+                    CRUDCustomerService.updateCustomer(c, this.connectionPool);
+
+                    session.setAttribute("customerRequest", cr);
+                    session.setAttribute("customer", c);
+
                 } catch (DatabaseException e) {
                     throw new RuntimeException(e);
                 }

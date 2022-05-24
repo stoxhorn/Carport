@@ -72,7 +72,8 @@ public class CustomerRequestData {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "CustomerRequestData{" +
                 "carportWidth='" + carportWidth + '\'' +
                 ", carportLength='" + carportLength + '\'' +

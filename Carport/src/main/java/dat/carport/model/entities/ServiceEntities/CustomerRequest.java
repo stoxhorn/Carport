@@ -28,6 +28,7 @@ public class CustomerRequest {
 
     public CustomerRequest(DBCustomerRequest dbcr){
         this.id = dbcr.getId();
+        this.status = dbcr.getStatus();
         this.customerUserEmail = dbcr.getCustomerUserEmail();
         this.requestData = new CustomerRequestData(
                                             dbcr.getCarportWidth(),
@@ -86,10 +87,12 @@ public class CustomerRequest {
 
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "CustomerRequest{" +
                 "id=" + id +
                 ", customerUserEmail='" + customerUserEmail + '\'' +
+                ", status=" + status +
                 ", requestData=" + requestData +
                 ", materialList=" + materialList +
                 '}';

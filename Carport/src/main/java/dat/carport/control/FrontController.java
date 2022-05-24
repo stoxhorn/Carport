@@ -32,10 +32,10 @@ public class FrontController extends HttpServlet {
             String view = action.execute( request, response );
             if (view != null)
             {
-                response.sendRedirect(request.getServletContext().getContextPath() + "/"+view+".jsp");
+                request.getRequestDispatcher("/" + view + ".jsp").forward(request, response);
             } else
             {
-                request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         } catch ( UnsupportedEncodingException | DatabaseException e )
         {
