@@ -27,7 +27,6 @@ public class GetSVGCommand extends Command{
 
         String tmp = SVGService.getCarpotSVGString(cr);
 
-        request.setAttribute("CustomerRequestSVG", tmp);
         request.getSession().setAttribute("CustomerRequestSVG", tmp);
 
         return request.getParameter("next");
