@@ -22,6 +22,6 @@ public class Hulbånd {
 
     @Override
     public String toString() {
-        return  name + "Antal: " + amount + height + width + " Længde: " + length + "cm" + unit + description;
+        return  name + "Antal: " + amount + height + width + " Længde: " + length + "m" + unit + description;
     }
 }

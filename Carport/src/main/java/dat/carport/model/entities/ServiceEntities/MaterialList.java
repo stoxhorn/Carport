@@ -6,8 +6,14 @@ import static java.lang.Integer.parseInt;
 
 public class MaterialList {
 
-    String raftersAmount = "";
-    double hulbåndFinalLength;
+    public ArrayList<String> materialList;
+    private String raftersAmount = "";
+    private double hulbåndFinalLength;
+
+    public MaterialList(CustomerRequestData customerRequestData)
+    {
+        this.materialList = getMaterialList(customerRequestData);
+    }
 
     public int getCarportLength(CustomerRequestData customerRequest) {
         return parseInt(customerRequest.getCarportLength().replaceAll("[^0-9]", ""));
@@ -35,7 +41,7 @@ public class MaterialList {
         return shed;
     }
 
-    public String getStolper (CustomerRequestData customerRequest) {
+    private String getStolper (CustomerRequestData customerRequest) {
         boolean shed = shedCheck(customerRequest);
         int carportLength = getCarportLength(customerRequest);
         int carportWidth = getCarportWidth(customerRequest);
@@ -60,7 +66,7 @@ public class MaterialList {
         return s.toString();
     }
 
-    public String getRem (CustomerRequestData customerRequest) {
+    private String getRem (CustomerRequestData customerRequest) {
         String length = "";
 
         boolean shed = shedCheck(customerRequest);
@@ -77,7 +83,7 @@ public class MaterialList {
         return r.toString();
     }
 
-    public String getShedRem (CustomerRequestData customerRequest) {
+    private String getShedRem (CustomerRequestData customerRequest) {
         String length = "";
 
         int shedLength = getShedLength(customerRequest);
@@ -88,11 +94,11 @@ public class MaterialList {
         return remSkur.toString();
     }
 
-    public String getSpær (CustomerRequestData customerRequest) {
+    private String getSpær (CustomerRequestData customerRequest) {
 
         int carportLength = getCarportLength(customerRequest);
         String length = customerRequest.getCarportWidth();
-        int amountInt = (int) (carportLength / (0.55 + 0.045) + 2);
+        int amountInt = (int) (carportLength / (55 + 4.5) + 2);
         raftersAmount = String.valueOf(amountInt);
 
         Spær s = new Spær(raftersAmount, length);
@@ -100,30 +106,34 @@ public class MaterialList {
         return s.toString();
     }
 
-    public String getSpærBeslag() {
+    private String getSpærBeslag() {
         SpærBeslag spærBeslag = new SpærBeslag(raftersAmount);
 
         return spærBeslag.toString();
     }
 
-    public String getHulbånd(CustomerRequestData customerRequest) {
+    private String getHulbånd(CustomerRequestData customerRequest) {
+        boolean shed = shedCheck(customerRequest);
         int carportLength = getCarportLength(customerRequest);
         int carportWidth = getCarportWidth(customerRequest);
-        int shedLength = getShedLength(customerRequest);
+        int shedLength = shed ? getShedLength(customerRequest) : 0;
         double widthDouble = carportWidth;
-        double lengthDouble = carportLength - 0.595 - shedLength;
+        widthDouble = widthDouble / 100;        
+        double lengthDouble = (carportLength - (55 + 4.5) - shedLength);
+        lengthDouble = lengthDouble / 100;
         double hulbåndLength = Math.pow(widthDouble,2) + Math.pow(lengthDouble,2);
         hulbåndFinalLength = Math.sqrt(hulbåndLength);
-        int amountInt = (int) Math.ceil(hulbåndFinalLength);
+        int lengthInt = (int) Math.ceil(hulbåndFinalLength);
+        int amountInt = (int) Math.ceil(hulbåndFinalLength/10);
         String amount = String.valueOf(amountInt);
-        String length = String.valueOf(hulbåndFinalLength);
+        String length = String.valueOf(lengthInt);
 
         Hulbånd hulbånd = new Hulbånd(amount, length);
 
         return hulbånd.toString();
     }
 
-    public String getBeslagskruer() {
+    private String getBeslagskruer() {
         int raftersAmountInt = parseInt(raftersAmount);
         int firstAmountInt = raftersAmountInt * 2 * 9;
         int secondAmountInt = (int) ((hulbåndFinalLength / 0.595 + 2) * 2);
@@ -137,7 +147,7 @@ public class MaterialList {
         return beslagskruer.toString();
     }
 
-    public String getUnderStern(CustomerRequestData customerRequest) {
+    private String getUnderStern(CustomerRequestData customerRequest) {
         String frontBackLength = customerRequest.getCarportWidth();
         String sideLength = customerRequest.getCarportLength();
 
@@ -146,7 +156,7 @@ public class MaterialList {
         return underStern.toString();
     }
 
-    public String getOverStern(CustomerRequestData customerRequest) {
+    private String getOverStern(CustomerRequestData customerRequest) {
         boolean shed = shedCheck(customerRequest);
         String frontBackLength = customerRequest.getCarportWidth();
         String sideLength = customerRequest.getCarportLength();
@@ -163,7 +173,7 @@ public class MaterialList {
         return overStern.toString();
     }
 
-    public String getTrapezPlader(CustomerRequestData customerRequest) {
+    private String getTrapezPlader(CustomerRequestData customerRequest) {
         int carportLength = getCarportLength(customerRequest);
         int carportWidth = getCarportWidth(customerRequest);
         int amountInt = carportWidth;
@@ -186,7 +196,7 @@ public class MaterialList {
         }
     }
 
-    public String getTrapezPladerSkruer(CustomerRequestData customerRequest) {
+    private String getTrapezPladerSkruer(CustomerRequestData customerRequest) {
         int carportLength = getCarportLength(customerRequest);
         int carportWidth = getCarportWidth(customerRequest);
         int carportArea = carportLength * carportWidth;
@@ -200,7 +210,7 @@ public class MaterialList {
         return trapezPladerSkruer.toString();
     }
 
-    public String getVandBræt(CustomerRequestData customerRequest) {
+    private String getVandBræt(CustomerRequestData customerRequest) {
         boolean shed = shedCheck(customerRequest);
         String frontBackLength = customerRequest.getCarportWidth();
         String sideLength = customerRequest.getCarportLength();
@@ -217,19 +227,19 @@ public class MaterialList {
         return vandBræt.toString();
     }
 
-    public String getVandBrætSkruer() {
+    private String getVandBrætSkruer() {
         VandBrætSkruer vandBrætSkruer = new VandBrætSkruer();
 
         return vandBrætSkruer.toString();
     }
 
-    public String getDørLægte() {
+    private String getDørLægte() {
         DørLægte dørLægte = new DørLægte();
 
         return dørLægte.toString();
     }
 
-    public String getLøsholter(CustomerRequestData customerRequest) {
+    private String getLøsholter(CustomerRequestData customerRequest) {
         int shedLength = getShedLength(customerRequest);
         int shedWidth = getShedWidth(customerRequest);
         int gavlAmountInt = 6;
@@ -253,7 +263,7 @@ public class MaterialList {
         return løsholter.toString();
     }
 
-    public String getSkurBeklædning(CustomerRequestData customerRequest) {
+    private String getSkurBeklædning(CustomerRequestData customerRequest) {
         int shedLength = getShedLength(customerRequest);
         int shedWidth = getShedWidth(customerRequest);
 
@@ -265,7 +275,7 @@ public class MaterialList {
         return skurBeklædning.toString();
     }
 
-    public String getBræddeBolte(CustomerRequestData customerRequest) {
+    private String getBræddeBolte(CustomerRequestData customerRequest) {
         int carportLength = getCarportLength(customerRequest);
         int carportWidth = getCarportWidth(customerRequest);
         int amountInt;
@@ -281,7 +291,7 @@ public class MaterialList {
         return bræddeBolte.toString();
     }
 
-    public String getFirkantSkiver(CustomerRequestData customerRequest) {
+    private String getFirkantSkiver(CustomerRequestData customerRequest) {
         int carportLength = getCarportLength(customerRequest);
         int carportWidth = getCarportWidth(customerRequest);
         int amountInt;
@@ -297,7 +307,7 @@ public class MaterialList {
         return firkantskiver.toString();
     }
 
-    public String getBeklædningSkruerYderst(CustomerRequestData customerRequest) {
+    private String getBeklædningSkruerYderst(CustomerRequestData customerRequest) {
         int shedLength = getShedLength(customerRequest);
         int shedWidth = getShedWidth(customerRequest);
 
@@ -312,7 +322,7 @@ public class MaterialList {
         return beklædningSkruerYderst.toString();
     }
 
-    public String getBeklædningSkruerInderst(CustomerRequestData customerRequest) {
+    private String getBeklædningSkruerInderst(CustomerRequestData customerRequest) {
         int shedLength = getShedLength(customerRequest);
         int shedWidth = getShedWidth(customerRequest);
 
@@ -327,19 +337,19 @@ public class MaterialList {
         return beklædningSkruerInderst.toString();
     }
 
-    public String getStalddørsgreb() {
+    private String getStalddørsgreb() {
         Stalddørsgreb stalddørsgreb = new Stalddørsgreb();
 
         return stalddørsgreb.toString();
     }
 
-    public String getTHængsel() {
+    private String getTHængsel() {
         THængsel tHængsel = new THængsel();
 
         return tHængsel.toString();
     }
 
-    public String getVinkelBeslag(CustomerRequestData customerRequest) {
+    private String getVinkelBeslag(CustomerRequestData customerRequest) {
         int shedLength = getShedLength(customerRequest);
         int shedWidth = getShedWidth(customerRequest);
         int gavlAmountInt = 12;
@@ -363,36 +373,36 @@ public class MaterialList {
     }
 
 
-    public ArrayList<String> getMaterialList (CustomerRequestData customerRequest) {
+    public ArrayList<String> getMaterialList (CustomerRequestData customerRequestData) {
 
-        boolean shed = shedCheck(customerRequest);
+        boolean shed = shedCheck(customerRequestData);
 
         ArrayList<String> materialList = new ArrayList<>();
 
-        materialList.add(getStolper(customerRequest));
-        materialList.add(getRem(customerRequest));
-        materialList.add(getSpær(customerRequest));
+        materialList.add(getStolper(customerRequestData));
+        materialList.add(getRem(customerRequestData));
+        materialList.add(getSpær(customerRequestData));
         materialList.add(getSpærBeslag());
-        materialList.add(getHulbånd(customerRequest));
+        materialList.add(getHulbånd(customerRequestData));
         materialList.add(getBeslagskruer());
-        materialList.add(getUnderStern(customerRequest));
-        materialList.add(getOverStern(customerRequest));
-        materialList.add(getTrapezPlader(customerRequest));
-        materialList.add(getTrapezPladerSkruer(customerRequest));
-        materialList.add(getVandBræt(customerRequest));
+        materialList.add(getUnderStern(customerRequestData));
+        materialList.add(getOverStern(customerRequestData));
+        materialList.add(getTrapezPlader(customerRequestData));
+        materialList.add(getTrapezPladerSkruer(customerRequestData));
+        materialList.add(getVandBræt(customerRequestData));
         materialList.add(getVandBrætSkruer());
-        materialList.add(getBræddeBolte(customerRequest));
-        materialList.add(getFirkantSkiver(customerRequest));
+        materialList.add(getBræddeBolte(customerRequestData));
+        materialList.add(getFirkantSkiver(customerRequestData));
         if(shed) {
-            materialList.add(getShedRem(customerRequest));
+            materialList.add(getShedRem(customerRequestData));
             materialList.add(getDørLægte());
-            materialList.add(getLøsholter(customerRequest));
-            materialList.add(getSkurBeklædning(customerRequest));
-            materialList.add(getBeklædningSkruerYderst(customerRequest));
-            materialList.add(getBeklædningSkruerInderst(customerRequest));
+            materialList.add(getLøsholter(customerRequestData));
+            materialList.add(getSkurBeklædning(customerRequestData));
+            materialList.add(getBeklædningSkruerYderst(customerRequestData));
+            materialList.add(getBeklædningSkruerInderst(customerRequestData));
             materialList.add(getStalddørsgreb());
             materialList.add(getTHængsel());
-            materialList.add(getVinkelBeslag(customerRequest));
+            materialList.add(getVinkelBeslag(customerRequestData));
         }
 
         return materialList;

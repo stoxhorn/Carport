@@ -11,6 +11,7 @@ import dat.carport.model.services.CRUDCustomerRequestService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 public class SetCustomerRequestStatusCommand extends Command{
 
@@ -40,6 +41,9 @@ public class SetCustomerRequestStatusCommand extends Command{
         }
 
         CRUDCustomerRequestService.updateCustomerRequest(cr, cp);
+
+        ArrayList<CustomerRequest> crList = CRUDCustomerRequestService.getAllRequests(cp);
+        session.setAttribute("CustomerRequestList", crList);
 
 
         return request.getParameter("next");
