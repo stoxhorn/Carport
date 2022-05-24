@@ -6,17 +6,19 @@ public class THængsel {
     String width;
     String unit;
     String description;
+    double price;
 
-    public THængsel() {
+    public THængsel(double price) {
         this.name = "Skruer, ";
         this.amount = " 2,";
         this.width = " Bredde: 390mm,";
         this.unit = " Enhed: stk.,";
         this.description = " til skurdør";
+        this.price = price;
     }
 
     @Override
     public String toString() {
-        return name + "Antal: " + amount + width + unit + description;
+        return name + "Antal: " + amount + width + unit + description + " Pris: " + price + "kr.";
     }
 }
