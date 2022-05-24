@@ -8,9 +8,8 @@ public class Stolpe {
         String unit;
         String description;
         String length;
-        double price;
 
-    public Stolpe(String amount, double price) {
+    public Stolpe(String amount) {
         this.name = "Trykimp. stolpe, ";
         this.height = " Højde: 97mm,";
         this.width = " Bredde: 97mm,";
@@ -18,12 +17,11 @@ public class Stolpe {
         this.unit = " Enhed: stk.,";
         this.description = " stolper nedgraves 90 cm. i jord";
         this.amount = amount;
-        this.price = price;
     }
 
     @Override
         public String toString(){
-            return name + "Antal: " + amount + height + width + length + unit + description + " Pris: " + price + "kr.";
+            return name + "Antal: " + amount + height + width + length + unit + description;
         }
 }
 

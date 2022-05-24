@@ -8,9 +8,8 @@ public class Firkantskiver {
     String length;
     String unit;
     String description;
-    double price;
 
-    public Firkantskiver(String amount, double price) {
+    public Firkantskiver(String amount) {
         this.name = "Firkantskiver, ";
         this.amount = amount;
         this.height = ", Højde: 11mm,";
@@ -18,11 +17,10 @@ public class Firkantskiver {
         this.length = " Længde: 40mm,";
         this.unit = " Enhed: stk.,";
         this.description = " til montering af rem på stolper";
-        this.price = price;
     }
 
     @Override
     public String toString() {
-        return name + "Antal: " + amount + height + width + length + unit + description + " Pris: " + price + "kr.";
+        return name + "Antal: " + amount + height + width + length + unit + description;
     }
 }

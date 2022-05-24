@@ -9,9 +9,8 @@ public class Spær {
     String length;
     String unit;
     String description;
-    double price;
 
-    public Spær(String amount, String length, double price){
+    public Spær(String amount, String length){
         this.name = "Spærtræ ubh., ";
         this.raftersAmount = amount;
         this.height = ", Højde: 195mm";
@@ -19,12 +18,11 @@ public class Spær {
         this.length = length;
         this.unit = ", Enhed: stk.,";
         this.description = " Spær monteres på rem";
-        this.price = price;
     }
 
     @Override
     public String toString(){
-        return name + "Antal: " + raftersAmount + height + width + " Længde: " + length + "cm" + unit + description + " Pris: " + price + "kr.";
+        return name + "Antal: " + raftersAmount + height + width + " Længde: " + length + "cm" + unit + description;
     }
 
 }

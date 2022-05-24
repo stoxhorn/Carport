@@ -1,7 +1,5 @@
 package dat.carport.model.entities.ServiceEntities;
 
-import static java.lang.Integer.parseInt;
-
 public class DørLægte {
     String name;
     String amount;
@@ -10,7 +8,6 @@ public class DørLægte {
     String length;
     String unit;
     String description;
-    double price;
 
     public DørLægte() {
         this.name = "Lægte ubh., ";
@@ -22,20 +19,8 @@ public class DørLægte {
         this.description = " til z på bagside af dør";
     }
 
-    public DørLægte(double price) {
-        this.price = price;
-    }
-
-    public int getLength() {
-        return parseInt(length.replaceAll("[^0-9]", ""));
-    }
-
-    public int getAmount() {
-        return parseInt(amount.replaceAll("[^0-9]", ""));
-    }
-
     @Override
     public String toString() {
-        return name + amount + height + width + length + unit + description + " Pris: " + price + "kr.";
+        return name + amount + height + width + length + unit + description;
     }
 }

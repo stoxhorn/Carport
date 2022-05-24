@@ -8,9 +8,8 @@ public class SkurBeklædning {
     String length;
     String unit;
     String description;
-    double price;
 
-    public SkurBeklædning(String amount, double price) {
+    public SkurBeklædning(String amount) {
         this.name = "Tryk imp. bræt, ";
         this.amount = amount;
         this.height = ", Højde: 19mm,";
@@ -18,11 +17,10 @@ public class SkurBeklædning {
         this.length = " Længde: 210cm,";
         this.unit = " Enhed: stk.,";
         this.description = " til beklædning af skur 1 på 2";
-        this.price = price;
     }
 
     @Override
     public String toString() {
-        return name + "Antal: " + amount + height + width + length + unit + description + " Pris: " + price + "kr.";
+        return name + "Antal: " + amount + height + width + length + unit + description;
     }
 }
