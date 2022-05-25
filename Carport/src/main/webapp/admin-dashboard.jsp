@@ -29,7 +29,7 @@
                         ${customerRequest.customerUserEmail}
                     </td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/fc/updateCustomerRequestStatus?command=updateCustomerRequestStatus&customerEmail=${customerRequest.customerUserEmail}&next=${"admin-dashboard"}">
+                        <a href="${pageContext.request.contextPath}/fc/updateCustomerRequest?command=updateCustomerRequest&customerEmail=${customerRequest.customerUserEmail}&next=${"admin-dashboard"}">
                             <select disabled class="form-select transition" id="status" aria-label="status" aria-describedby="statusHelp">
                                 <c:choose>
                                     <c:when test="${fn:contains(customerRequest.status, 'completed')}">

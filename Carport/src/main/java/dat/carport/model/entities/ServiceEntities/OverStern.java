@@ -9,8 +9,7 @@ public class OverStern {
     String sideLength;
     String frontBackLength;
     String unit;
-    String sideDescription;
-    String frontBackDescription;
+    String description;
 
 
     public OverStern(String frontBackAmount, String sideLength, String frontBackLength) {
@@ -22,14 +21,13 @@ public class OverStern {
         this.sideLength = sideLength;
         this.frontBackLength = frontBackLength;
         this.unit = " Enhed: stk.,";
-        this.sideDescription = " oversternbrædder til sider,";
-        this.frontBackDescription = " oversternbrædder til for & bag ende";
+        this.description = " Oversternbrædder til forende, bagende og sider";
     }
 
     @Override
     public String toString() {
-        return  name + "Antal sider:" +  sideAmount + " Antal for og bagende:" + frontBackAmount +  height +
-                width + "Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
-                " Sider:"+ sideDescription + " For og bagende:" + frontBackDescription;
+        return  name + "Antal sider:" +  sideAmount + " Antal for og bagende: " + frontBackAmount +  height +
+                width + " Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
+                description;
     }
 }

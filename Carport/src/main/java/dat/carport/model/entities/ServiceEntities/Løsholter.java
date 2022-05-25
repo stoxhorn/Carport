@@ -9,8 +9,7 @@ public class Løsholter {
     String sideLength;
     String gavlLength;
     String unit;
-    String sideDescription;
-    String gavlDescription;
+    String description;
 
     public Løsholter(String sideAmount, String gavlAmount) {
         this.name = "Reglar ub. sider og gavl, ";
@@ -21,13 +20,12 @@ public class Løsholter {
         this.sideLength = " Længde sider: 240cm,";
         this.gavlLength = " Længde gavl: 270cm,";
         this.unit = " Enhed: stk.,";
-        this.sideDescription = " løsholter til skur sider,";
-        this.gavlDescription = " løsholter til skur gavle";
+        this.description = " løsholter til skur sider og gavl";
     }
 
     @Override
     public String toString() {
-        return name + "Antal sider: " + sideAmount + ", Antal gavl:" + gavlAmount + height + width + sideLength +
-                gavlLength + unit + " Sider:"+ sideDescription + " Gavl:" + gavlDescription;
+        return name + "Antal sider: " + sideAmount + ", Antal gavl: " + gavlAmount + height + width + sideLength +
+                gavlLength + unit + description;
     }
 }

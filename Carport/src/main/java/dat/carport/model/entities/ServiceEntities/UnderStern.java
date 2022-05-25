@@ -9,8 +9,7 @@ public class UnderStern {
     String sideLength;
     String frontBackLength;
     String unit;
-    String sideDescription;
-    String frontBackDescription;
+    String description;
 
 
     public UnderStern(String sideLength, String frontBackLength) {
@@ -21,15 +20,14 @@ public class UnderStern {
         this.width = " Bredde: 200mm,";
         this.sideLength = sideLength;
         this.frontBackLength = frontBackLength;
-        this.unit = " Enhed: stk.";
-        this.sideDescription = " understernbrædder til sider";
-        this.frontBackDescription = " understernbrædder til for & bag ende";
+        this.unit = " Enhed: stk.,";
+        this.description = " Understernbrædder til forende, bagende og sider";
     }
 
     @Override
     public String toString() {
-        return  name + "Antal sider:" +  sideAmount + " Antal for og bagende:" + frontBackAmount +  height +
+        return  name + "Antal sider:" +  sideAmount + ", Antal for og bagende:" + frontBackAmount +  height +
                 width + " Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
-                " Sider:"+ sideDescription + ", For og bagende:" + frontBackDescription;
+                description;
     }
 }

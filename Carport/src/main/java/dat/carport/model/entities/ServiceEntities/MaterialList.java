@@ -73,7 +73,11 @@ public class MaterialList {
         int carportLength = getCarportLength(customerRequest);
         if(shed) {
             int shedLength = getShedLength(customerRequest);
-            length = String.valueOf(carportLength - shedLength);
+            if(shedLength > carportLength) {
+                length = String.valueOf(shedLength);
+            } else {
+                length = String.valueOf(carportLength - shedLength);
+            }
         } else {
             length = String.valueOf(carportLength);
         }
@@ -86,8 +90,8 @@ public class MaterialList {
     private String getShedRem (CustomerRequestData customerRequest) {
         String length = "";
 
-        int shedLength = getShedLength(customerRequest);
-        length = String.valueOf(shedLength * 2);
+        int shedWidth = getShedWidth(customerRequest);
+        length = String.valueOf(shedWidth * 2);
 
         RemSkur remSkur = new RemSkur(length);
 
@@ -139,7 +143,7 @@ public class MaterialList {
         int secondAmountInt = (int) ((hulbåndFinalLength / 0.595 + 2) * 2);
         int amountInt = firstAmountInt + secondAmountInt;
         //Antallet rundes op da skruerne kommer i pakker af 250
-        int roundedAmount = ((amountInt + 249) / 250) * 250;
+        int roundedAmount = ((amountInt + 249) / 250);
         String amount = String.valueOf(roundedAmount);
 
         Beslagskruer beslagskruer = new Beslagskruer(amount);
@@ -176,33 +180,39 @@ public class MaterialList {
     private String getTrapezPlader(CustomerRequestData customerRequest) {
         int carportLength = getCarportLength(customerRequest);
         int carportWidth = getCarportWidth(customerRequest);
-        int amountInt = carportWidth;
-        int lengthInt = 6;
-        double lengthDouble = 3.6;
-        if(carportLength > 6) {
+        double amountDouble = carportWidth;
+        amountDouble = amountDouble/100;
+        int amountInt = (int) Math.ceil(amountDouble);
+        int lengthInt = 600;
+        double lengthDouble = 360;
+        if(carportLength > 600) {
             amountInt = amountInt * 2;
         }
         String amount = String.valueOf(amountInt);
         String length = String.valueOf(lengthInt);
         String secondLength = String.valueOf(lengthDouble);
-        if(carportLength > 6) {
+        if(carportLength > 600) {
             //Hvis taget er over 6 meter bruges ekstra plader som er 3,6 meter lange og overlappes så det passer
             String finalLength = length + secondLength;
-            TrapezPlader trapezPlader = new TrapezPlader(finalLength, amount);
+            TrapezPlader trapezPlader = new TrapezPlader(amount, finalLength);
             return trapezPlader.toString();
         } else {
-            TrapezPlader trapezPlader = new TrapezPlader(length, amount);
+            TrapezPlader trapezPlader = new TrapezPlader(amount, length);
             return trapezPlader.toString();
         }
     }
 
     private String getTrapezPladerSkruer(CustomerRequestData customerRequest) {
         int carportLength = getCarportLength(customerRequest);
+        double lengthDouble = carportLength;
+        lengthDouble = lengthDouble/100;
         int carportWidth = getCarportWidth(customerRequest);
-        int carportArea = carportLength * carportWidth;
+        double widthDouble = carportWidth;
+        widthDouble = widthDouble/100;
+        int carportArea = (int) Math.ceil(lengthDouble * widthDouble);
         int amountInt = 12 * carportArea;
         //Rundes op da de kommer i pakker af 200
-        int roundedAmount = ((amountInt + 199) / 200) * 200;
+        int roundedAmount = ((amountInt + 199) / 200);
         String amount = String.valueOf(roundedAmount);
 
         TrapezPladerSkruer trapezPladerSkruer = new TrapezPladerSkruer(amount);
@@ -314,7 +324,7 @@ public class MaterialList {
         int amountInt = (shedLength * 2 + shedWidth * 2) / 80;
         amountInt = amountInt * 4;
 
-        int roundedAmount = ((amountInt + 399) / 400) * 400;
+        int roundedAmount = ((amountInt + 399) / 400);
         String amount = String.valueOf(roundedAmount);
 
         BeklædningSkruerYderst beklædningSkruerYderst = new BeklædningSkruerYderst(amount);
@@ -329,7 +339,7 @@ public class MaterialList {
         int amountInt = (shedLength * 2 + shedWidth * 2) / 80;
         amountInt = amountInt * 3;
 
-        int roundedAmount = ((amountInt + 299) / 300) * 300;
+        int roundedAmount = ((amountInt + 299) / 300);
         String amount = String.valueOf(roundedAmount);
 
         BeklædningSkruerInderst beklædningSkruerInderst = new BeklædningSkruerInderst(amount);

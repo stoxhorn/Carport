@@ -9,12 +9,12 @@ public class TrapezPlader {
     String description;
 
     public TrapezPlader(String amount, String length) {
-        this.name = "Plastmo ecolite blåtonet, ";
+        this.name = "Trapezplader, ";
         this.amount = amount;
         this.width = ", Bredde: 110cm,";
         this.length = length;
         this.unit = " Enhed: stk.,";
-        this.description = " tagplader monteres på spær";
+        this.description = " Plastmo ecolite tagplader monteres på spær";
     }
 
     @Override

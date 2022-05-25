@@ -11,7 +11,7 @@ public class RemSkur {
     String description;
 
     public RemSkur(String length) {
-        this.name = "Spærtræ ubh., ";
+        this.name = "Skur rem spærtræ ubh., ";
         this.amount = " 1";
         this.height = ", Højde: 195mm";
         this.width = ", Bredde: 45mm";

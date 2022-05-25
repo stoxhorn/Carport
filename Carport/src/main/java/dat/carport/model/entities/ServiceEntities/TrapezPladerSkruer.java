@@ -7,10 +7,10 @@ public class TrapezPladerSkruer {
     String description;
 
     public TrapezPladerSkruer(String amount) {
-        this.name = "Plastmo bundskruer, ";
+        this.name = "Trapezplade bundskruer, ";
         this.amount = amount;
         this.unit = ", Enhed: pakke,";
-        this.description = " Skruer til tagplader kommer i pakker af 200 stk.";
+        this.description = " Skruer til plastmo tagplader kommer i pakker af 200 stk.";
     }
 
     @Override
