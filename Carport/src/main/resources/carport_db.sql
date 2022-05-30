@@ -159,6 +159,8 @@ CREATE TABLE IF NOT EXISTS `carport_db`.`materials_list_lines` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO user (email, password, role ) VALUES ('admin@admin.com', 'admin', 'admin');
+INSERT INTO employee (user_email, first_name, last_name ) VALUES ('admin@admin.com', 'admin', 'admin');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -32,19 +32,6 @@ public class DBCustomerRequest {
         this.status = status;
     }
 
-    public DBCustomerRequest(CustomerRequest cr){
-        this.id = cr.getId();
-        this.customerUserEmail = cr.getCustomerUserEmail();
-        CustomerRequestData data = cr.getRequestData();
-        this.carportWidth = data.getCarportWidth();
-        this.carportLength = data.getCarportLength();
-        this.roofType = data.getRoofType();
-        this.roofMaterial = data.getRoofMaterial();
-        this.roofSlope = data.getRoofSlope();
-        this.shedWidth = data.getShedWidth();
-        this.shedLength = data.getShedLength();
-    }
-
     public DBCustomerRequest(int id, String customerUserEmail, Status status,  CustomerRequestData crData){
         this.id = id;
         this.customerUserEmail = customerUserEmail;
