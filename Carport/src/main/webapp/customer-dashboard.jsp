@@ -33,7 +33,7 @@
             </c:when>
             <c:when test="${sessionScope.containsKey('customer') && sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.status == 'completed'}">
                 <div class="row border p-3 bg-light">
-                    <div class="col-6 border-end border">
+                    <div class="col-6 border-end">
                         <h3>Stykliste</h3>
                         <c:forEach items="${sessionScope.materialList}" var="line" varStatus="i">
                             <p>${line}</p>
