@@ -39,9 +39,12 @@
                         </c:forEach>
                     </div>
                     <div class="col-6">
-                        <svg height="auto">
-                                ${sessionScope.svg}
-                        </svg>
+                        <h3>Skitse set oppefra</h3>
+                        <div class="w-100 h-100 p-5 pt-0 d-flex justify-content-center">
+                            <svg>
+                                    ${sessionScope.svg}
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </c:when>
