@@ -32,10 +32,18 @@
                 </div>
             </c:when>
             <c:when test="${sessionScope.containsKey('customer') && sessionScope.containsKey('customerRequest') && sessionScope.customerRequest.status == 'completed'}">
-                ${sessionScope.customerRequest}
-                <c:forEach items="${sessionScope.materialList}" var="line" varStatus="i">
-                    <p>${line}</p>
-                </c:forEach>
+                <div class="row border p-3 bg-light">
+                    <div class="col-6">
+                        <c:forEach items="${sessionScope.materialList}" var="line" varStatus="i">
+                            <p>${line}</p>
+                        </c:forEach>
+                    </div>
+                    <div class="col-6">
+                        <svg height="auto">
+                                ${sessionScope.svg}
+                        </svg>
+                    </div>
+                </div>
             </c:when>
             <c:otherwise>
                     <div class="row border p-5 bg-light animate__animated animate__flipInX">

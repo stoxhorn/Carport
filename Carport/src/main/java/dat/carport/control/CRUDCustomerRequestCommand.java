@@ -10,6 +10,7 @@ import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
 import dat.carport.model.services.CRUDCustomerRequestService;
 import dat.carport.model.services.CRUDCustomerService;
+import dat.carport.model.services.SVGService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -71,10 +72,13 @@ public class CRUDCustomerRequestCommand extends Command{
                         Customer customer = CRUDCustomerService.readCustomer(customerEmail, this.connectionPool);
 
                         MaterialList materialList = new MaterialList(customerRequest.getRequestData());
+                        String svg = SVGService.getCarpotSVGString(customerRequest);
+                        System.out.println(svg);
 
                         session.setAttribute("customer", customer);
                         session.setAttribute("customerRequest", customerRequest);
                         session.setAttribute("materialList", materialList.materialList);
+                        session.setAttribute("svg", svg);
                     } else {
                         request.setAttribute("error", "Der er ingen ordre tilknyttet denne mail");
                     }

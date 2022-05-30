@@ -417,4 +417,576 @@ public class MaterialList {
 
         return materialList;
     }
+
+    public static class BeklædningSkruerInderst {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String unit;
+        String description;
+    
+        public BeklædningSkruerInderst(String amount) {
+            this.name = "Skruer, ";
+            this.amount = amount;
+            this.height = ", Højde: 4,5mm,";
+            this.width = " Bredde: 50mm,";
+            this.unit = " Enhed: pakke,";
+            this.description = " til montering af inderste beklædning kommer i pakker med 300";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + unit + description;
+        }
+    }
+
+    public static class BeklædningSkruerYderst {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String unit;
+        String description;
+    
+        public BeklædningSkruerYderst(String amount) {
+            this.name = "Skruer, ";
+            this.amount = amount;
+            this.height = ", Højde: 4,5mm,";
+            this.width = " Bredde: 70mm,";
+            this.unit = " Enhed: pakke,";
+            this.description = " til montering af yderste beklædning kommer i pakker med 400";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + unit + description;
+        }
+    }
+
+    public static class Beslagskruer {
+    
+        String name;
+        String amount;
+        String height;
+        String width;
+        String unit;
+        String description;
+    
+        public Beslagskruer(String amount) {
+            this.name = "Beslagskruer 4,0 x 50 mm., ";
+            this.amount = amount;
+            this.height = ", Højde: 50mm,";
+            this.width = " Bredde: 4mm,";
+            this.unit = " Enhed: pakke,";
+            this.description = " Til montering af universalbeslag + hulbånd kommer i pakker af 250";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + unit + description;
+        }
+    }
+
+    public class BræddeBolte {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String unit;
+        String description;
+    
+        public BræddeBolte(String amount) {
+            this.name = "Bræddebolt, ";
+            this.amount = amount;
+            this.height = ", Højde: 10mm,";
+            this.width = " Bredde: 120mm,";
+            this.unit = " Enhed: stk.,";
+            this.description = " til montering af rem på stolper";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + unit + description;
+        }
+    }
+
+    public class DørLægte {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public DørLægte() {
+            this.name = "Lægte ubh., ";
+            this.amount = " Antal: 1,";
+            this.height = " Højde: 38mm,";
+            this.width = " Bredde: 73mm,";
+            this.length = " Længde: 420cm,";
+            this.unit = " Enhed: stk.,";
+            this.description = " til z på bagside af dør";
+        }
+    
+        @Override
+        public String toString() {
+            return name + amount + height + width + length + unit + description;
+        }
+    }
+
+    public class Firkantskiver {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public Firkantskiver(String amount) {
+            this.name = "Firkantskiver, ";
+            this.amount = amount;
+            this.height = ", Højde: 11mm,";
+            this.width = " Brede: 40mm,";
+            this.length = " Længde: 40mm,";
+            this.unit = " Enhed: stk.,";
+            this.description = " til montering af rem på stolper";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + length + unit + description;
+        }
+    }
+
+    public class Hulbånd {
+    
+        String name;
+        String amount;
+        String height;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public Hulbånd(String amount, String length) {
+            this.name = "Hulbånd 1x20 mm, ";
+            this.amount = amount;
+            this.height = ", Højde: 1mm,";
+            this.width = " Bredde: 20mm,";
+            this.length = length;
+            this.unit = ", Enhed: Rulle,";
+            this.description = " Til vindkryds på spær";
+        }
+    
+        @Override
+        public String toString() {
+            return  name + "Antal: " + amount + height + width + " Længde: " + length + "m" + unit + description;
+        }
+    }
+
+    public class Løsholter {
+        String name;
+        String sideAmount;
+        String gavlAmount;
+        String height;
+        String width;
+        String sideLength;
+        String gavlLength;
+        String unit;
+        String description;
+    
+        public Løsholter(String sideAmount, String gavlAmount) {
+            this.name = "Reglar ub. sider og gavl, ";
+            this.sideAmount = sideAmount;
+            this.gavlAmount = gavlAmount;
+            this.height = ", Højde: 45mm,";
+            this.width = " Bredde: 95mm,";
+            this.sideLength = " Længde sider: 240cm,";
+            this.gavlLength = " Længde gavl: 270cm,";
+            this.unit = " Enhed: stk.,";
+            this.description = " løsholter til skur sider og gavl";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal sider: " + sideAmount + ", Antal gavl: " + gavlAmount + height + width + sideLength +
+                    gavlLength + unit + description;
+        }
+    }
+
+    public class OverStern {
+        String name;
+        String sideAmount;
+        String frontBackAmount;
+        String height;
+        String width;
+        String sideLength;
+        String frontBackLength;
+        String unit;
+        String description;
+    
+    
+        public OverStern(String frontBackAmount, String sideLength, String frontBackLength) {
+            this.name = "Trykimp. bræt. overstern, ";
+            this.sideAmount = " 4,";
+            this.frontBackAmount = frontBackAmount;
+            this.height = ", Højde: 25mm,";
+            this.width = " Bredde: 125mm,";
+            this.sideLength = sideLength;
+            this.frontBackLength = frontBackLength;
+            this.unit = " Enhed: stk.,";
+            this.description = " Oversternbrædder til forende, bagende og sider";
+        }
+    
+        @Override
+        public String toString() {
+            return  name + "Antal sider:" +  sideAmount + " Antal for og bagende: " + frontBackAmount +  height +
+                    width + " Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
+                    description;
+        }
+    }
+
+    public class Rem {
+    
+        String name;
+        String amount;
+        String height;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public Rem(String length) {
+            this.name = "Spærtræ ubh., ";;
+            this.amount = " 2,";
+            this.height = " Højde: 195mm,";
+            this.width = " Bredde: 45mm,";
+            this.length = length;
+            this.unit = ", Enhed: stk.,";
+            this.description = " Remme i sider, sadles ned i stolper";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "antal: " + amount + height + width + " Længde: " + length + "cm" + unit + description;
+        }
+    }
+
+    public class RemSkur {
+    
+        String name;
+        String amount;
+        String height;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public RemSkur(String length) {
+            this.name = "Skur rem spærtræ ubh., ";
+            this.amount = " 1";
+            this.height = ", Højde: 195mm";
+            this.width = ", Bredde: 45mm";
+            this.length = length;
+            this.unit = " Enhed: stk.,";
+            this.description = " Remme i sider, sadles ned i stolper (skur del, deles)";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + " Længde: " + length + "cm," + unit + description;
+        }
+    }
+
+    public class SkurBeklædning {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public SkurBeklædning(String amount) {
+            this.name = "Tryk imp. bræt, ";
+            this.amount = amount;
+            this.height = ", Højde: 19mm,";
+            this.width = " Bredde: 100mm,";
+            this.length = " Længde: 210cm,";
+            this.unit = " Enhed: stk.,";
+            this.description = " til beklædning af skur 1 på 2";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + length + unit + description;
+        }
+    }
+
+    public class Spær {
+    
+        String name;
+        String raftersAmount;
+        String height;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public Spær(String amount, String length){
+            this.name = "Spærtræ ubh., ";
+            this.raftersAmount = amount;
+            this.height = ", Højde: 195mm";
+            this.width = ", Bredde: 45mm,";
+            this.length = length;
+            this.unit = ", Enhed: stk.,";
+            this.description = " Spær monteres på rem";
+        }
+    
+        @Override
+        public String toString(){
+            return name + "Antal: " + raftersAmount + height + width + " Længde: " + length + "cm" + unit + description;
+        }
+    
+    }
+
+    public class SpærBeslag {
+    
+        String name;
+        String amount;
+        String unit;
+        String description;
+    
+        public SpærBeslag(String amount) {
+            this.name = "Universalbeslag 190 mm højre og venstre, ";
+            this.amount = amount;
+            this.unit = ", Enhed: stk.,";
+            this.description = " Spær beslag til montering af spær på rem";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + unit + description;
+        }
+    }
+
+    public class Stalddørsgreb {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String unit;
+        String description;
+    
+        public Stalddørsgreb() {
+            this.name = "Stalddørsgreb, ";
+            this.amount = " 1,";
+            this.height = " Højde: 50mm,";
+            this.width = " Bredde: 75mm,";
+            this.unit = " Enhed: sæt,";
+            this.description = " til lås på skur dør";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + height + width + unit + description;
+        }
+    }
+
+    public class Stolpe {
+            String name;
+            String amount;
+            String height;
+            String width;
+            String unit;
+            String description;
+            String length;
+    
+        public Stolpe(String amount) {
+            this.name = "Trykimp. stolpe, ";
+            this.height = " Højde: 97mm,";
+            this.width = " Bredde: 97mm,";
+            this.length = " Længde: 300cm,";
+            this.unit = " Enhed: stk.,";
+            this.description = " stolper nedgraves 90 cm. i jord";
+            this.amount = amount;
+        }
+    
+        @Override
+            public String toString(){
+                return name + "Antal: " + amount + height + width + length + unit + description;
+            }
+    }
+
+    public class THængsel {
+        String name;
+        String amount;
+        String width;
+        String unit;
+        String description;
+    
+        public THængsel() {
+            this.name = "Skruer, ";
+            this.amount = " 2,";
+            this.width = " Bredde: 390mm,";
+            this.unit = " Enhed: stk.,";
+            this.description = " til skurdør";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + width + unit + description;
+        }
+    }
+
+    public class TrapezPlader {
+        String name;
+        String amount;
+        String width;
+        String length;
+        String unit;
+        String description;
+    
+        public TrapezPlader(String amount, String length) {
+            this.name = "Trapezplader, ";
+            this.amount = amount;
+            this.width = ", Bredde: 110cm,";
+            this.length = length;
+            this.unit = " Enhed: stk.,";
+            this.description = " Plastmo ecolite tagplader monteres på spær";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + width + " Længde: " + length + "cm," + unit + description;
+        }
+    }
+
+    public class TrapezPladerSkruer {
+        String name;
+        String amount;
+        String unit;
+        String description;
+    
+        public TrapezPladerSkruer(String amount) {
+            this.name = "Trapezplade bundskruer, ";
+            this.amount = amount;
+            this.unit = ", Enhed: pakke,";
+            this.description = " Skruer til plastmo tagplader kommer i pakker af 200 stk.";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "Antal: " + amount + unit + description;
+        }
+    }
+
+    public class UnderStern {
+        String name;
+        String sideAmount;
+        String frontBackAmount;
+        String height;
+        String width;
+        String sideLength;
+        String frontBackLength;
+        String unit;
+        String description;
+    
+    
+        public UnderStern(String sideLength, String frontBackLength) {
+            this.name = "Trykimp. bræt. understern, ";
+            this.sideAmount = " 4";
+            this.frontBackAmount = " 4";
+            this.height = " Højde: 25mm,";
+            this.width = " Bredde: 200mm,";
+            this.sideLength = sideLength;
+            this.frontBackLength = frontBackLength;
+            this.unit = " Enhed: stk.,";
+            this.description = " Understernbrædder til forende, bagende og sider";
+        }
+    
+        @Override
+        public String toString() {
+            return  name + "Antal sider:" +  sideAmount + ", Antal for og bagende:" + frontBackAmount +  height +
+                    width + " Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
+                    description;
+        }
+    }
+
+    public class VandBræt {
+        String name;
+        String sideAmount;
+        String frontBackAmount;
+        String height;
+        String width;
+        String sideLength;
+        String frontBackLength;
+        String unit;
+        String description;
+    
+        public VandBræt(String frontBackAmount, String sideLength, String frontBackLength) {
+            this.name = "Trykimp. vandbræt, ";
+            this.sideAmount = " 4, ";
+            this.frontBackAmount = frontBackAmount;
+            this.height = ", Højde: 19mm,";
+            this.width = " Bredde: 100mm, ";
+            this.sideLength = sideLength;
+            this.frontBackLength = frontBackLength;
+            this.unit = " Enhed: stk.,";
+            this.description = " Vandbrædt på stern i forende, bagende og sider,";
+        }
+    
+        @Override
+        public String toString() {
+            return  name + "Antal sider: " +  sideAmount + "Antal for og bagende: " + frontBackAmount +  height +
+                    width + "Sider: "+  sideLength + "cm, For og bagende: " + frontBackLength + "cm," + unit +
+                    description;
+        }
+    }
+
+    public class VandBrætSkruer {
+        String name;
+        String amount;
+        String height;
+        String width;
+        String unit;
+        String description;
+    
+        public VandBrætSkruer() {
+            this.name = "Skruer til vandbræt og stern, ";
+            this.amount = " Antal: 1,";
+            this.height = " Højde: 4,5mm,";
+            this.width = " Bredde: 60mm,";
+            this.unit = " Enhed: pakke,";
+            this.description = " Til montering af vandbræt og stern kommer i pakker med 200";
+        }
+    
+        @Override
+        public String toString() {
+            return name + amount + height + width + unit + description;
+        }
+    }
+
+    public class VinkelBeslag {
+        String name;
+        String amount;
+        String unit;
+        String description;
+    
+        public VinkelBeslag(String amount) {
+            this.name = "Vinkelbeslag 35, ";
+            this.amount = amount;
+            this.unit = ", Enhed: stk.,";
+            this.description = " til montering af løsholter i skur";
+        }
+    
+        @Override
+        public String toString() {
+            return name + "antal: " + amount + unit + description;
+        }
+    
+    }
 }

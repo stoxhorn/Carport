@@ -54,6 +54,6 @@ public class SVG
     @Override
     public String toString()
     {
-        return svg.toString() + "</svg>" ;
+        return svg.toString().replaceAll(",",".") + "</svg>" ;
     }
 }
