@@ -38,22 +38,17 @@ public class SVG
     }
     public void addRect(int x, int y, double height, double width)
     {
-        svg.append(String.format(rectTemplate, x, y, height, width));
+        svg.append(String.format(rectTemplate, x, y, height, width).replaceAll(",","."));
     }
 
     public void addLine(int x1, int y1, int x2, int y2 )
     {
-        svg.append(String.format(lineTemplate, x1, y1, x2, y2));
-    }
-
-    public void addSvg(SVG innerSVG)
-    {
-        svg.append(innerSVG.toString());
+        svg.append(String.format(lineTemplate, x1, y1, x2, y2).replaceAll(",","."));
     }
 
     @Override
     public String toString()
     {
-        return svg.toString().replaceAll(",",".") + "</svg>" ;
+        return svg.toString() + "</svg>" ;
     }
 }
