@@ -104,6 +104,7 @@ public class CRUDCustomerRequestService {
         for(DBCustomerRequest dbcr : dbCrList){
             CustomerRequest cr = new CustomerRequest(dbcr);
             cr.fetchMaterialList(cp);
+            cr.setSvg(SVGService.getCarpotSVGString(cr));
             crList.add(cr);
         }
         return crList;

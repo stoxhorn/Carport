@@ -6,6 +6,7 @@ import dat.carport.model.entities.Enums.Status;
 import dat.carport.model.exceptions.DatabaseException;
 import dat.carport.model.persistence.ConnectionPool;
 import dat.carport.model.persistence.MaterialListMapper;
+import dat.carport.model.services.SVGService;
 
 public class CustomerRequest {
     private int id;
@@ -13,6 +14,7 @@ public class CustomerRequest {
     private Status status;
     private CustomerRequestData requestData;
     private MaterialsList materialList;
+    private String svg;
 
     public CustomerRequest(int id, String customerUserEmail, String carportWidth, String carportLength, String roofType, String roofMaterial, String roofSlope, String shedWidth, String shedLength) {
         this.id = id;
@@ -57,6 +59,16 @@ public class CustomerRequest {
                 return;
             }
         }
+    }
+
+    public String getSvg()
+    {
+        return svg;
+    }
+
+    public void setSvg(String svg)
+    {
+        this.svg = svg;
     }
 
     public void setMaterialList(MaterialsList mList){

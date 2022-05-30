@@ -20,6 +20,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Status</th>
                     <th scope="col">Carport specifikation</th>
+                    <th scope="col">Carport Tegning</th>
                 </tr>
             </thead>
             <tbody>
@@ -145,6 +146,9 @@
                             <button type="submit" class="btn btn-outline-primary">Opdater</button>
                            </fieldset>
                        </form>
+                   </td>
+                   <td>
+                       ${customerRequest.svg}
                    </td>
                 </tr>
             </c:forEach>

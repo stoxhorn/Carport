@@ -73,7 +73,6 @@ public class CRUDCustomerRequestCommand extends Command{
 
                         MaterialList materialList = new MaterialList(customerRequest.getRequestData());
                         String svg = SVGService.getCarpotSVGString(customerRequest);
-                        System.out.println(svg);
 
                         session.setAttribute("customer", customer);
                         session.setAttribute("customerRequest", customerRequest);
