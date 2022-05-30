@@ -16,8 +16,6 @@ public class BuildCarportSVG {
         this.yOffset = 40;
         this.width = Integer.parseInt(crData.getCarportLength());
         this.height = Integer.parseInt(crData.getCarportWidth());
-        this.width = 200;
-        this.height = 1000;
 
         this.svg = new SVG(0,0, "0 0 " + (this.width + 45) + " " + (this.height + 45), 100, 100);
         this.shed = false;

@@ -1,0 +1,30 @@
+@startuml
+
+package serviceEntities{
+    class User {
+        email
+        password
+        role
+    }
+    User "1." --> "0..1" Employee
+    User "1" ---> "0..1" Customer
+
+    class Employee {
+
+    }
+
+    class Customer{}
+    Customer -> CustomerRequest
+    class MaterialList{}
+    MaterialList "1." --> "0..*" MaterialListLine
+
+    class MaterialListLine{}
+    MaterialListLine "0..*" --> "1." Materials
+
+    class Materials{}
+
+    class CustomerRequest{}
+    CustomerRequest "1" -> "1" MaterialList
+}
+
+@enduml
